@@ -98,6 +98,10 @@ body {
 }
 
 /* 轮播图样式 */
+.carousel {
+    margin-top: 76px; /* 导航栏高度 */
+}
+
 .carousel-item {
     height: 75vh;
     background-color: var(--accent-color);

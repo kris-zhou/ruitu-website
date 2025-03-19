@@ -331,4 +331,37 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+
+    // 语言切换功能
+    const languageLinks = document.querySelectorAll('[data-lang]');
+    languageLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault(); // 阻止默认行为
+            const lang = this.getAttribute('data-lang');
+            const currentPath = window.location.pathname;
+            
+            // 获取基础URL（不包含语言部分）
+            let baseUrl = '';
+            const pathSegments = currentPath.split('/');
+            
+            // 如果当前在语言子目录中（en/ 或 kr/）
+            if (pathSegments.some(segment => segment === 'en' || segment === 'kr')) {
+                // 当前在语言子目录，需要上移一级
+                baseUrl = '../';
+            }
+            
+            // 根据选择的语言确定目标URL
+            let targetUrl;
+            if (lang === 'zh') {
+                // 中文版本 - 回到主目录
+                targetUrl = baseUrl + 'index.html';
+            } else {
+                // 英文或韩文版本 - 进入对应语言子目录
+                targetUrl = baseUrl + lang + '/index.html';
+            }
+            
+            // 跳转到目标URL
+            window.location.href = targetUrl;
+        });
+    });
 });
