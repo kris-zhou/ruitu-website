@@ -5,13 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ruitu (Hong Kong) Trading Co., Ltd. - Professional Beauty Products Supplier</title>
     <meta name="description" content="Ruitu (Hong Kong) Trading Co., Ltd. is a leading beauty products supplier dedicated to providing excellent cross-border beauty wholesale services to global customers.">
-    <meta name="keywords" content="beauty products,wholesale,Hong Kong,Korea,duty-free shops,cosmetics,cross-border trade">
+    <meta name="keywords" content="beauty products,wholesale,Hong Kong,Korea,duty-free,cosmetics,cross-border trade">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/style.css">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Navbar Fix JS -->
+    <script src="../js/navbar-fix.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
@@ -22,7 +24,7 @@
             <a class="navbar-brand" href="#top">
                 <img src="../images/logo.png" alt="Ruitu (Hong Kong) Trading Co., Ltd." height="60">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" onclick="document.getElementById('navbarNav').classList.toggle('show');">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -355,8 +357,6 @@
         </div>
     </footer>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
     <script src="../js/main.js"></script>
 </body>
