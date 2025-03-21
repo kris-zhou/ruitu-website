@@ -2,18 +2,21 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>루이투 (홍콩) 무역 유한공사</title>
-    <meta name="description" content="루이투 (홍콩) 무역 유한공사는 전문 뷰티 제품 공급업체로서, 글로벌 고객에게 우수한 국경간 뷰티 도매 서비스를 제공하고 있습니다.">
-    <meta name="keywords" content="뷰티제품,도매,홍콩,한국,면세점,화장품,국경간무역">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>루이투 (홍콩) 무역 유한공사 - 전문 미용 제품 공급 업체</title>
+    <meta name="description" content="루이투 (홍콩) 무역 유한공사는 업계 최고의 뷰티 제품 공급업체로, 글로벌 고객에게 우수한 국제 미용 제품 도매 서비스를 제공합니다.">
+    <meta name="keywords" content="뷰티 제품,도매,홍콩,한국,면세점,화장품,국제 무역">
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/style.css">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Navbar Fix JS -->
-    <script src="../js/navbar-fix.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
@@ -24,7 +27,7 @@
             <a class="navbar-brand" href="#top">
                 <img src="../images/logo.png" alt="루이투 (홍콩) 무역 유한공사" height="60">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation" onclick="document.getElementById('navbarNav').classList.toggle('show');">
+            <button class="navbar-toggler" type="button" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -77,7 +80,10 @@
         </div>
     </div>
 
-    <!-- Company Introduction -->
+    <!-- 비주얼 디바이더 -->
+    <div class="section-divider"></div>
+
+    <!-- 회사 소개 -->
     <section class="company-intro">
         <div class="container">
             <div class="row">
@@ -90,7 +96,10 @@
         </div>
     </section>
 
-    <!-- About Us -->
+    <!-- 비주얼 디바이더 -->
+    <div class="section-divider"></div>
+
+    <!-- 회사 소개 - 새 버전 -->
     <section id="about" class="about-section">
         <div class="container-fluid p-0">
             <div class="row about-wrapper g-0">
@@ -259,104 +268,204 @@
     </section>
 
     <!-- Contact Us -->
-    <section id="contact" class="py-5">
+    <section id="contact" class="py-5 contact-section">
         <div class="container">
-            <h2 class="text-center section-title mb-5">연락하기</h2>
+            <h2 class="text-center section-title mb-5">문의하기</h2>
             <div class="row g-4">
-                <div class="col-lg-6">
-                    <div class="contact-info">
-                        <h3>연락처 정보</h3>
-                        <ul class="list-unstyled">
-                            <li class="mb-3">
-                                <i class="fas fa-map-marker-alt me-2 text-primary"></i>
-                                Unit A&B, 5/F, Block 2, Wealthy Industrial Building, 3 Hung To Road, Kwun Tong, Kowloon, Hong Kong
-                            </li>
-                            <li class="mb-3">
-                                <i class="fas fa-phone me-2 text-primary"></i>
-                                +852 61503618 (WhatsApp)
-                            </li>
-                            <li class="mb-3">
-                                <i class="fas fa-phone me-2 text-primary"></i>
-                                +86 18802090745
-                            </li>
-                            <li class="mb-3">
-                                <i class="fas fa-envelope me-2 text-primary"></i>
-                                info@ruitu.com
-                            </li>
-                            <li class="mb-3">
-                                <i class="fab fa-weixin me-2 text-primary"></i>
-                                WeChat: RuiTu
-                            </li>
-                        </ul>
+                <div class="col-lg-5">
+                    <div class="contact-info card shadow-sm p-4 h-100">
+                        <h3 class="mb-4 border-bottom pb-2 text-center">연락처 정보</h3>
+                        <div class="contact-methods">
+                            <div class="contact-item mb-4">
+                                <div class="d-flex">
+                                    <div class="contact-icon-wrapper">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="ms-3">
+                                        <h5 class="contact-label">주소</h5>
+                                        <p class="contact-value">Unit A&B, 5/F, Block 2, Wealthy Industrial Building, 3 Hung To Road, Kwun Tong, Kowloon, Hong Kong</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item mb-4">
+                                <div class="d-flex">
+                                    <div class="contact-icon-wrapper">
+                                        <i class="fas fa-phone"></i>
+                                    </div>
+                                    <div class="ms-3">
+                                        <h5 class="contact-label">전화번호</h5>
+                                        <p class="contact-value">+852 61503618 (홍콩)</p>
+                                        <p class="contact-value">+86 18802090745 (중국 대륙)</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item mb-4">
+                                <div class="d-flex">
+                                    <div class="contact-icon-wrapper">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="ms-3">
+                                        <h5 class="contact-label">이메일</h5>
+                                        <p class="contact-value">info@ruitu.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="d-flex">
+                                    <div class="contact-icon-wrapper">
+                                        <i class="fab fa-weixin"></i>
+                                    </div>
+                                    <div class="ms-3">
+                                        <h5 class="contact-label">위챗</h5>
+                                        <p class="contact-value">위챗 ID: RuiTu</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- QR Codes Area -->
+                        <div class="qr-section mt-4">
+                            <h5 class="text-center mb-3">QR 코드로 연락하기</h5>
+                            <div class="qr-codes-container d-flex justify-content-center">
+                                <div class="qr-code-item text-center mx-2">
+                                    <div class="qr-image-wrapper">
+                                        <img src="../images/qr-wechat.jpg" alt="위챗 QR 코드" class="img-fluid rounded">
+                                    </div>
+                                    <p class="qr-label mt-2">위챗</p>
+                                </div>
+                                <div class="qr-code-item text-center mx-2">
+                                    <div class="qr-image-wrapper">
+                                        <img src="../images/qr-whatsapp.jpg" alt="왓츠앱 QR 코드" class="img-fluid rounded">
+                                    </div>
+                                    <p class="qr-label mt-2">왓츠앱</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-6">
-                    <form class="contact-form" data-netlify="true" name="contact-kr">
-                        <div class="mb-3">
-                            <input type="text" class="form-control" placeholder="이름" required>
-                        </div>
-                        <div class="mb-3">
-                            <input type="email" class="form-control" placeholder="이메일 주소" required>
-                        </div>
-                        <div class="mb-3">
-                            <input type="tel" class="form-control" placeholder="전화번호">
-                        </div>
-                        <div class="mb-3">
-                            <textarea class="form-control" rows="5" placeholder="메시지" required></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary">메시지 보내기</button>
-                    </form>
+                
+                <div class="col-lg-7">
+                    <div class="contact-form-container card shadow-sm p-4 h-100">
+                        <h3 class="mb-4 border-bottom pb-2 text-center">메시지 보내기</h3>
+                        <p class="text-muted text-center mb-4">아래 양식을 작성해 주시면 빠른 시일 내에 답변 드리겠습니다</p>
+                        
+                        <form class="contact-form" data-netlify="true" name="contact-kr">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="nameInput" placeholder="이름을 입력하세요" required>
+                                        <label for="nameInput">이름</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input type="tel" class="form-control" id="phoneInput" placeholder="전화번호를 입력하세요">
+                                        <label for="phoneInput">전화번호</label>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="emailInput" placeholder="이메일을 입력하세요" required>
+                                <label for="emailInput">이메일 주소</label>
+                            </div>
+                            
+                            <div class="form-floating mb-3">
+                                <select class="form-select" id="subjectSelect">
+                                    <option selected disabled value="">주제를 선택해주세요</option>
+                                    <option value="product">제품 문의</option>
+                                    <option value="cooperation">업무 협력</option>
+                                    <option value="price">가격 문의</option>
+                                    <option value="others">기타 문의</option>
+                                </select>
+                                <label for="subjectSelect">주제</label>
+                            </div>
+                            
+                            <div class="form-floating mb-3">
+                                <textarea class="form-control" id="messageInput" placeholder="메시지를 입력하세요" style="height: 120px" required></textarea>
+                                <label for="messageInput">메시지 내용</label>
+                            </div>
+                            
+                            <div class="text-center mt-4">
+                                <button type="submit" class="btn btn-primary btn-lg px-4 py-2">
+                                    <i class="fas fa-paper-plane me-2"></i>메시지 보내기
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-dark text-white py-4">
+    <footer class="footer">
         <div class="container">
             <div class="row">
-                <div class="col-md-4 mb-4 mb-md-0">
-                    <h5>루이투 (홍콩) 무역 유한공사</h5>
-                    <p>글로벌 고객에게 우수한 국경간 뷰티 도매 서비스를 제공하는 전문 뷰티 제품 공급업체입니다.</p>
+                <div class="col-md-4 mb-3">
+                    <div class="d-flex align-items-center mb-2">
+                        <img src="../images/logo.png" alt="루이투 (홍콩) 무역 유한회사" class="footer-logo me-2">
+                        <h5 class="mb-0">루이투 무역 유한회사</h5>
+                    </div>
+                    <p class="footer-about">글로벌 고객에게 우수한 국경간 뷰티 도매 서비스를 제공하는 전문 뷰티 제품 공급업체입니다.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-weixin"></i></a>
+                        <a href="#"><i class="fab fa-weibo"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
                 </div>
-                <div class="col-md-4 mb-4 mb-md-0">
-                    <h5>연락처 정보</h5>
-                    <ul class="list-unstyled">
-                        <li><i class="fas fa-map-marker-alt me-2"></i> Unit A&B, 5/F, Block 2, Wealthy Industrial Building, 3 Hung To Road, Kwun Tong, Kowloon, Hong Kong</li>
-                        <li><i class="fas fa-phone me-2"></i> +852 61503618 (WhatsApp)</li>
-                        <li><i class="fas fa-phone me-2"></i> +86 18802090745</li>
-                        <li><i class="fas fa-envelope me-2"></i> info@ruitu.com</li>
-                        <li><i class="fab fa-weixin me-2"></i> WeChat: RuiTu</li>
+                <div class="col-md-4 mb-3">
+                    <h5>문의처</h5>
+                    <ul class="list-unstyled footer-contact">
+                        <li><i class="fas fa-map-marker-alt"></i> 홍콩 구룡 몽콕로 33번지 카이투오 빌딩 2층</li>
+                        <li><i class="fas fa-phone"></i> +86 18802090745</li>
+                        <li><i class="fas fa-envelope"></i> info@ruitu.com</li>
+                        <li><i class="fab fa-weixin"></i> 위챗: RuiTu</li>
                     </ul>
                 </div>
                 <div class="col-md-4">
                     <h5>빠른 링크</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#top" class="text-white">홈</a></li>
-                        <li><a href="#about" class="text-white">회사 소개</a></li>
-                        <li><a href="#products" class="text-white">제품 및 서비스</a></li>
-                        <li><a href="#business" class="text-white">비즈니스 프로세스</a></li>
-                        <li><a href="#logistics" class="text-white">물류 및 보관</a></li>
-                        <li><a href="#contact" class="text-white">연락처</a></li>
-                    </ul>
+                    <div class="row">
+                        <div class="col-6">
+                            <ul class="list-unstyled">
+                                <li><a href="#top">홈</a></li>
+                                <li><a href="#about">회사 소개</a></li>
+                                <li><a href="#products">제품 및 서비스</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-6">
+                            <ul class="list-unstyled">
+                                <li><a href="#business">비즈니스 프로세스</a></li>
+                                <li><a href="#logistics">물류 서비스</a></li>
+                                <li><a href="#contact">문의하기</a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <hr class="my-4">
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start">
-                    <p class="mb-0">&copy; 2023 루이투 (홍콩) 무역 유한공사. 모든 권리 보유.</p>
-                </div>
-                <div class="col-md-6 text-center text-md-end">
-                    <ul class="list-inline mb-0">
-                        <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-facebook-f"></i></a></li>
-                        <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-instagram"></i></a></li>
-                        <li class="list-inline-item"><a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a></li>
-                    </ul>
+            <div class="footer-bottom">
+                <div class="row align-items-center">
+                    <div class="col-md-6 text-center text-md-start">
+                        <p class="mb-0">&copy; 2023 루이투 (홍콩) 무역 유한회사. 모든 권리 보유.</p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="footer-links">
+                            <a href="#">개인정보 정책</a>
+                            <a href="#">서비스 약관</a>
+                            <a href="#">면책 조항</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </footer>
 
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Custom JS -->
     <script src="../js/main.js"></script>
 </body>
