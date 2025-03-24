@@ -2608,380 +2608,101 @@ html, body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    max-width: 1000px;
+    max-width: 900px;
     margin: 0 auto;
-    padding: 30px 0;
-    position: relative;
-    background: linear-gradient(135deg, var(--background-light) 0%, #ffffff 100%);
 }
 
 .hexagon-wrapper {
-    margin: 30px 15px;
-    position: relative;
-    transition: all 0.5s ease;
-}
-
-.hexagon-wrapper:hover {
-    transform: translateY(-10px);
+    margin: 15px;
+    width: 250px;
 }
 
 .hexagon {
     position: relative;
-    width: 180px;
-    height: 104px; /* height = width * 0.5774 */
-    background-color: white;
-    margin: 52px 0; /* margin = height/2 */
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    height: 220px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    padding: 20px;
+    text-align: center;
+    transition: all 0.3s ease;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    padding: 0 20px;
-    text-align: center;
-    transition: all 0.3s ease;
-    z-index: 1;
+    border-top: 4px solid #007bff;
 }
 
-.hexagon:before,
-.hexagon:after {
-    content: "";
-    position: absolute;
-    width: 0;
-    border-left: 90px solid transparent;
-    border-right: 90px solid transparent;
-    z-index: -1;
-    transition: all 0.3s ease;
-}
-
-.hexagon:before {
-    bottom: 100%;
-    border-bottom: 52px solid white; /* border-bottom = height/2 */
-}
-
-.hexagon:after {
-    top: 100%;
-    border-top: 52px solid white; /* border-top = height/2 */
+.hexagon:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
 }
 
 .hexagon-number {
     position: absolute;
-    top: -45px;
-    width: 40px;
-    height: 40px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #007bff;
     color: white;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    font-size: 18px;
-    z-index: 2;
-    box-shadow: 0 5px 15px rgba(125, 125, 125, 0.3); /* 修改自 rgba(200, 169, 158, 0.3) */
-    transition: all 0.3s ease;
-}
-
-.hexagon-wrapper:hover .hexagon-number {
-    transform: scale(1.1);
-    box-shadow: 0 8px 20px rgba(125, 125, 125, 0.4); /* 修改自 rgba(200, 169, 158, 0.4) */
-}
-
-.hexagon-wrapper:hover .hexagon {
-    box-shadow: 0 15px 30px rgba(125, 125, 125, 0.3); /* 修改自 rgba(200, 169, 158, 0.3) */
-    background-color: var(--background-light);
 }
 
 .hexagon h4 {
-    color: var(--secondary-color);
-    margin-bottom: 6px;
-    font-size: 17px;
-    font-weight: 600;
-    transition: all 0.3s ease;
-    padding: 0 5px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    color: #007bff;
 }
 
 .hexagon p {
-    color: var(--text-secondary);
-    margin: 0;
-    font-size: 13px;
-    line-height: 1.4;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.process-note {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* 物流与仓储部分样式 */
+#logistics .card {
+    border: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     transition: all 0.3s ease;
 }
 
-.hexagon-wrapper:hover .hexagon {
-    box-shadow: 0 15px 30px rgba(125, 125, 125, 0.3); /* 修改自 rgba(200, 169, 158, 0.3) */
-    background-color: var(--background-light);
+#logistics .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
 }
 
-.hexagon-wrapper:hover .hexagon:before {
-    border-bottom-color: var(--background-light);
+#logistics .card-title {
+    color: #007bff;
+    font-size: 1.4rem;
+    margin-bottom: 15px;
 }
 
-.hexagon-wrapper:hover .hexagon:after {
-    border-top-color: var(--background-light);
+#logistics .list-unstyled li {
+    margin-bottom: 8px;
+    padding-left: 5px;
 }
 
-.hexagon-wrapper:hover h4 {
-    color: var(--primary-color);
-}
-
-.hexagon-wrapper:hover p {
-    color: var(--text-primary);
-}
-
-/* 布局变化，使蜂巢形态更明显 */
-.hexagon-wrapper:nth-child(odd) {
-    margin-top: 70px;
-}
-
-.hexagon-wrapper:nth-child(3n+1) {
-    transform: translateX(-15px);
-}
-
-.hexagon-wrapper:nth-child(3n+3) {
-    transform: translateX(15px);
-}
-
-.hexagon-wrapper:nth-child(3n+1):hover {
-    transform: translateX(-15px) translateY(-10px);
-}
-
-.hexagon-wrapper:nth-child(3n+3):hover {
-    transform: translateX(15px) translateY(-10px);
-}
-
-/* 添加蜂巢连接线 */
-.hexagon-container:before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 80%;
-    height: 80%;
-    transform: translate(-50%, -50%);
-    background-image: 
-        radial-gradient(circle at center, var(--primary-color) 1px, transparent 1px),
-        radial-gradient(circle at center, var(--primary-color) 1px, transparent 1px);
-    background-size: 30px 30px;
-    background-position: 0 0, 15px 15px;
-    opacity: 0.15;
-    z-index: 0;
-    pointer-events: none;
-}
-
-@media (max-width: 991px) {
-    .hexagon-container {
-        padding: 20px 0;
-    }
-    
+/* 响应式调整 */
+@media (max-width: 768px) {
     .hexagon-wrapper {
-        margin: 25px 12px;
+        width: 100%;
+        max-width: 300px;
     }
     
     .hexagon {
-        width: 160px;
-        height: 92px;
-        margin: 46px 0;
-    }
-    
-    .hexagon:before,
-    .hexagon:after {
-        border-left-width: 80px;
-        border-right-width: 80px;
-    }
-    
-    .hexagon:before {
-        border-bottom-width: 46px;
-    }
-    
-    .hexagon:after {
-        border-top-width: 46px;
-    }
-}
-
-@media (max-width: 767px) {
-    .hexagon-container {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .hexagon-wrapper {
-        margin: 25px 0;
-    }
-    
-    .hexagon-wrapper:nth-child(odd),
-    .hexagon-wrapper:nth-child(3n+1),
-    .hexagon-wrapper:nth-child(3n+3) {
-        margin-top: 25px;
-        transform: none;
-    }
-    
-    .hexagon-wrapper:hover,
-    .hexagon-wrapper:nth-child(3n+1):hover,
-    .hexagon-wrapper:nth-child(3n+3):hover {
-        transform: translateY(-10px);
-    }
-    
-    .hexagon-container:before {
-        display: none;
-    }
-}
-
-/* Metro风格流程设计 */
-.metro-process {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 15px;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 50px 0;
-}
-
-.metro-item {
-    background: white;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-}
-
-.metro-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(125, 125, 125, 0.15); /* 修改自 rgba(200, 169, 158, 0.15) */
-}
-
-.metro-item::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 5px;
-    background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
-    opacity: 0.8;
-}
-
-.metro-item-1 {
-    grid-column: span 5;
-    grid-row: span 2;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: white;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
-
-.metro-item-1::before {
-    display: none;
-}
-
-.metro-item-1 h2 {
-    font-size: 32px;
-    margin-bottom: 15px;
-}
-
-.metro-item-1 p {
-    font-size: 16px;
-    max-width: 80%;
-}
-
-.metro-item-2 {
-    grid-column: span 7;
-}
-
-.metro-item-3 {
-    grid-column: span 7;
-}
-
-.metro-item-4 {
-    grid-column: span 6;
-}
-
-.metro-item-5 {
-    grid-column: span 6;
-}
-
-.metro-item-6 {
-    grid-column: span 4;
-}
-
-.metro-item-7 {
-    grid-column: span 8;
-    background-color: rgba(184, 169, 153, 0.1);  /* 修改自 rgba(247, 202, 201, 0.1) */
-}
-
-.metro-number {
-    font-size: 42px;
-    font-weight: 700;
-    color: rgba(125, 125, 125, 0.15); /* 修改自 rgba(200, 169, 158, 0.15) */
-    position: absolute;
-    right: 20px;
-    top: 10px;
-    line-height: 1;
-}
-
-.metro-content {
-    position: relative;
-    z-index: 1;
-}
-
-.metro-title {
-    font-size: 20px;
-    color: var(--secondary-color);
-    margin-bottom: 10px;
-    font-weight: 600;
-}
-
-.metro-description {
-    color: var(--text-secondary);
-    margin: 0;
-    line-height: 1.6;
-}
-
-.metro-icon {
-    font-size: 24px;
-    color: var(--primary-color);
-    margin-bottom: 15px;
-}
-
-@media (max-width: 991px) {
-    .metro-process {
-        grid-template-columns: repeat(6, 1fr);
-    }
-    
-    .metro-item-1 {
-        grid-column: span 6;
-    }
-    
-    .metro-item-2, .metro-item-3 {
-        grid-column: span 6;
-    }
-    
-    .metro-item-4, .metro-item-5 {
-        grid-column: span 3;
-    }
-    
-    .metro-item-6 {
-        grid-column: span 6;
-    }
-    
-    .metro-item-7 {
-        grid-column: span 6;
-    }
-}
-
-@media (max-width: 767px) {
-    .metro-process {
-        grid-template-columns: 1fr;
-        padding: 30px 0;
-    }
-    
-    .metro-item {
-        grid-column: span 1 !important;
+        height: auto;
+        min-height: 200px;
     }
 }
 
