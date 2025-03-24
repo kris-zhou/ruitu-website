@@ -70,42 +70,6 @@ document.addEventListener('DOMContentLoaded', function() {
         wrap: true
     });
 
-    // 修复汉堡按钮问题 - 完全重写处理逻辑
-    const navbarToggler = document.querySelector('.navbar-toggler');
-    const navbarCollapse = document.querySelector('.navbar-collapse');
-    
-    if (navbarToggler && navbarCollapse) {
-        // 替换Bootstrap的默认行为，手动控制折叠/展开
-        navbarToggler.addEventListener('click', function(e) {
-            e.stopPropagation(); // 阻止事件冒泡
-            navbarCollapse.classList.toggle('show');
-            
-            // 添加动画效果，确保展开时背景正确显示
-            if (navbarCollapse.classList.contains('show')) {
-                navbarCollapse.style.opacity = 0;
-                setTimeout(() => {
-                    navbarCollapse.style.opacity = 1;
-                }, 10);
-            }
-        });
-        
-        // 点击导航链接时关闭菜单
-        document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
-            link.addEventListener('click', function() {
-                if (window.innerWidth < 992) { // 只在移动视图下执行
-                    navbarCollapse.classList.remove('show');
-                }
-            });
-        });
-        
-        // 点击页面其他地方时关闭菜单
-        document.addEventListener('click', function(e) {
-            if (navbarCollapse.classList.contains('show') && !navbarCollapse.contains(e.target) && e.target !== navbarToggler) {
-                navbarCollapse.classList.remove('show');
-            }
-        });
-    }
-
     // 监听滚动事件
     window.addEventListener('scroll', function() {
         const navbar = document.querySelector('.navbar');
