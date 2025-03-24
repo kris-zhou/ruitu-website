@@ -455,4 +455,29 @@ document.addEventListener('DOMContentLoaded', function() {
             window.location.href = targetUrl;
         });
     });
+
+    // 添加返回顶部按钮
+    // 创建返回顶部按钮
+    const backToTopBtn = document.createElement('div');
+    backToTopBtn.className = 'back-to-top';
+    backToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i><span>返回顶部</span>';
+    
+    document.body.appendChild(backToTopBtn);
+    
+    // 监听滚动事件
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > 300) {
+            backToTopBtn.classList.add('show');
+        } else {
+            backToTopBtn.classList.remove('show');
+        }
+    });
+    
+    // 添加点击事件
+    backToTopBtn.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
 });

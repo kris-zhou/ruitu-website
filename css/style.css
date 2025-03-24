@@ -3300,3 +3300,50 @@ html, body {
     margin-bottom: 2rem !important;
   }
 }
+
+/* 返回顶部按钮样式 - 半透明文字按钮 */
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  padding: 8px 15px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 20px;
+  color: #fff;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.back-to-top i {
+  font-size: 16px;
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.back-to-top:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* 手机屏幕上的调整 */
+@media (max-width: 768px) {
+  .back-to-top {
+    bottom: 15px;
+    left: 15px;
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+  
+  .back-to-top i {
+    font-size: 14px;
+  }
+}
