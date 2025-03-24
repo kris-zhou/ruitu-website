@@ -157,21 +157,13 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
             
-            // 如果是首页链接（#top），直接滚动到顶部
-            if (this.getAttribute('href') === '#top') {
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
                 window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-                return;
-            }
-            
-            // 其他锚点链接的处理
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                window.scrollTo({
-                    top: target.offsetTop - 80,
+                    top: targetElement.offsetTop - 80,
                     behavior: 'smooth'
                 });
             }
@@ -503,4 +495,71 @@ document.addEventListener('DOMContentLoaded', function() {
             behavior: 'smooth'
         });
     });
+
+    // 优化图片懒加载
+    if ('loading' in HTMLImageElement.prototype) {
+        // 浏览器支持原生懒加载
+        console.log('Browser supports native lazy loading');
+    } else {
+        // 浏览器不支持原生懒加载，加载懒加载polyfill
+        const script = document.createElement('script');
+        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
+        document.body.appendChild(script);
+    }
+
+    // 预加载下一屏图片
+    function preloadNextSectionImages() {
+        const viewportHeight = window.innerHeight;
+        const scrollTop = window.scrollY;
+        const preloadDistance = viewportHeight * 2; // 预加载距离视口2倍高度的图片
+        
+        document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+            const rect = img.getBoundingClientRect();
+            if (rect.top < viewportHeight + preloadDistance) {
+                img.setAttribute('loading', 'eager');
+            }
+        });
+    }
+
+    // 当用户停止滚动时预加载
+    let scrollTimer;
+    window.addEventListener('scroll', function() {
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(preloadNextSectionImages, 200);
+    });
+
+    // 页面可见性变化时进行优化
+    document.addEventListener('visibilitychange', function() {
+        if (document.visibilityState === 'visible') {
+            // 页面变为可见时，预加载可视区域附近的图片
+            preloadNextSectionImages();
+        }
+    });
+});
+
+// 在窗口加载完成后执行
+window.addEventListener('load', function() {
+    // 移除非必要的加载动画
+    const preloaders = document.querySelectorAll('.preloader');
+    if (preloaders.length > 0) {
+        preloaders.forEach(preloader => {
+            preloader.style.display = 'none';
+        });
+    }
+    
+    // 延迟加载非关键资源
+    setTimeout(function() {
+        // 加载非必要的js或css
+        const deferredScripts = [
+            // 'path/to/non-critical.js',
+            // 'path/to/analytics.js'
+        ];
+        
+        deferredScripts.forEach(src => {
+            const script = document.createElement('script');
+            script.src = src;
+            script.defer = true;
+            document.body.appendChild(script);
+        });
+    }, 2000);
 });
