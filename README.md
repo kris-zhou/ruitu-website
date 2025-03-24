@@ -1,37 +1,185 @@
-# ruitu_website
+# 瑞途（香港）贸易有限公司官方网站
 
-#### 介绍
-公司网站
+## 项目概述
 
-#### 软件架构
-软件架构说明
+瑞途（香港）贸易有限公司是一家专注于跨境美妆批发和贸易的企业。本项目是公司的官方网站，旨在展示公司形象、产品服务、业务流程以及提供在线联系方式，满足客户了解公司和产品的需求。
 
+网站提供三种语言版本（中文、英文和韩文），支持响应式设计，适配桌面端和移动端访问。
 
-#### 安装教程
+## 技术架构
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+### 前端技术栈
+- **HTML5**: 网站结构
+- **CSS3**: 样式与动画效果
+- **JavaScript**: 交互功能和动态效果
+- **Bootstrap 5.3**: 响应式布局框架
+- **Font Awesome 6.0**: 图标库
 
-#### 使用说明
+### 代码组织
+项目采用静态网站架构，无后端服务器依赖，主要通过以下方式组织代码：
+- 模块化CSS
+- 功能性JavaScript组件
+- 多语言版本分离
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+### 部署方式
+网站采用静态部署方式，支持通过Netlify等静态托管服务部署。
 
-#### 参与贡献
+## 目录结构
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+```
+ruitu_Website/
+├── css/                    # CSS样式文件
+│   └── style.css           # 主样式文件
+├── en/                     # 英文版网站
+│   └── index.html          # 英文版主页
+├── images/                 # 图片资源
+│   ├── about/              # 关于我们板块图片
+│   ├── authenticity/       # 正品保证板块图片
+│   ├── brands/             # 合作品牌图片
+│   ├── business/           # 业务流程图片
+│   ├── contact/            # 联系我们图片
+│   ├── flags/              # 语言切换图标
+│   ├── logistics/          # 物流与仓储图片
+│   ├── products/           # 产品展示图片
+│   ├── suppliers/          # 供应商图片
+│   ├── about-company.png   # 公司简介背景
+│   ├── logo.png            # 公司Logo
+│   ├── slider1.jpg         # 轮播图1
+│   └── slider2.jpg         # 轮播图2
+├── js/                     # JavaScript文件
+│   ├── lang/               # 多语言支持脚本
+│   └── main.js             # 主要JavaScript功能实现
+├── kr/                     # 韩文版网站
+│   └── index.html          # 韩文版主页
+├── pages/                  # 子页面
+│   └── contact.html        # 联系页面
+├── index.html              # 中文版主页
+├── .gitignore              # Git忽略文件
+├── netlify.toml            # Netlify配置文件
+└── README.md               # 项目文档
+```
 
+## 主要功能
 
-#### 特技
+### 1. 多语言支持
+- 中文版：面向中国大陆市场
+- 英文版：面向国际市场
+- 韩文版：面向韩国市场
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+### 2. 内容模块
+- **首页轮播图**: 展示公司形象和主要产品
+- **公司介绍**: 展示公司背景和核心价值观
+- **关于我们**: 详细介绍公司历史和发展
+- **合作品牌**: 展示与公司合作的知名品牌
+- **产品展示**: 介绍公司主营产品和服务
+- **业务优势**: 突出公司的核心竞争力
+- **业务流程**: 说明合作流程和步骤
+- **正品保证**: 强调产品质量保障
+- **物流与仓储**: 介绍物流服务和仓储能力
+- **联系我们**: 提供多种联系方式和在线留言
+
+### 3. 交互功能
+- **导航菜单**: 固定顶部导航，支持响应式折叠
+- **平滑滚动**: 点击导航链接平滑滚动到对应位置
+- **返回顶部按钮**: 快速回到页面顶部的悬浮按钮
+- **语言切换**: 一键切换不同语言版本
+- **图片放大**: 支持点击查看大图功能
+- **联系表单**: 提供在线留言功能
+
+### 4. 响应式设计
+- **桌面端优化**: 提供完整内容展示和交互体验
+- **平板端适配**: 调整布局和元素大小
+- **移动端适配**: 优化导航和内容排版，确保在小屏幕设备上的良好体验
+
+### 5. 性能优化
+- **图片优化**: 压缩图片大小，提高加载速度
+- **懒加载**: 图片资源按需加载
+- **CSS优化**: 结构化的CSS，减少冗余代码
+- **浏览器兼容**: 支持各主流浏览器，包括Safari、Chrome、Firefox和Edge
+
+## 安装与部署
+
+### 本地开发
+1. 克隆仓库到本地:
+```bash
+git clone https://github.com/kris-zhou/ruitu-website.git
+cd ruitu-website
+```
+
+2. 使用任意Web服务器启动项目，如使用Python的简易HTTP服务器:
+```bash
+# Python 3
+python -m http.server
+
+# Python 2
+python -m SimpleHTTPServer
+```
+
+3. 打开浏览器访问 `http://localhost:8000` 即可查看网站
+
+### 线上部署
+
+#### 通过Netlify部署
+1. 在Netlify上创建新站点
+2. 连接到GitHub仓库
+3. 设置部署选项：
+   - 构建命令: 不需要
+   - 发布目录: /
+4. 点击部署按钮
+
+#### 通过其他静态网站托管服务
+项目可以部署到任何支持静态网站托管的服务上，如GitHub Pages、Vercel、AWS S3等。
+
+## 自定义与扩展
+
+### 修改网站内容
+1. 编辑相应HTML文件以更新文本内容
+2. 替换`images`目录中的图片以更新视觉素材
+3. 修改`css/style.css`文件以自定义样式
+
+### 添加新功能
+1. 在`js/main.js`中添加新的JavaScript功能
+2. 在HTML文件中添加新的HTML结构
+3. 在`css/style.css`中为新功能添加样式
+
+## 跨浏览器兼容性
+
+网站已针对以下浏览器进行了优化:
+- Google Chrome (最新版)
+- Mozilla Firefox (最新版)
+- Safari (最新版)
+- Microsoft Edge (最新版)
+- Internet Explorer 11 (基本兼容)
+
+## 主要特性与亮点
+
+- **现代设计**: 使用最新的设计趋势，提供优雅的视觉体验
+- **完全响应式**: 在任何设备上都能完美显示
+- **优化性能**: 快速加载时间和流畅的交互
+- **SEO友好**: 优化的HTML结构和元数据，有利于搜索引擎收录
+- **易于维护**: 清晰的代码结构和注释，便于后续更新
+- **用户友好**: 直观的导航和交互，提高用户体验
+
+## 贡献指南
+
+1. Fork本仓库
+2. 创建特性分支 (`git checkout -b feature/amazing-feature`)
+3. 提交更改 (`git commit -m 'Add some amazing feature'`)
+4. 推送到分支 (`git push origin feature/amazing-feature`)
+5. 创建Pull Request
+
+## 维护和更新
+
+- 定期检查并更新第三方依赖
+- 根据用户反馈优化网站功能和内容
+- 保持内容的时效性和准确性
+
+## 联系方式
+
+如有任何问题或建议，请联系项目维护者：
+- 邮箱: info@ruitu.com
+- 微信: RuiTu
+
+---
+
+© 2023 瑞途（香港）贸易有限公司. 保留所有权利.
