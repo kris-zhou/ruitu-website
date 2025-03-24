@@ -79,14 +79,6 @@ document.addEventListener('DOMContentLoaded', function() {
         navbarToggler.addEventListener('click', function(e) {
             e.stopPropagation(); // 阻止事件冒泡
             navbarCollapse.classList.toggle('show');
-            
-            // 添加动画效果，确保展开时背景正确显示
-            if (navbarCollapse.classList.contains('show')) {
-                navbarCollapse.style.opacity = 0;
-                setTimeout(() => {
-                    navbarCollapse.style.opacity = 1;
-                }, 10);
-            }
         });
         
         // 点击导航链接时关闭菜单
@@ -157,13 +149,10 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return;
-            
-            const targetElement = document.querySelector(targetId);
-            if (targetElement) {
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
                 window.scrollTo({
-                    top: targetElement.offsetTop - 80,
+                    top: target.offsetTop - 80,
                     behavior: 'smooth'
                 });
             }
@@ -467,99 +456,97 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // 添加返回顶部按钮
-    const backToTopBtn = document.createElement('div');
-    backToTopBtn.className = 'back-to-top';
-    backToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>'; // 使用FontAwesome图标
-    
+    // 添加回到顶部按钮
+    // 创建回到顶部按钮元素
+    const backToTopBtn = document.createElement("a");
+    backToTopBtn.id = "backToTop";
+    backToTopBtn.className = "back-to-top";
+    backToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
     document.body.appendChild(backToTopBtn);
     
-    // 初始检查滚动位置
-    if (window.scrollY > 300) {
-        backToTopBtn.classList.add('show');
-    }
-    
-    // 监听滚动事件
-    window.addEventListener('scroll', function() {
-        if (window.scrollY > 300) {
-            backToTopBtn.classList.add('show');
+    // 监听滚动事件，控制按钮显示和隐藏
+    window.addEventListener("scroll", function() {
+        if (window.pageYOffset > 300) {
+            backToTopBtn.classList.add("show");
         } else {
-            backToTopBtn.classList.remove('show');
+            backToTopBtn.classList.remove("show");
         }
     });
     
-    // 添加点击事件
-    backToTopBtn.addEventListener('click', function() {
+    // 点击事件 - 回到顶部
+    backToTopBtn.addEventListener("click", function(e) {
+        e.preventDefault();
         window.scrollTo({
             top: 0,
-            behavior: 'smooth'
+            behavior: "smooth"
         });
     });
 
-    // 优化图片懒加载
-    if ('loading' in HTMLImageElement.prototype) {
-        // 浏览器支持原生懒加载
-        console.log('Browser supports native lazy loading');
-    } else {
-        // 浏览器不支持原生懒加载，加载懒加载polyfill
-        const script = document.createElement('script');
-        script.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
-        document.body.appendChild(script);
-    }
+    // 添加业务流程六边形的动画效果
+    const businessProcess = document.querySelector('.business-process');
+    if (businessProcess) {
+        const hexagonWrappers = document.querySelectorAll('.hexagon-wrapper');
+        const hexagonObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // 获取当前六边形的步骤编号
+                    const step = parseInt(entry.target.getAttribute('data-step'));
+                    // 添加延迟动画效果，使六边形按顺序显示
+                    setTimeout(() => {
+                        entry.target.classList.add('animate');
+                    }, (step - 1) * 200);
+                }
+            });
+        }, {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.2
+        });
 
-    // 预加载下一屏图片
-    function preloadNextSectionImages() {
-        const viewportHeight = window.innerHeight;
-        const scrollTop = window.scrollY;
-        const preloadDistance = viewportHeight * 2; // 预加载距离视口2倍高度的图片
-        
-        document.querySelectorAll('img[loading="lazy"]').forEach(img => {
-            const rect = img.getBoundingClientRect();
-            if (rect.top < viewportHeight + preloadDistance) {
-                img.setAttribute('loading', 'eager');
+        // 为每个六边形添加初始样式和观察
+        hexagonWrappers.forEach(hexagon => {
+            hexagon.style.opacity = '0';
+            hexagon.style.transform = hexagon.style.transform + ' translateY(30px)';
+            hexagon.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            hexagonObserver.observe(hexagon);
+        });
+
+        // 添加CSS类以实现动画效果
+        const style = document.createElement('style');
+        style.innerHTML = `
+            .hexagon-wrapper.animate {
+                opacity: 1 !important;
+                transform: translateY(0) !important;
             }
-        });
+            
+            .hexagon-wrapper:nth-child(3n+1).animate {
+                transform: translateY(0) !important;
+            }
+            
+            .hexagon-wrapper:nth-child(3n+2).animate {
+                transform: translateY(52px) !important;
+            }
+            
+            .hexagon-wrapper:nth-child(3n+3).animate {
+                transform: translateY(0) !important;
+            }
+            
+            @media (max-width: 991px) {
+                .hexagon-wrapper:nth-child(2n+1).animate {
+                    transform: translateY(0) !important;
+                }
+                
+                .hexagon-wrapper:nth-child(2n+2).animate {
+                    transform: translateY(52px) !important;
+                }
+            }
+            
+            @media (max-width: 767px) {
+                .hexagon-wrapper.animate {
+                    transform: translateY(0) !important;
+                }
+            }
+        `;
+        document.head.appendChild(style);
     }
-
-    // 当用户停止滚动时预加载
-    let scrollTimer;
-    window.addEventListener('scroll', function() {
-        clearTimeout(scrollTimer);
-        scrollTimer = setTimeout(preloadNextSectionImages, 200);
-    });
-
-    // 页面可见性变化时进行优化
-    document.addEventListener('visibilitychange', function() {
-        if (document.visibilityState === 'visible') {
-            // 页面变为可见时，预加载可视区域附近的图片
-            preloadNextSectionImages();
-        }
-    });
-});
-
-// 在窗口加载完成后执行
-window.addEventListener('load', function() {
-    // 移除非必要的加载动画
-    const preloaders = document.querySelectorAll('.preloader');
-    if (preloaders.length > 0) {
-        preloaders.forEach(preloader => {
-            preloader.style.display = 'none';
-        });
-    }
-    
-    // 延迟加载非关键资源
-    setTimeout(function() {
-        // 加载非必要的js或css
-        const deferredScripts = [
-            // 'path/to/non-critical.js',
-            // 'path/to/analytics.js'
-        ];
-        
-        deferredScripts.forEach(src => {
-            const script = document.createElement('script');
-            script.src = src;
-            script.defer = true;
-            document.body.appendChild(script);
-        });
-    }, 2000);
 });

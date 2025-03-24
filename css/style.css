@@ -375,7 +375,7 @@ body {
 
 @media (max-width: 768px) {
     .carousel-item {
-        height: 45vh; /* 移动端轮播图高度 */
+        height: 40vh !important; /* 移动设备上的轮播图高度调整 */
     }
     
     .carousel-caption {
@@ -442,7 +442,7 @@ body {
     
     /* 调整轮播图指示器位置 */
     .carousel-indicators {
-        bottom: 4px;
+        bottom: 5px;
         margin-bottom: 0;
     }
     
@@ -470,7 +470,13 @@ body {
         height: 40px;
     }
     
-    /* 删除冲突的样式 */
+    .navbar-collapse {
+        background-color: rgba(255, 255, 255, 0.98);
+        padding: 1rem;
+        border-radius: 0.5rem;
+        margin-top: 0.5rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
     
     /* 容器和间距优化 */
     .container {
@@ -824,10 +830,9 @@ footer .list-inline-item a {
 /* 响应式导航栏调整 */
 @media (max-width: 991.98px) {
     .navbar {
-        background-color: rgba(255, 255, 255, 0.95);
+        background-color: rgba(255, 255, 255, 0.85);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
-        padding: 0.5rem 1rem;
     }
     
     .navbar-brand img {
@@ -844,52 +849,8 @@ footer .list-inline-item a {
     }
     
     .navbar-toggler-icon {
-        width: 1.5em;
-        height: 1.5em;
-    }
-    
-    /* 修复折叠菜单背景问题 */
-    .navbar-collapse {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background-color: rgba(255, 255, 255, 0.98);
-        padding: 1rem;
-        border-radius: 0 0 0.5rem 0.5rem;
-        margin-top: 0;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        z-index: 1000;
-        max-height: calc(100vh - 80px);
-        overflow-y: auto;
-        transition: opacity 0.3s ease, height 0.3s ease, transform 0.3s ease;
-    }
-    
-    .navbar-collapse.show {
-        display: block;
-    }
-    
-    .navbar-nav {
-        padding: 0.5rem 0;
-    }
-    
-    .navbar-nav .nav-item {
-        margin: 0.5rem 0;
-    }
-    
-    .navbar-nav .nav-link {
-        padding: 0.5rem 1rem !important;
-        border-radius: 0.25rem;
-    }
-    
-    .navbar-nav .nav-link:hover {
-        background-color: rgba(231, 76, 60, 0.1);
-    }
-}
-
-@media (max-width: 767px) {
-    .navbar-collapse {
-        max-height: calc(100vh - 70px);
+        width: 1.2em;
+        height: 1.2em;
     }
 }
 
@@ -2608,15 +2569,15 @@ html, body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    max-width: 1200px;  /* 增加最大宽度 */
+    max-width: 1000px;
     margin: 0 auto;
-    padding: 50px 0;  /* 增加上下内边距 */
+    padding: 30px 0;
     position: relative;
     background: linear-gradient(135deg, var(--background-light) 0%, #ffffff 100%);
 }
 
 .hexagon-wrapper {
-    margin: 40px 30px;  /* 增加六边形之间的间距 */
+    margin: 25px 15px;
     position: relative;
     transition: all 0.5s ease;
 }
@@ -2627,10 +2588,10 @@ html, body {
 
 .hexagon {
     position: relative;
-    width: 200px;  /* 增加六边形宽度 */
-    height: 115.5px; /* height = width * 0.5774 */
+    width: 180px;
+    height: 104px; /* height = width * 0.5774 */
     background-color: white;
-    margin: 57.7px 0; /* margin = height/2 */
+    margin: 52px 0; /* margin = height/2 */
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
     display: flex;
     flex-direction: column;
@@ -2647,20 +2608,20 @@ html, body {
     content: "";
     position: absolute;
     width: 0;
-    border-left: 100px solid transparent;  /* 调整边框宽度为六边形宽度的一半 */
-    border-right: 100px solid transparent;
+    border-left: 90px solid transparent;
+    border-right: 90px solid transparent;
     z-index: -1;
     transition: all 0.3s ease;
 }
 
 .hexagon:before {
     bottom: 100%;
-    border-bottom: 57.7px solid white; /* border-bottom = height/2 */
+    border-bottom: 52px solid white; /* border-bottom = height/2 */
 }
 
 .hexagon:after {
     top: 100%;
-    border-top: 57.7px solid white; /* border-top = height/2 */
+    border-top: 52px solid white; /* border-top = height/2 */
 }
 
 .hexagon-number {
@@ -2677,17 +2638,17 @@ html, body {
     font-weight: bold;
     font-size: 18px;
     z-index: 2;
-    box-shadow: 0 5px 15px rgba(125, 125, 125, 0.3); /* 修改自 rgba(200, 169, 158, 0.3) */
+    box-shadow: 0 5px 15px rgba(125, 125, 125, 0.3);
     transition: all 0.3s ease;
 }
 
 .hexagon-wrapper:hover .hexagon-number {
     transform: scale(1.1);
-    box-shadow: 0 8px 20px rgba(125, 125, 125, 0.4); /* 修改自 rgba(200, 169, 158, 0.4) */
+    box-shadow: 0 8px 20px rgba(125, 125, 125, 0.4);
 }
 
 .hexagon-wrapper:hover .hexagon {
-    box-shadow: 0 15px 30px rgba(125, 125, 125, 0.3); /* 修改自 rgba(200, 169, 158, 0.3) */
+    box-shadow: 0 15px 30px rgba(125, 125, 125, 0.3);
     background-color: var(--background-light);
 }
 
@@ -2708,11 +2669,6 @@ html, body {
     transition: all 0.3s ease;
 }
 
-.hexagon-wrapper:hover .hexagon {
-    box-shadow: 0 15px 30px rgba(125, 125, 125, 0.3); /* 修改自 rgba(200, 169, 158, 0.3) */
-    background-color: var(--background-light);
-}
-
 .hexagon-wrapper:hover .hexagon:before {
     border-bottom-color: var(--background-light);
 }
@@ -2729,36 +2685,39 @@ html, body {
     color: var(--text-primary);
 }
 
-/* 布局变化，使蜂巢形态更明显 */
-.hexagon-wrapper:nth-child(odd) {
-    margin-top: 90px;  /* 增加奇数六边形的上边距 */
+/* 改进的蜂巢布局 - 使用Flexbox网格系统 */
+.hexagon-container {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+    max-width: 900px;
+    padding: 20px;
 }
 
+/* 第1、3、5行的偏移，创建蜂巢效果 */
 .hexagon-wrapper:nth-child(3n+1) {
-    transform: translateX(-25px);  /* 增加偏移量 */
+    transform: translateY(0);
+}
+
+.hexagon-wrapper:nth-child(3n+2) {
+    transform: translateY(52px);
 }
 
 .hexagon-wrapper:nth-child(3n+3) {
-    transform: translateX(25px);  /* 增加偏移量 */
+    transform: translateY(0);
 }
 
 .hexagon-wrapper:nth-child(3n+1):hover {
-    transform: translateX(-25px) translateY(-10px);
+    transform: translateY(-10px);
+}
+
+.hexagon-wrapper:nth-child(3n+2):hover {
+    transform: translateY(42px);
 }
 
 .hexagon-wrapper:nth-child(3n+3):hover {
-    transform: translateX(25px) translateY(-10px);
-}
-
-/* 修复3和4号六边形排列问题，增加特定间距 */
-.hexagon-wrapper:nth-child(3) {
-    clear: left;  /* 确保3号六边形排列正确 */
-    margin-right: 80px;  /* 增加3号六边形右侧间距 */
-}
-
-.hexagon-wrapper:nth-child(4) {
-    clear: none;  /* 确保4号六边形排列正确 */
-    margin-left: 80px;  /* 增加4号六边形左侧间距 */
+    transform: translateY(-10px);
 }
 
 /* 添加蜂巢连接线 */
@@ -2780,60 +2739,105 @@ html, body {
     pointer-events: none;
 }
 
+/* 平板设备适配 */
 @media (max-width: 991px) {
     .hexagon-container {
-        padding: 30px 0;
+        grid-template-columns: repeat(2, 1fr);
+        padding: 15px;
+        max-width: 600px;
     }
     
     .hexagon-wrapper {
-        margin: 35px 25px;  /* 调整平板设备上的间距 */
+        margin: 20px 10px;
     }
     
     .hexagon {
-        width: 180px;  /* 略微减小宽度 */
-        height: 104px;
-        margin: 52px 0;
+        width: 160px;
+        height: 92px;
+        margin: 46px 0;
+        padding: 0 15px;
     }
     
     .hexagon:before,
     .hexagon:after {
-        border-left-width: 90px;
-        border-right-width: 90px;
+        border-left-width: 80px;
+        border-right-width: 80px;
     }
     
     .hexagon:before {
-        border-bottom-width: 52px;
+        border-bottom-width: 46px;
     }
     
     .hexagon:after {
-        border-top-width: 52px;
+        border-top-width: 46px;
+    }
+    
+    /* 平板上的网格偏移 */
+    .hexagon-wrapper:nth-child(2n+1) {
+        transform: translateY(0);
+    }
+    
+    .hexagon-wrapper:nth-child(2n+2) {
+        transform: translateY(52px);
+    }
+    
+    .hexagon-wrapper:nth-child(2n+1):hover {
+        transform: translateY(-10px);
+    }
+    
+    .hexagon-wrapper:nth-child(2n+2):hover {
+        transform: translateY(42px);
     }
 }
 
+/* 手机设备适配 */
 @media (max-width: 767px) {
     .hexagon-container {
+        display: flex;
         flex-direction: column;
         align-items: center;
+        grid-gap: 0;
+        padding: 10px 15px;
     }
     
     .hexagon-wrapper {
-        margin: 30px 0;  /* 调整移动设备上的间距 */
+        margin: 45px 0 25px 0;
+        transform: none !important;
     }
     
-    .hexagon-wrapper:nth-child(odd),
-    .hexagon-wrapper:nth-child(3n+1),
-    .hexagon-wrapper:nth-child(3n+3),
-    .hexagon-wrapper:nth-child(3),
-    .hexagon-wrapper:nth-child(4) {
-        margin-top: 30px;
-        transform: none;
-        clear: both;  /* 在移动设备上清除所有特殊排列 */
+    .hexagon-wrapper:hover {
+        transform: translateY(-10px) !important;
     }
     
-    .hexagon-wrapper:hover,
-    .hexagon-wrapper:nth-child(3n+1):hover,
-    .hexagon-wrapper:nth-child(3n+3):hover {
-        transform: translateY(-10px);
+    .hexagon {
+        width: 200px;
+        height: 116px;
+    }
+    
+    .hexagon:before,
+    .hexagon:after {
+        border-left-width: 100px;
+        border-right-width: 100px;
+    }
+    
+    .hexagon:before {
+        border-bottom-width: 58px;
+    }
+    
+    .hexagon:after {
+        border-top-width: 58px;
+    }
+    
+    .hexagon-number {
+        top: -40px;
+    }
+    
+    .hexagon h4 {
+        font-size: 18px;
+    }
+    
+    .hexagon p {
+        font-size: 14px;
     }
     
     .hexagon-container:before {
@@ -2841,27 +2845,162 @@ html, body {
     }
 }
 
-/* 物流与仓储部分样式 */
-#logistics .card {
-    border: none;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+/* Metro风格流程设计 */
+.metro-process {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 50px 0;
+}
+
+.metro-item {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
-#logistics .card:hover {
+.metro-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    box-shadow: 0 12px 30px rgba(125, 125, 125, 0.15); /* 修改自 rgba(200, 169, 158, 0.15) */
 }
 
-#logistics .card-title {
-    color: #007bff;
-    font-size: 1.4rem;
+.metro-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 5px;
+    background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+    opacity: 0.8;
+}
+
+.metro-item-1 {
+    grid-column: span 5;
+    grid-row: span 2;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.metro-item-1::before {
+    display: none;
+}
+
+.metro-item-1 h2 {
+    font-size: 32px;
     margin-bottom: 15px;
 }
 
-#logistics .list-unstyled li {
-    margin-bottom: 8px;
-    padding-left: 5px;
+.metro-item-1 p {
+    font-size: 16px;
+    max-width: 80%;
+}
+
+.metro-item-2 {
+    grid-column: span 7;
+}
+
+.metro-item-3 {
+    grid-column: span 7;
+}
+
+.metro-item-4 {
+    grid-column: span 6;
+}
+
+.metro-item-5 {
+    grid-column: span 6;
+}
+
+.metro-item-6 {
+    grid-column: span 4;
+}
+
+.metro-item-7 {
+    grid-column: span 8;
+    background-color: rgba(184, 169, 153, 0.1);  /* 修改自 rgba(247, 202, 201, 0.1) */
+}
+
+.metro-number {
+    font-size: 42px;
+    font-weight: 700;
+    color: rgba(125, 125, 125, 0.15); /* 修改自 rgba(200, 169, 158, 0.15) */
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    line-height: 1;
+}
+
+.metro-content {
+    position: relative;
+    z-index: 1;
+}
+
+.metro-title {
+    font-size: 20px;
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.metro-description {
+    color: var(--text-secondary);
+    margin: 0;
+    line-height: 1.6;
+}
+
+.metro-icon {
+    font-size: 24px;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+@media (max-width: 991px) {
+    .metro-process {
+        grid-template-columns: repeat(6, 1fr);
+    }
+    
+    .metro-item-1 {
+        grid-column: span 6;
+    }
+    
+    .metro-item-2, .metro-item-3 {
+        grid-column: span 6;
+    }
+    
+    .metro-item-4, .metro-item-5 {
+        grid-column: span 3;
+    }
+    
+    .metro-item-6 {
+        grid-column: span 6;
+    }
+    
+    .metro-item-7 {
+        grid-column: span 6;
+    }
+}
+
+@media (max-width: 767px) {
+    .metro-process {
+        grid-template-columns: 1fr;
+        padding: 30px 0;
+    }
+    
+    .metro-item {
+        grid-column: span 1 !important;
+    }
 }
 
 /* 页脚样式 - 更简洁优雅 */
@@ -3219,26 +3358,38 @@ html, body {
   }
 }
 
-/* 返回顶部按钮样式 - 动画箭头按钮 */
+/* 回到顶部按钮 - 动态气泡式 */
 .back-to-top {
   position: fixed;
   bottom: 25px;
-  right: 25px; 
-  width: 45px;
-  height: 45px;
-  background-color: #fff;
+  right: 25px;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
-  color: #e74c3c; /* 更改为网站主色调 */
+  background-color: #fff;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
+  color: #333;
+  text-decoration: none;
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s ease;
   z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(231, 76, 60, 0.2); /* 添加带颜色的边框 */
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.back-to-top::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  transform: scale(0);
+  transition: transform 0.5s ease;
 }
 
 .back-to-top.show {
@@ -3247,32 +3398,33 @@ html, body {
 }
 
 .back-to-top:hover {
-  background-color: #e74c3c; /* 悬停时背景变为主色调 */
-  color: #fff; /* 悬停时图标变为白色 */
-  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
+}
+
+.back-to-top:hover::before {
+  transform: scale(1);
 }
 
 .back-to-top i {
+  font-size: 24px;
+  position: relative;
+  z-index: 2;
   transition: transform 0.3s ease;
-  font-size: 18px; /* 调整图标大小 */
 }
 
 .back-to-top:hover i {
-  transform: translateY(-3px);
+  transform: translateY(-5px);
 }
 
-@keyframes float {
-  0% {
-    transform: translateY(0);
+@media (max-width: 767px) {
+  .back-to-top {
+    width: 45px;
+    height: 45px;
+    bottom: 20px;
+    right: 20px;
   }
-  50% {
-    transform: translateY(-5px);
+  
+  .back-to-top i {
+    font-size: 20px;
   }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-.back-to-top.show i {
-  animation: float 2s ease-in-out infinite;
 }

@@ -14,7 +14,7 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="../css/style.css?v=1.1">
+    <link rel="stylesheet" href="../css/style.css">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <!-- Bootstrap JS -->
@@ -33,19 +33,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#home">홈</a>
+                        <a class="nav-link" href="#top">홈</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#about">회사 소개</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#products">제품</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#business">비즈니스 프로세스</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#logistics">물류 서비스</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#contact">연락처</a>
@@ -63,10 +57,10 @@
     </nav>
 
     <!-- Carousel -->
-    <div id="home" class="carousel slide" data-bs-ride="carousel">
+    <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
-            <button type="button" data-bs-target="#home" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#home" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active" data-bs-interval="3500">
@@ -182,7 +176,7 @@
     </section>
 
     <!-- Products Showcase -->
-    <section id="products" class="products-showcase">
+    <section class="products-showcase" id="products">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto text-center mb-5">
@@ -237,40 +231,72 @@
         </div>
     </section>
 
-    <!-- 비즈니스 프로세스 -->
-    <section id="business" class="business-process py-5">
+    <!-- Business Advantages -->
+    <section class="py-5">
         <div class="container">
-            <div class="section-title text-center mb-5">
-                <h2>비즈니스 프로세스</h2>
-                <p class="lead">전문적인 공급망 서비스 프로세스로 원스톱 솔루션 제공</p>
+            <h2 class="text-center section-title mb-5">비즈니스 장점</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <i class="fas fa-check-circle fa-3x mb-3 text-primary"></i>
+                            <h3 class="card-title">정품 보증</h3>
+                            <p class="card-text">당사의 비즈니스 모델은 안정성과 신뢰성을 핵심으로 하며, 정품 뷰티 제품만을 제공하고 공급망의 투명성과 완전성을 보장합니다.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <i class="fas fa-shipping-fast fa-3x mb-3 text-primary"></i>
+                            <h3 class="card-title">다중 배송지</h3>
+                            <p class="card-text">서비스 효율성을 높이기 위해 다중 배송지의 유연성을 구현하여, 홍콩, 한국 및 보세창고 등 여러 지점에서의 상품 인도를 지원합니다.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <i class="fas fa-handshake fa-3x mb-3 text-primary"></i>
+                            <h3 class="card-title">전문 서비스</h3>
+                            <p class="card-text">제품 선택부터 물류 솔루션까지 전문적인 원스톱 서비스를 제공하여 고객의 비즈니스 운영이 원활하고 효율적으로 이루어지도록 보장합니다.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
+        </div>
+    </section>
+
+    <!-- Business Process -->
+    <section class="business-process py-5" id="business">
+        <div class="container">
+            <h2 class="text-center section-title mb-5">비즈니스 프로세스</h2>
             <div class="hexagon-container">
-                <div class="hexagon-wrapper">
+                <div class="hexagon-wrapper" data-step="1">
                     <div class="hexagon">
                         <span class="hexagon-number">1</span>
-                        <h4>소싱</h4>
-                        <p>품질 좋은 공급업체와 파트너십을 구축하여 최신 제품 리소스에 접근</p>
+                        <h4>공급원 연결</h4>
+                        <p>최신 제품 자원을 얻기 위해 품질 공급업체와 협력 관계 구축</p>
                     </div>
                 </div>
                 
-                <div class="hexagon-wrapper">
+                <div class="hexagon-wrapper" data-step="2">
                     <div class="hexagon">
                         <span class="hexagon-number">2</span>
-                        <h4>요구사항 매칭</h4>
-                        <p>고객 니즈에 따라 제품을 매칭하고 전문적인 제품 추천 제공</p>
+                        <h4>요구 매칭</h4>
+                        <p>고객 요구에 따라 제품을 매칭하고 전문적인 제품 추천 제공</p>
                     </div>
                 </div>
                 
-                <div class="hexagon-wrapper">
+                <div class="hexagon-wrapper" data-step="3">
                     <div class="hexagon">
                         <span class="hexagon-number">3</span>
                         <h4>가격 협상</h4>
-                        <p>시장 상황과 제품 특성에 기반한 합리적인 가격 솔루션 제공</p>
+                        <p>시장 상황과 제품 특성에 따라 합리적인 가격 계획 제공</p>
                     </div>
                 </div>
                 
-                <div class="hexagon-wrapper">
+                <div class="hexagon-wrapper" data-step="4">
                     <div class="hexagon">
                         <span class="hexagon-number">4</span>
                         <h4>주문 확인</h4>
@@ -278,66 +304,19 @@
                     </div>
                 </div>
                 
-                <div class="hexagon-wrapper">
+                <div class="hexagon-wrapper" data-step="5">
                     <div class="hexagon">
                         <span class="hexagon-number">5</span>
-                        <h4>결제 완료</h4>
-                        <p>고객이 잔액을 지불하여 거래 보안 확보</p>
+                        <h4>결제 정산</h4>
+                        <p>거래 보안을 위해 고객이 나머지 금액 지불</p>
                     </div>
                 </div>
                 
-                <div class="hexagon-wrapper">
+                <div class="hexagon-wrapper" data-step="6">
                     <div class="hexagon">
                         <span class="hexagon-number">6</span>
-                        <h4>물류 및 배송</h4>
-                        <p>고객 요구사항에 따라 최적의 물류 솔루션을 선택하여 안전한 배송 보장</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="process-note mt-4">
-                <div class="alert alert-info">
-                    <i class="fas fa-info-circle me-2"></i>
-                    <strong>특별 참고사항:</strong>
-                    <ul class="mb-0">
-                        <li>고객별 맞춤 제품 요청을 지원하며 요구사항에 따라 적합한 소스를 찾아드립니다</li>
-                        <li>특별 맞춤 요구사항의 경우 관련 공급업체를 적극적으로 찾지만 구체적인 일정은 실제 상황에 따라 달라질 수 있습니다</li>
-                        <li>모든 제품은 엄격한 품질 관리를 거쳐 정품 품질을 보장합니다</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 물류 및 창고 서비스 -->
-    <section id="logistics" class="py-5 bg-light">
-        <div class="container">
-            <h2 class="text-center section-title mb-5">물류 및 창고 서비스</h2>
-            <div class="row g-4">
-                <div class="col-md-6">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h3 class="card-title"><i class="fas fa-warehouse me-2 text-primary"></i>홍콩 창고</h3>
-                            <p class="card-text">홍콩에 제품 품질을 보장하기 위한 완벽한 온도 제어 시스템을 갖춘 전문 보관 시설을 갖추고 있습니다. 툰먼에 위치한 창고는 빠른 배송을 위한 편리한 교통을 제공합니다.</p>
-                            <ul class="list-unstyled">
-                                <li><i class="fas fa-check me-2 text-success"></i>온도 및 습도 제어 환경</li>
-                                <li><i class="fas fa-check me-2 text-success"></i>전문적인 창고 관리 시스템</li>
-                                <li><i class="fas fa-check me-2 text-success"></i>종합적인 재고 모니터링</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h3 class="card-title"><i class="fas fa-shipping-fast me-2 text-primary"></i>물류 및 배송</h3>
-                            <p class="card-text">다양한 물류 솔루션을 제공하며, 여러 배송 위치를 지원하여 상품의 안전하고 빠른 배송을 보장합니다.</p>
-                            <ul class="list-unstyled">
-                                <li><i class="fas fa-check me-2 text-success"></i>홍콩 현지 배송</li>
-                                <li><i class="fas fa-check me-2 text-success"></i>국제 특급 서비스</li>
-                                <li><i class="fas fa-check me-2 text-success"></i>국경간 물류 솔루션</li>
-                            </ul>
-                        </div>
+                        <h4>물류 배송</h4>
+                        <p>안전한 배송을 위해 고객 요구에 따라 최적의 물류 솔루션 선택</p>
                     </div>
                 </div>
             </div>
@@ -509,7 +488,7 @@
                     <div class="row">
                         <div class="col-6">
                             <ul class="list-unstyled">
-                                <li><a href="#home">홈</a></li>
+                                <li><a href="#top">홈</a></li>
                                 <li><a href="#about">회사 소개</a></li>
                                 <li><a href="#products">제품 및 서비스</a></li>
                             </ul>
@@ -531,9 +510,9 @@
                     </div>
                     <div class="col-md-6">
                         <div class="footer-links">
-                            <a href="#">개인정보 정책</a>
-                            <a href="#">서비스 약관</a>
-                            <a href="#">면책 조항</a>
+                            <a href="../pages/privacy.html">개인정보 정책</a>
+                            <a href="../pages/terms.html">서비스 약관</a>
+                            <a href="../pages/disclaimer.html">면책 조항</a>
                         </div>
                     </div>
                 </div>
