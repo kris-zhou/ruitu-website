@@ -456,10 +456,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // 添加返回顶部按钮
+    // 添加返回顶部按钮功能
+    // 创建返回顶部按钮
     const backToTopBtn = document.createElement('div');
     backToTopBtn.className = 'back-to-top';
-    backToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>'; // 使用FontAwesome图标
+    backToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
     
     document.body.appendChild(backToTopBtn);
     
