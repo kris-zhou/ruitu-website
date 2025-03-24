@@ -2608,66 +2608,237 @@ html, body {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    max-width: 900px;
+    max-width: 1200px;  /* 增加最大宽度 */
     margin: 0 auto;
+    padding: 50px 0;  /* 增加上下内边距 */
+    position: relative;
+    background: linear-gradient(135deg, var(--background-light) 0%, #ffffff 100%);
 }
 
 .hexagon-wrapper {
-    margin: 15px;
-    width: 250px;
+    margin: 40px 30px;  /* 增加六边形之间的间距 */
+    position: relative;
+    transition: all 0.5s ease;
+}
+
+.hexagon-wrapper:hover {
+    transform: translateY(-10px);
 }
 
 .hexagon {
     position: relative;
-    width: 100%;
-    height: 220px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    padding: 20px;
-    text-align: center;
-    transition: all 0.3s ease;
+    width: 200px;  /* 增加六边形宽度 */
+    height: 115.5px; /* height = width * 0.5774 */
+    background-color: white;
+    margin: 57.7px 0; /* margin = height/2 */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    border-top: 4px solid #007bff;
+    align-items: center;
+    padding: 0 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    z-index: 1;
 }
 
-.hexagon:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+.hexagon:before,
+.hexagon:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    border-left: 100px solid transparent;  /* 调整边框宽度为六边形宽度的一半 */
+    border-right: 100px solid transparent;
+    z-index: -1;
+    transition: all 0.3s ease;
+}
+
+.hexagon:before {
+    bottom: 100%;
+    border-bottom: 57.7px solid white; /* border-bottom = height/2 */
+}
+
+.hexagon:after {
+    top: 100%;
+    border-top: 57.7px solid white; /* border-top = height/2 */
 }
 
 .hexagon-number {
     position: absolute;
-    top: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #007bff;
+    top: -45px;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     color: white;
-    width: 30px;
-    height: 30px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
+    font-size: 18px;
+    z-index: 2;
+    box-shadow: 0 5px 15px rgba(125, 125, 125, 0.3); /* 修改自 rgba(200, 169, 158, 0.3) */
+    transition: all 0.3s ease;
+}
+
+.hexagon-wrapper:hover .hexagon-number {
+    transform: scale(1.1);
+    box-shadow: 0 8px 20px rgba(125, 125, 125, 0.4); /* 修改自 rgba(200, 169, 158, 0.4) */
+}
+
+.hexagon-wrapper:hover .hexagon {
+    box-shadow: 0 15px 30px rgba(125, 125, 125, 0.3); /* 修改自 rgba(200, 169, 158, 0.3) */
+    background-color: var(--background-light);
 }
 
 .hexagon h4 {
-    margin-top: 15px;
-    margin-bottom: 10px;
-    color: #007bff;
+    color: var(--secondary-color);
+    margin-bottom: 6px;
+    font-size: 17px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    padding: 0 5px;
 }
 
 .hexagon p {
-    font-size: 0.9rem;
-    color: #666;
+    color: var(--text-secondary);
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.4;
+    transition: all 0.3s ease;
 }
 
-.process-note {
-    max-width: 800px;
-    margin: 0 auto;
+.hexagon-wrapper:hover .hexagon {
+    box-shadow: 0 15px 30px rgba(125, 125, 125, 0.3); /* 修改自 rgba(200, 169, 158, 0.3) */
+    background-color: var(--background-light);
+}
+
+.hexagon-wrapper:hover .hexagon:before {
+    border-bottom-color: var(--background-light);
+}
+
+.hexagon-wrapper:hover .hexagon:after {
+    border-top-color: var(--background-light);
+}
+
+.hexagon-wrapper:hover h4 {
+    color: var(--primary-color);
+}
+
+.hexagon-wrapper:hover p {
+    color: var(--text-primary);
+}
+
+/* 布局变化，使蜂巢形态更明显 */
+.hexagon-wrapper:nth-child(odd) {
+    margin-top: 90px;  /* 增加奇数六边形的上边距 */
+}
+
+.hexagon-wrapper:nth-child(3n+1) {
+    transform: translateX(-25px);  /* 增加偏移量 */
+}
+
+.hexagon-wrapper:nth-child(3n+3) {
+    transform: translateX(25px);  /* 增加偏移量 */
+}
+
+.hexagon-wrapper:nth-child(3n+1):hover {
+    transform: translateX(-25px) translateY(-10px);
+}
+
+.hexagon-wrapper:nth-child(3n+3):hover {
+    transform: translateX(25px) translateY(-10px);
+}
+
+/* 修复3和4号六边形排列问题，增加特定间距 */
+.hexagon-wrapper:nth-child(3) {
+    clear: left;  /* 确保3号六边形排列正确 */
+    margin-right: 80px;  /* 增加3号六边形右侧间距 */
+}
+
+.hexagon-wrapper:nth-child(4) {
+    clear: none;  /* 确保4号六边形排列正确 */
+    margin-left: 80px;  /* 增加4号六边形左侧间距 */
+}
+
+/* 添加蜂巢连接线 */
+.hexagon-container:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    height: 80%;
+    transform: translate(-50%, -50%);
+    background-image: 
+        radial-gradient(circle at center, var(--primary-color) 1px, transparent 1px),
+        radial-gradient(circle at center, var(--primary-color) 1px, transparent 1px);
+    background-size: 30px 30px;
+    background-position: 0 0, 15px 15px;
+    opacity: 0.15;
+    z-index: 0;
+    pointer-events: none;
+}
+
+@media (max-width: 991px) {
+    .hexagon-container {
+        padding: 30px 0;
+    }
+    
+    .hexagon-wrapper {
+        margin: 35px 25px;  /* 调整平板设备上的间距 */
+    }
+    
+    .hexagon {
+        width: 180px;  /* 略微减小宽度 */
+        height: 104px;
+        margin: 52px 0;
+    }
+    
+    .hexagon:before,
+    .hexagon:after {
+        border-left-width: 90px;
+        border-right-width: 90px;
+    }
+    
+    .hexagon:before {
+        border-bottom-width: 52px;
+    }
+    
+    .hexagon:after {
+        border-top-width: 52px;
+    }
+}
+
+@media (max-width: 767px) {
+    .hexagon-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .hexagon-wrapper {
+        margin: 30px 0;  /* 调整移动设备上的间距 */
+    }
+    
+    .hexagon-wrapper:nth-child(odd),
+    .hexagon-wrapper:nth-child(3n+1),
+    .hexagon-wrapper:nth-child(3n+3),
+    .hexagon-wrapper:nth-child(3),
+    .hexagon-wrapper:nth-child(4) {
+        margin-top: 30px;
+        transform: none;
+        clear: both;  /* 在移动设备上清除所有特殊排列 */
+    }
+    
+    .hexagon-wrapper:hover,
+    .hexagon-wrapper:nth-child(3n+1):hover,
+    .hexagon-wrapper:nth-child(3n+3):hover {
+        transform: translateY(-10px);
+    }
+    
+    .hexagon-container:before {
+        display: none;
+    }
 }
 
 /* 物流与仓储部分样式 */
@@ -2691,19 +2862,6 @@ html, body {
 #logistics .list-unstyled li {
     margin-bottom: 8px;
     padding-left: 5px;
-}
-
-/* 响应式调整 */
-@media (max-width: 768px) {
-    .hexagon-wrapper {
-        width: 100%;
-        max-width: 300px;
-    }
-    
-    .hexagon {
-        height: auto;
-        min-height: 200px;
-    }
 }
 
 /* 页脚样式 - 更简洁优雅 */
