@@ -375,7 +375,7 @@ body {
 
 @media (max-width: 768px) {
     .carousel-item {
-        height: 40vh !important; /* 移动设备上的轮播图高度调整 */
+        height: 45vh; /* 移动端轮播图高度 */
     }
     
     .carousel-caption {
@@ -442,7 +442,7 @@ body {
     
     /* 调整轮播图指示器位置 */
     .carousel-indicators {
-        bottom: 5px;
+        bottom: 4px;
         margin-bottom: 0;
     }
     
@@ -470,13 +470,7 @@ body {
         height: 40px;
     }
     
-    .navbar-collapse {
-        background-color: rgba(255, 255, 255, 0.98);
-        padding: 1rem;
-        border-radius: 0.5rem;
-        margin-top: 0.5rem;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    }
+    /* 删除冲突的样式 */
     
     /* 容器和间距优化 */
     .container {
@@ -830,9 +824,10 @@ footer .list-inline-item a {
 /* 响应式导航栏调整 */
 @media (max-width: 991.98px) {
     .navbar {
-        background-color: rgba(255, 255, 255, 0.85);
+        background-color: rgba(255, 255, 255, 0.95);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
+        padding: 0.5rem 1rem;
     }
     
     .navbar-brand img {
@@ -849,8 +844,52 @@ footer .list-inline-item a {
     }
     
     .navbar-toggler-icon {
-        width: 1.2em;
-        height: 1.2em;
+        width: 1.5em;
+        height: 1.5em;
+    }
+    
+    /* 修复折叠菜单背景问题 */
+    .navbar-collapse {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: rgba(255, 255, 255, 0.98);
+        padding: 1rem;
+        border-radius: 0 0 0.5rem 0.5rem;
+        margin-top: 0;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        max-height: calc(100vh - 80px);
+        overflow-y: auto;
+        transition: opacity 0.3s ease, height 0.3s ease, transform 0.3s ease;
+    }
+    
+    .navbar-collapse.show {
+        display: block;
+    }
+    
+    .navbar-nav {
+        padding: 0.5rem 0;
+    }
+    
+    .navbar-nav .nav-item {
+        margin: 0.5rem 0;
+    }
+    
+    .navbar-nav .nav-link {
+        padding: 0.5rem 1rem !important;
+        border-radius: 0.25rem;
+    }
+    
+    .navbar-nav .nav-link:hover {
+        background-color: rgba(231, 76, 60, 0.1);
+    }
+}
+
+@media (max-width: 767px) {
+    .navbar-collapse {
+        max-height: calc(100vh - 70px);
     }
 }
 
@@ -3301,16 +3340,16 @@ html, body {
   }
 }
 
-/* 返回顶部按钮样式 - 方案五：品牌色定制按钮 */
+/* 返回顶部按钮样式 - 动画箭头按钮 */
 .back-to-top {
   position: fixed;
   bottom: 25px;
-  left: 25px;
-  width: 50px;
-  height: 50px;
-  background-color: var(--primary-color, #e74c3c);
+  right: 25px; 
+  width: 45px;
+  height: 45px;
+  background-color: #fff;
   border-radius: 50%;
-  color: #fff;
+  color: #e74c3c; /* 更改为网站主色调 */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3319,7 +3358,8 @@ html, body {
   visibility: hidden;
   transition: all 0.3s ease;
   z-index: 1000;
-  border: 2px solid transparent;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(231, 76, 60, 0.2); /* 添加带颜色的边框 */
 }
 
 .back-to-top.show {
@@ -3328,17 +3368,32 @@ html, body {
 }
 
 .back-to-top:hover {
-  background-color: #fff;
-  color: var(--primary-color, #e74c3c);
-  border-color: var(--primary-color, #e74c3c);
+  background-color: #e74c3c; /* 悬停时背景变为主色调 */
+  color: #fff; /* 悬停时图标变为白色 */
+  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
 }
 
-/* 移动设备适配 */
-@media (max-width: 768px) {
-  .back-to-top {
-    width: 40px;
-    height: 40px;
-    bottom: 15px;
-    left: 15px;
+.back-to-top i {
+  transition: transform 0.3s ease;
+  font-size: 18px; /* 调整图标大小 */
+}
+
+.back-to-top:hover i {
+  transform: translateY(-3px);
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
   }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.back-to-top.show i {
+  animation: float 2s ease-in-out infinite;
 }

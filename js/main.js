@@ -79,6 +79,14 @@ document.addEventListener('DOMContentLoaded', function() {
         navbarToggler.addEventListener('click', function(e) {
             e.stopPropagation(); // 阻止事件冒泡
             navbarCollapse.classList.toggle('show');
+            
+            // 添加动画效果，确保展开时背景正确显示
+            if (navbarCollapse.classList.contains('show')) {
+                navbarCollapse.style.opacity = 0;
+                setTimeout(() => {
+                    navbarCollapse.style.opacity = 1;
+                }, 10);
+            }
         });
         
         // 点击导航链接时关闭菜单
@@ -149,6 +157,17 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
+            
+            // 如果是首页链接（#top），直接滚动到顶部
+            if (this.getAttribute('href') === '#top') {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+                return;
+            }
+            
+            // 其他锚点链接的处理
             const target = document.querySelector(this.getAttribute('href'));
             if (target) {
                 window.scrollTo({
@@ -456,13 +475,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // 添加返回顶部按钮功能
-    // 创建返回顶部按钮
+    // 添加返回顶部按钮
     const backToTopBtn = document.createElement('div');
     backToTopBtn.className = 'back-to-top';
-    backToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
+    backToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>'; // 使用FontAwesome图标
     
     document.body.appendChild(backToTopBtn);
+    
+    // 初始检查滚动位置
+    if (window.scrollY > 300) {
+        backToTopBtn.classList.add('show');
+    }
     
     // 监听滚动事件
     window.addEventListener('scroll', function() {
