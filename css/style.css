@@ -3301,28 +3301,25 @@ html, body {
   }
 }
 
-/* 返回顶部按钮样式 - 半透明文字按钮 */
+/* 返回顶部按钮 - 动画箭头样式 */
 .back-to-top {
   position: fixed;
-  bottom: 20px;
-  left: 20px;
-  padding: 8px 15px;
-  background-color: rgba(0, 0, 0, 0.6);
-  border-radius: 20px;
-  color: #fff;
-  font-size: 14px;
+  bottom: 25px;
+  left: 25px;
+  width: 45px;
+  height: 45px;
+  background-color: #fff;
+  border-radius: 50%;
+  color: #333;
   display: flex;
   align-items: center;
-  gap: 5px;
+  justify-content: center;
   cursor: pointer;
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s ease;
   z-index: 1000;
-}
-
-.back-to-top i {
-  font-size: 16px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
 .back-to-top.show {
@@ -3331,19 +3328,29 @@ html, body {
 }
 
 .back-to-top:hover {
-  background-color: rgba(0, 0, 0, 0.8);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* 手机屏幕上的调整 */
-@media (max-width: 768px) {
-  .back-to-top {
-    bottom: 15px;
-    left: 15px;
-    padding: 6px 12px;
-    font-size: 12px;
+.back-to-top i {
+  transition: transform 0.3s ease;
+}
+
+.back-to-top:hover i {
+  transform: translateY(-3px);
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
   }
-  
-  .back-to-top i {
-    font-size: 14px;
+  50% {
+    transform: translateY(-5px);
   }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.back-to-top.show i {
+  animation: float 2s ease-in-out infinite;
 }

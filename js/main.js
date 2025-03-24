@@ -457,10 +457,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // 添加返回顶部按钮
-    // 创建返回顶部按钮
     const backToTopBtn = document.createElement('div');
     backToTopBtn.className = 'back-to-top';
-    backToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i><span>返回顶部</span>';
+    backToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>'; // 使用FontAwesome图标
     
     document.body.appendChild(backToTopBtn);
     
