@@ -122,3 +122,5 @@
     human_readable_response = true
     spam_level = "low"
     importance = "high" 
+
+# 更新时间: 2023年3月25日 - 优化邮件通知配置 
