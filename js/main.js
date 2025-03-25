@@ -553,24 +553,46 @@ document.addEventListener('DOMContentLoaded', function() {
     // 处理联系表单提交
     const contactForms = document.querySelectorAll('form[data-netlify="true"]');
     contactForms.forEach(form => {
+        // 确保表单包含隐藏的表单名称字段
+        if (!form.querySelector('input[name="form-name"]')) {
+            const hiddenInput = document.createElement('input');
+            hiddenInput.type = 'hidden';
+            hiddenInput.name = 'form-name';
+            hiddenInput.value = form.getAttribute('name');
+            form.appendChild(hiddenInput);
+        }
+        
         form.addEventListener('submit', function(e) {
             if (form.checkValidity()) {
                 e.preventDefault();
-                
+
                 // 显示加载状态
                 const submitBtn = form.querySelector('button[type="submit"]');
-                const originalBtnContent = submitBtn.innerHTML;
-                submitBtn.disabled = true;
-                submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> 提交中...';
+                const originalBtnContent = submitBtn ? submitBtn.innerHTML : '';
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> 提交中...';
+                }
                 
                 // 创建表单数据对象
                 const formData = new FormData(form);
                 
+                // 添加Netlify所需的表单名称字段
+                formData.append("form-name", form.getAttribute("name"));
+
                 // 通过fetch API提交表单
                 fetch('/', {
                     method: 'POST',
-                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    headers: { 
+                        "Content-Type": "application/x-www-form-urlencoded"
+                    },
                     body: new URLSearchParams(formData).toString()
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response;
                 })
                 .then(() => {
                     // 创建成功提示
@@ -589,8 +611,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     // 3秒后恢复按钮状态
                     setTimeout(() => {
-                        submitBtn.disabled = false;
-                        submitBtn.innerHTML = originalBtnContent;
+                        if (submitBtn) {
+                            submitBtn.disabled = false;
+                            submitBtn.innerHTML = originalBtnContent;
+                        }
                         
                         // 5秒后移除成功提示
                         setTimeout(() => {
@@ -616,8 +640,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     form.appendChild(errorAlert);
                     
                     // 恢复按钮状态
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = originalBtnContent;
+                    if (submitBtn) {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalBtnContent;
+                    }
                     
                     // 5秒后移除错误提示
                     setTimeout(() => {

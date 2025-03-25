@@ -1,5 +1,5 @@
 [build]
-  publish = "/"
+  publish = "./"
   command = ""
 
 [[redirects]]
@@ -11,6 +11,15 @@
   # 配置表单处理
   [forms."contact-zh"]
     name = "contact-zh"
+    [forms."contact-zh".fields]
+      [forms."contact-zh".fields.name] 
+        required = true
+      [forms."contact-zh".fields.email]
+        required = true
+      [forms."contact-zh".fields.subject]
+        required = false
+      [forms."contact-zh".fields.message]
+        required = true
     [forms."contact-zh".email]
       to = "z17790805689@outlook.com"
       subject = "新的网站留言 (中文)"
@@ -18,6 +27,15 @@
   
   [forms."contact-en"]
     name = "contact-en"
+    [forms."contact-en".fields]
+      [forms."contact-en".fields.name] 
+        required = true
+      [forms."contact-en".fields.email]
+        required = true
+      [forms."contact-en".fields.subject]
+        required = false
+      [forms."contact-en".fields.message]
+        required = true
     [forms."contact-en".email]
       to = "z17790805689@outlook.com"
       subject = "New Website Message (English)"
@@ -25,6 +43,15 @@
   
   [forms."contact-kr"]
     name = "contact-kr"
+    [forms."contact-kr".fields]
+      [forms."contact-kr".fields.name] 
+        required = true
+      [forms."contact-kr".fields.email]
+        required = true
+      [forms."contact-kr".fields.subject]
+        required = false
+      [forms."contact-kr".fields.message]
+        required = true
     [forms."contact-kr".email]
       to = "z17790805689@outlook.com"
       subject = "새로운 웹사이트 메시지 (한국어)"
@@ -32,7 +59,49 @@
   
   [forms."contact-page"]
     name = "contact-page"
+    [forms."contact-page".fields]
+      [forms."contact-page".fields.name] 
+        required = true
+      [forms."contact-page".fields.email]
+        required = true
+      [forms."contact-page".fields.subject]
+        required = false
+      [forms."contact-page".fields.message]
+        required = true
     [forms."contact-page".email]
       to = "z17790805689@outlook.com"
       subject = "瑞途网站 - 详细咨询表单提交"
-      template = "您收到了一条来自网站联系页面的详细咨询：\n\n姓名: {{name}}\n公司: {{company}}\n电话: {{phone}}\n邮箱: {{email}}\n咨询主题: {{subject}}\n\n咨询内容:\n{{message}}" 
+      template = "您收到了一条来自网站联系页面的详细咨询：\n\n姓名: {{name}}\n公司: {{company}}\n电话: {{phone}}\n邮箱: {{email}}\n咨询主题: {{subject}}\n\n咨询内容:\n{{message}}"
+
+# 邮件通知设置
+[[forms.contact-zh.notifications]]
+  method = "email"
+  from = "noreply@netlify.com"
+  to = "z17790805689@outlook.com"
+  subject = "瑞途贸易网站 - 新的中文联系表单提交"
+  [forms.contact-zh.notifications.template]
+    format = "html"
+
+[[forms.contact-en.notifications]]
+  method = "email"
+  from = "noreply@netlify.com"
+  to = "z17790805689@outlook.com"
+  subject = "Ruitu Website - New English Contact Form Submission"
+  [forms.contact-en.notifications.template]
+    format = "html"
+
+[[forms.contact-kr.notifications]]
+  method = "email"
+  from = "noreply@netlify.com"
+  to = "z17790805689@outlook.com"
+  subject = "Ruitu Website - New Korean Contact Form Submission"
+  [forms.contact-kr.notifications.template]
+    format = "html"
+
+[[forms.contact-page.notifications]]
+  method = "email"
+  from = "noreply@netlify.com"
+  to = "z17790805689@outlook.com"
+  subject = "Ruitu Website - New Contact Page Form Submission"
+  [forms.contact-page.notifications.template]
+    format = "html" 

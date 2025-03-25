@@ -181,64 +181,57 @@
                 <div class="col-lg-8 mx-auto">
                     <h2 class="section-title text-center mb-5">在线咨询</h2>
                     <form id="contactForm" class="contact-form" data-netlify="true" name="contact-page" method="POST" netlify-honeypot="bot-field">
-                        <input type="hidden" name="form-name" value="contact-page" />
-                        <input type="hidden" name="bot-field" />
-                        <input type="hidden" name="subject" value="瑞途网站 - 详细咨询表单提交" />
-                        
-                        <div class="row g-3">
+                        <p class="d-none">
+                            <label>不要填写此字段如果你是人类: <input name="bot-field" /></label>
+                        </p>
+                        <div class="row g-4">
                             <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="name" class="form-label">姓名 <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control" id="name" name="name" required>
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="nameInput" name="name" placeholder="姓名" required>
+                                    <label for="nameInput">姓名</label>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="company" class="form-label">公司名称</label>
-                                    <input type="text" class="form-control" id="company" name="company">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="companyInput" name="company" placeholder="公司">
+                                    <label for="companyInput">公司名称（选填）</label>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="email" class="form-label">电子邮箱 <span class="text-danger">*</span></label>
-                                    <input type="email" class="form-control" id="email" name="email" required>
+                                <div class="form-floating mb-3">
+                                    <input type="tel" class="form-control" id="phoneInput" name="phone" placeholder="电话">
+                                    <label for="phoneInput">电话（选填）</label>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="phone" class="form-label">联系电话 <span class="text-danger">*</span></label>
-                                    <input type="tel" class="form-control" id="phone" name="phone" required>
+                                <div class="form-floating mb-3">
+                                    <input type="email" class="form-control" id="emailInput" name="email" placeholder="邮箱" required>
+                                    <label for="emailInput">邮箱地址</label>
                                 </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <label for="subject" class="form-label">咨询主题 <span class="text-danger">*</span></label>
-                                    <select class="form-select" id="subject" name="subject" required>
-                                        <option value="" selected disabled>请选择咨询主题</option>
-                                        <option value="产品咨询">产品咨询</option>
-                                        <option value="价格咨询">价格咨询</option>
-                                        <option value="物流咨询">物流咨询</option>
-                                        <option value="合作洽谈">合作洽谈</option>
-                                        <option value="其他">其他</option>
+                                <div class="form-floating mb-3">
+                                    <select class="form-select" id="subjectSelect" name="subject">
+                                        <option selected disabled value="">请选择咨询主题</option>
+                                        <option value="product">产品咨询</option>
+                                        <option value="service">服务咨询</option>
+                                        <option value="cooperation">商务合作</option>
+                                        <option value="feedback">意见反馈</option>
+                                        <option value="other">其他</option>
                                     </select>
+                                    <label for="subjectSelect">咨询主题</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating" style="height: 100%;">
+                                    <textarea class="form-control" id="messageInput" name="message" placeholder="留言内容" style="height: 100%" required></textarea>
+                                    <label for="messageInput">留言内容</label>
                                 </div>
                             </div>
                             <div class="col-12">
-                                <div class="form-group">
-                                    <label for="message" class="form-label">咨询内容 <span class="text-danger">*</span></label>
-                                    <textarea class="form-control" id="message" name="message" rows="5" required></textarea>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="privacy" name="privacy" required>
-                                    <label class="form-check-label" for="privacy">
+                                <div class="form-check mb-3">
+                                    <input class="form-check-input" type="checkbox" id="privacyCheck" name="privacy_consent" required>
+                                    <label class="form-check-label" for="privacyCheck">
                                         我已阅读并同意<a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal">隐私政策</a>
                                     </label>
                                 </div>
-                            </div>
-                            <div class="col-12 text-center mt-4">
-                                <button type="submit" class="btn btn-primary btn-lg">提交咨询</button>
+                                <div class="text-center mt-3">
+                                    <button type="submit" class="btn btn-primary btn-lg px-5 py-2">
+                                        <i class="fas fa-paper-plane me-2"></i>提交信息
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </form>
