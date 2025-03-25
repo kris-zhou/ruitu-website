@@ -3,9 +3,25 @@
   command = ""
 
 [[redirects]]
-  from = "/*"
+  from = "/"
   to = "/index.html"
   status = 200 
+
+# 表单成功提交后的重定向规则
+[[redirects]]
+  from = "/en/thank-you"
+  to = "/en/thank-you.html"
+  status = 200
+
+[[redirects]]
+  from = "/kr/thank-you"
+  to = "/kr/thank-you.html"
+  status = 200
+
+[[redirects]]
+  from = "/thank-you"
+  to = "/thank-you.html"
+  status = 200
 
 [forms]
   # 配置表单处理

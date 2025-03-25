@@ -581,7 +581,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 formData.append("form-name", form.getAttribute("name"));
 
                 // 通过fetch API提交表单
-                fetch('/', {
+                // 使用相对于当前站点根目录的提交URL
+                // 如果NetlifyURLs自动重定向可能导致404，改用表单本身的action属性或默认/
+                const formAction = form.getAttribute('action') || '/.netlify/functions/submission-created';
+                
+                fetch(formAction, {
                     method: 'POST',
                     headers: { 
                         "Content-Type": "application/x-www-form-urlencoded"
