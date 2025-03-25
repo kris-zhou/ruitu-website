@@ -460,9 +460,14 @@ body {
     
     /* 轮播图和公司简介之间的分隔线处理 */
     .section-divider {
-        opacity: 0.5;
-        margin: 10px 0 !important;
+        opacity: 0.6;
+        margin: 20px auto !important;
         height: 1px !important;
+        max-width: 95%;
+        background: linear-gradient(to right, 
+            rgba(125, 125, 125, 0.05), 
+            rgba(125, 125, 125, 0.3), 
+            rgba(125, 125, 125, 0.05));
     }
     
     /* 确保导航栏在移动端正确显示 */
@@ -2145,7 +2150,15 @@ html, body {
 
 /* 视觉分隔符 */
 .section-divider {
-    display: none; /* 隐藏所有分隔符 */
+    display: block;
+    height: 1px !important;
+    background: linear-gradient(to right, 
+        rgba(125, 125, 125, 0.05), 
+        rgba(125, 125, 125, 0.3), 
+        rgba(125, 125, 125, 0.05));
+    margin: 30px auto !important;
+    max-width: 85%;
+    opacity: 0.8;
 }
 
 /* 只在特定位置显示分隔符 */
@@ -2164,7 +2177,8 @@ html, body {
 
 @media (max-width: 768px) {
     .section-divider {
-        height: 10vh; /* 在移动设备上减小分隔高度 */
+        max-width: 95%;
+        margin: 20px auto !important;
     }
 }
 
