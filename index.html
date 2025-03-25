@@ -657,31 +657,48 @@
                         <h3 class="mb-4 border-bottom pb-2 text-center">发送消息</h3>
                         <p class="text-muted text-center mb-4">请填写以下表单，我们将尽快回复您的咨询</p>
                         
-                        <form id="contact-form" action="https://formsubmit.co/z17790805689@outlook.com" method="POST">
-                            <input type="hidden" name="_subject" value="瑞途贸易网站新提交">
-                            <input type="hidden" name="_next" value="https://scintillating-puppy-d569de.netlify.app/thanks.html">
-                            <input type="hidden" name="_template" value="table">
-                            <input type="hidden" name="_captcha" value="true">
-                            <input type="hidden" name="_autoresponse" value="感谢您的留言，我们会尽快回复！">
-                            <div class="form-group">
-                                <input type="text" name="name" placeholder="姓名" required>
+                        <form class="contact-form" data-netlify="true" name="contact-zh" method="POST" netlify-honeypot="bot-field">
+                            <p class="d-none">
+                                <label>不要填写此字段如果你是人类: <input name="bot-field" /></label>
+                            </p>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="nameInput" name="name" placeholder="请输入您的姓名" required>
+                                        <label for="nameInput">您的姓名</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input type="tel" class="form-control" id="phoneInput" name="phone" placeholder="请输入您的电话">
+                                        <label for="phoneInput">电话号码（选填）</label>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <input type="email" name="email" placeholder="邮箱" required>
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="emailInput" name="email" placeholder="请输入邮箱地址" required>
+                                <label for="emailInput">电子邮箱</label>
                             </div>
-                            <div class="form-group">
-                                <select name="topic" required>
-                                    <option value="">请选择主题</option>
-                                    <option value="产品咨询">产品咨询</option>
-                                    <option value="商务合作">商务合作</option>
-                                    <option value="技术支持">技术支持</option>
-                                    <option value="其他">其他</option>
+                            <div class="form-floating mb-3">
+                                <select class="form-select" id="subjectSelect" name="topic">
+                                    <option selected disabled value="">请选择咨询主题</option>
+                                    <option value="product">产品咨询</option>
+                                    <option value="price">价格咨询</option>
+                                    <option value="logistics">物流咨询</option>
+                                    <option value="cooperation">合作洽谈</option>
+                                    <option value="other">其他</option>
                                 </select>
+                                <label for="subjectSelect">咨询主题</label>
                             </div>
-                            <div class="form-group">
-                                <textarea name="message" placeholder="留言内容" required></textarea>
+                            <div class="form-floating mb-3">
+                                <textarea class="form-control" id="messageInput" name="message" placeholder="请输入您的留言" style="height: 120px" required></textarea>
+                                <label for="messageInput">您的留言</label>
                             </div>
-                            <button type="submit" class="submit-btn">发送消息</button>
+                            <div class="text-center mt-4">
+                                <button type="submit" class="btn btn-primary btn-lg px-4 py-2">
+                                    <i class="fas fa-paper-plane me-2"></i>发送留言
+                                </button>
+                            </div>
                         </form>
                     </div>
                 </div>

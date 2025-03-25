@@ -62,13 +62,6 @@
 })();
 
 document.addEventListener('DOMContentLoaded', function() {
-    // 初始化EmailJS (需要注册EmailJS获取您的Public Key)
-    if (typeof emailjs !== 'undefined') {
-        // 使用您的EmailJS公钥初始化
-        // emailjs.init("YOUR_PUBLIC_KEY");
-        console.log("EmailJS已加载，请配置您的公钥以启用备用邮件系统");
-    }
-    
     // 初始化轮播图
     const mainCarousel = document.getElementById('mainCarousel');
     new bootstrap.Carousel(mainCarousel, {
@@ -612,36 +605,6 @@ document.addEventListener('DOMContentLoaded', function() {
                           '메시지가 성공적으로 전송되었습니다! 곧 연락 드리겠습니다.'} 
                     `;
                     
-                    // 尝试使用备用邮件发送方式(EmailJS)
-                    try {
-                        // 准备邮件数据
-                        const emailData = {
-                            form_name: form.getAttribute('name'),
-                            user_name: formData.get('name') || '未提供',
-                            user_email: formData.get('email') || '未提供',
-                            user_phone: formData.get('phone') || '未提供',
-                            message: formData.get('message') || '未提供',
-                            topic: formData.get('topic') || formData.get('subject') || '未提供',
-                            to_email: 'z17790805689@outlook.com'
-                        };
-                        
-                        // 使用fetch发送到您自己的邮件中转服务器(如果有的话)
-                        fetch('https://api.emailjs.com/api/v1.0/email/send', {
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body: JSON.stringify({
-                                service_id: 'YOUR_EMAILJS_SERVICE_ID',  // 这里需要替换成您的EmailJS设置
-                                template_id: 'YOUR_EMAILJS_TEMPLATE_ID', // 这里需要替换成您的EmailJS设置
-                                user_id: 'YOUR_EMAILJS_USER_ID', // 这里需要替换成您的EmailJS设置
-                                template_params: emailData
-                            })
-                        }).catch(e => console.log('备用邮件发送失败:', e));
-                    } catch (e) {
-                        console.log('备用邮件发送失败:', e);
-                    }
-
                     // 插入成功提示
                     form.reset();
                     form.appendChild(successAlert);
