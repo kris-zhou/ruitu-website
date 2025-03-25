@@ -410,29 +410,33 @@
                         <h3 class="mb-4 border-bottom pb-2 text-center">Send us a Message</h3>
                         <p class="text-muted text-center mb-4">Please fill out the form below and we will get back to you as soon as possible</p>
                         
-                        <form class="contact-form" data-netlify="true" name="contact-en">
+                        <form class="contact-form" data-netlify="true" name="contact-en" method="POST" netlify-honeypot="bot-field">
+                            <input type="hidden" name="form-name" value="contact-en" />
+                            <input type="hidden" name="bot-field" />
+                            <input type="hidden" name="subject" value="Website Contact Form Submission" />
+                            
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" id="nameInput" placeholder="Enter your name" required>
+                                        <input type="text" class="form-control" id="nameInput" name="name" placeholder="Enter your name" required>
                                         <label for="nameInput">Your Name</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3">
-                                        <input type="tel" class="form-control" id="phoneInput" placeholder="Enter your phone number">
+                                        <input type="tel" class="form-control" id="phoneInput" name="phone" placeholder="Enter your phone number">
                                         <label for="phoneInput">Phone Number</label>
                                     </div>
                                 </div>
                             </div>
                             
                             <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="emailInput" placeholder="Enter your email" required>
+                                <input type="email" class="form-control" id="emailInput" name="email" placeholder="Enter your email" required>
                                 <label for="emailInput">Email Address</label>
                             </div>
                             
                             <div class="form-floating mb-3">
-                                <select class="form-select" id="subjectSelect">
+                                <select class="form-select" id="subjectSelect" name="topic">
                                     <option selected disabled value="">Please select a subject</option>
                                     <option value="product">Product Inquiry</option>
                                     <option value="cooperation">Business Cooperation</option>
@@ -443,7 +447,7 @@
                             </div>
                             
                             <div class="form-floating mb-3">
-                                <textarea class="form-control" id="messageInput" placeholder="Enter your message" style="height: 120px" required></textarea>
+                                <textarea class="form-control" id="messageInput" name="message" placeholder="Enter your message" style="height: 120px" required></textarea>
                                 <label for="messageInput">Your Message</label>
                             </div>
                             

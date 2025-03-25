@@ -6,3 +6,33 @@
   from = "/*"
   to = "/index.html"
   status = 200 
+
+[forms]
+  # 配置表单处理
+  [forms."contact-zh"]
+    name = "contact-zh"
+    [forms."contact-zh".email]
+      to = "z17790805689@outlook.com"
+      subject = "新的网站留言 (中文)"
+      template = "您收到了一条来自网站的留言：\n\n姓名: {{name}}\n电话: {{phone}}\n邮箱: {{email}}\n主题: {{topic}}\n\n留言内容:\n{{message}}"
+  
+  [forms."contact-en"]
+    name = "contact-en"
+    [forms."contact-en".email]
+      to = "z17790805689@outlook.com"
+      subject = "New Website Message (English)"
+      template = "You have received a message from your website:\n\nName: {{name}}\nPhone: {{phone}}\nEmail: {{email}}\nSubject: {{topic}}\n\nMessage:\n{{message}}"
+  
+  [forms."contact-kr"]
+    name = "contact-kr"
+    [forms."contact-kr".email]
+      to = "z17790805689@outlook.com"
+      subject = "새로운 웹사이트 메시지 (한국어)"
+      template = "웹사이트에서 메시지를 받았습니다:\n\n이름: {{name}}\n전화번호: {{phone}}\n이메일: {{email}}\n주제: {{topic}}\n\n메시지 내용:\n{{message}}"
+  
+  [forms."contact-page"]
+    name = "contact-page"
+    [forms."contact-page".email]
+      to = "z17790805689@outlook.com"
+      subject = "瑞途网站 - 详细咨询表单提交"
+      template = "您收到了一条来自网站联系页面的详细咨询：\n\n姓名: {{name}}\n公司: {{company}}\n电话: {{phone}}\n邮箱: {{email}}\n咨询主题: {{subject}}\n\n咨询内容:\n{{message}}" 

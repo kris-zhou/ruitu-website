@@ -180,7 +180,11 @@
             <div class="row">
                 <div class="col-lg-8 mx-auto">
                     <h2 class="section-title text-center mb-5">在线咨询</h2>
-                    <form id="contactForm" class="contact-form">
+                    <form id="contactForm" class="contact-form" data-netlify="true" name="contact-page" method="POST" netlify-honeypot="bot-field">
+                        <input type="hidden" name="form-name" value="contact-page" />
+                        <input type="hidden" name="bot-field" />
+                        <input type="hidden" name="subject" value="瑞途网站 - 详细咨询表单提交" />
+                        
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="form-group">
@@ -425,34 +429,13 @@
     <!-- 表单验证和提交JS -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const contactForm = document.getElementById('contactForm');
+            // 激活工具提示
+            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
             
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    // 简单的表单验证
-                    let isValid = true;
-                    const requiredFields = contactForm.querySelectorAll('[required]');
-                    
-                    requiredFields.forEach(field => {
-                        if (!field.value.trim()) {
-                            isValid = false;
-                            field.classList.add('is-invalid');
-                        } else {
-                            field.classList.remove('is-invalid');
-                        }
-                    });
-                    
-                    if (isValid) {
-                        // 在实际应用中，这里应该是AJAX请求发送表单数据
-                        alert('感谢您的咨询！我们将尽快与您联系。');
-                        contactForm.reset();
-                    } else {
-                        alert('请填写所有必填字段。');
-                    }
-                });
-            }
+            // 表单提交通过main.js中的全局处理器处理，不需要在这里重复实现
         });
     </script>
 </body>

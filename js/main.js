@@ -549,4 +549,82 @@ document.addEventListener('DOMContentLoaded', function() {
         `;
         document.head.appendChild(style);
     }
+
+    // 处理联系表单提交
+    const contactForms = document.querySelectorAll('form[data-netlify="true"]');
+    contactForms.forEach(form => {
+        form.addEventListener('submit', function(e) {
+            if (form.checkValidity()) {
+                e.preventDefault();
+                
+                // 显示加载状态
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const originalBtnContent = submitBtn.innerHTML;
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> 提交中...';
+                
+                // 创建表单数据对象
+                const formData = new FormData(form);
+                
+                // 通过fetch API提交表单
+                fetch('/', {
+                    method: 'POST',
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: new URLSearchParams(formData).toString()
+                })
+                .then(() => {
+                    // 创建成功提示
+                    const successAlert = document.createElement('div');
+                    successAlert.className = 'alert alert-success mt-3 mb-0';
+                    successAlert.innerHTML = `
+                        <i class="fas fa-check-circle me-2"></i>
+                        ${form.getAttribute('name').includes('zh') ? '消息已成功发送！我们将尽快与您联系。' : 
+                          form.getAttribute('name').includes('en') ? 'Message sent successfully! We will contact you soon.' : 
+                          '메시지가 성공적으로 전송되었습니다! 곧 연락 드리겠습니다.'}
+                    `;
+                    
+                    // 插入成功提示
+                    form.reset();
+                    form.appendChild(successAlert);
+                    
+                    // 3秒后恢复按钮状态
+                    setTimeout(() => {
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalBtnContent;
+                        
+                        // 5秒后移除成功提示
+                        setTimeout(() => {
+                            successAlert.remove();
+                        }, 5000);
+                    }, 3000);
+                })
+                .catch(error => {
+                    // 处理错误
+                    console.error('表单提交错误:', error);
+                    
+                    // 创建错误提示
+                    const errorAlert = document.createElement('div');
+                    errorAlert.className = 'alert alert-danger mt-3 mb-0';
+                    errorAlert.innerHTML = `
+                        <i class="fas fa-exclamation-circle me-2"></i>
+                        ${form.getAttribute('name').includes('zh') ? '抱歉，提交失败。请稍后再试或直接联系我们。' : 
+                          form.getAttribute('name').includes('en') ? 'Sorry, submission failed. Please try again later or contact us directly.' : 
+                          '죄송합니다. 제출에 실패했습니다. 나중에 다시 시도하거나 직접 문의해 주세요.'}
+                    `;
+                    
+                    // 插入错误提示
+                    form.appendChild(errorAlert);
+                    
+                    // 恢复按钮状态
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnContent;
+                    
+                    // 5秒后移除错误提示
+                    setTimeout(() => {
+                        errorAlert.remove();
+                    }, 5000);
+                });
+            }
+        });
+    });
 });

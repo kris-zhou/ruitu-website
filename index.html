@@ -657,29 +657,33 @@
                         <h3 class="mb-4 border-bottom pb-2 text-center">发送消息</h3>
                         <p class="text-muted text-center mb-4">请填写以下表单，我们将尽快回复您的咨询</p>
                         
-                        <form class="contact-form" data-netlify="true" name="contact-zh">
+                        <form class="contact-form" data-netlify="true" name="contact-zh" method="POST" netlify-honeypot="bot-field">
+                            <input type="hidden" name="form-name" value="contact-zh" />
+                            <input type="hidden" name="bot-field" />
+                            <input type="hidden" name="subject" value="网站联系表单提交通知" />
+                            
                             <div class="row g-3">
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" id="nameInput" placeholder="请输入您的姓名" required>
+                                        <input type="text" class="form-control" id="nameInput" name="name" placeholder="请输入您的姓名" required>
                                         <label for="nameInput">姓名</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3">
-                                        <input type="tel" class="form-control" id="phoneInput" placeholder="请输入您的电话">
+                                        <input type="tel" class="form-control" id="phoneInput" name="phone" placeholder="请输入您的电话">
                                         <label for="phoneInput">电话</label>
                                     </div>
                                 </div>
                             </div>
                             
                             <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="emailInput" placeholder="请输入您的邮箱" required>
+                                <input type="email" class="form-control" id="emailInput" name="email" placeholder="请输入您的邮箱" required>
                                 <label for="emailInput">邮箱地址</label>
                             </div>
                             
                             <div class="form-floating mb-3">
-                                <select class="form-select" id="subjectSelect">
+                                <select class="form-select" id="subjectSelect" name="topic">
                                     <option selected disabled value="">请选择咨询主题</option>
                                     <option value="product">产品咨询</option>
                                     <option value="cooperation">商务合作</option>
@@ -690,7 +694,7 @@
                             </div>
                             
                             <div class="form-floating mb-3">
-                                <textarea class="form-control" id="messageInput" placeholder="请输入您的留言" style="height: 120px" required></textarea>
+                                <textarea class="form-control" id="messageInput" name="message" placeholder="请输入您的留言" style="height: 120px" required></textarea>
                                 <label for="messageInput">留言内容</label>
                             </div>
                             
