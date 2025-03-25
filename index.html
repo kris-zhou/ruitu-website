@@ -657,7 +657,7 @@
                         <h3 class="mb-4 border-bottom pb-2 text-center">发送消息</h3>
                         <p class="text-muted text-center mb-4">请填写以下表单，我们将尽快回复您的咨询</p>
                         
-                        <form class="contact-form" data-netlify="true" name="contact-zh" method="POST" netlify-honeypot="bot-field" action="/thank-you">
+                        <form class="contact-form" data-netlify="true" name="contact-zh" method="POST" netlify-honeypot="bot-field">
                             <p class="d-none">
                                 <label>不要填写此字段如果你是人类: <input name="bot-field" /></label>
                             </p>
@@ -680,12 +680,13 @@
                                 <label for="emailInput">电子邮箱</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <select class="form-select" id="subjectSelect" name="subject">
+                                <select class="form-select" id="subjectSelect" name="topic">
                                     <option selected disabled value="">请选择咨询主题</option>
                                     <option value="product">产品咨询</option>
-                                    <option value="cooperation">商务合作</option>
                                     <option value="price">价格咨询</option>
-                                    <option value="others">其他问题</option>
+                                    <option value="logistics">物流咨询</option>
+                                    <option value="cooperation">合作洽谈</option>
+                                    <option value="other">其他</option>
                                 </select>
                                 <label for="subjectSelect">咨询主题</label>
                             </div>

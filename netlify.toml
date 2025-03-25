@@ -3,91 +3,80 @@
   command = ""
 
 [[redirects]]
-  from = "/"
+  from = "/*"
   to = "/index.html"
   status = 200 
 
-# 表单成功提交后的重定向规则
-[[redirects]]
-  from = "/en/thank-you"
-  to = "/en/thank-you.html"
-  status = 200
-
-[[redirects]]
-  from = "/kr/thank-you"
-  to = "/kr/thank-you.html"
-  status = 200
-
-[[redirects]]
-  from = "/thank-you"
-  to = "/thank-you.html"
-  status = 200
-
 [forms]
-  # 配置表单处理
-  [forms."contact-zh"]
+  # 中文版表单
+  [forms.contact-zh]
     name = "contact-zh"
-    [forms."contact-zh".fields]
-      [forms."contact-zh".fields.name] 
+    [forms.contact-zh.fields]
+      [forms.contact-zh.fields.name] 
         required = true
-      [forms."contact-zh".fields.email]
+      [forms.contact-zh.fields.email]
         required = true
-      [forms."contact-zh".fields.subject]
+      [forms.contact-zh.fields.subject]
         required = false
-      [forms."contact-zh".fields.message]
+      [forms.contact-zh.fields.topic]
+        required = false
+      [forms.contact-zh.fields.message]
         required = true
-    [forms."contact-zh".email]
-      to = "z17790805689@outlook.com"
-      subject = "新的网站留言 (中文)"
-      template = "您收到了一条来自网站的留言：\n\n姓名: {{name}}\n电话: {{phone}}\n邮箱: {{email}}\n主题: {{topic}}\n\n留言内容:\n{{message}}"
-  
-  [forms."contact-en"]
+      [forms.contact-zh.fields.phone]
+        required = false
+
+  # 英文版表单
+  [forms.contact-en]
     name = "contact-en"
-    [forms."contact-en".fields]
-      [forms."contact-en".fields.name] 
+    [forms.contact-en.fields]
+      [forms.contact-en.fields.name] 
         required = true
-      [forms."contact-en".fields.email]
+      [forms.contact-en.fields.email]
         required = true
-      [forms."contact-en".fields.subject]
+      [forms.contact-en.fields.subject]
         required = false
-      [forms."contact-en".fields.message]
+      [forms.contact-en.fields.topic]
+        required = false
+      [forms.contact-en.fields.message]
         required = true
-    [forms."contact-en".email]
-      to = "z17790805689@outlook.com"
-      subject = "New Website Message (English)"
-      template = "You have received a message from your website:\n\nName: {{name}}\nPhone: {{phone}}\nEmail: {{email}}\nSubject: {{topic}}\n\nMessage:\n{{message}}"
-  
-  [forms."contact-kr"]
+      [forms.contact-en.fields.phone]
+        required = false
+
+  # 韩文版表单
+  [forms.contact-kr]
     name = "contact-kr"
-    [forms."contact-kr".fields]
-      [forms."contact-kr".fields.name] 
+    [forms.contact-kr.fields]
+      [forms.contact-kr.fields.name] 
         required = true
-      [forms."contact-kr".fields.email]
+      [forms.contact-kr.fields.email]
         required = true
-      [forms."contact-kr".fields.subject]
+      [forms.contact-kr.fields.subject]
         required = false
-      [forms."contact-kr".fields.message]
+      [forms.contact-kr.fields.topic]
+        required = false
+      [forms.contact-kr.fields.message]
         required = true
-    [forms."contact-kr".email]
-      to = "z17790805689@outlook.com"
-      subject = "새로운 웹사이트 메시지 (한국어)"
-      template = "웹사이트에서 메시지를 받았습니다:\n\n이름: {{name}}\n전화번호: {{phone}}\n이메일: {{email}}\n주제: {{topic}}\n\n메시지 내용:\n{{message}}"
-  
-  [forms."contact-page"]
+      [forms.contact-kr.fields.phone]
+        required = false
+
+  # 联系页面表单
+  [forms.contact-page]
     name = "contact-page"
-    [forms."contact-page".fields]
-      [forms."contact-page".fields.name] 
+    [forms.contact-page.fields]
+      [forms.contact-page.fields.name] 
         required = true
-      [forms."contact-page".fields.email]
+      [forms.contact-page.fields.email]
         required = true
-      [forms."contact-page".fields.subject]
+      [forms.contact-page.fields.subject]
         required = false
-      [forms."contact-page".fields.message]
+      [forms.contact-page.fields.message]
         required = true
-    [forms."contact-page".email]
-      to = "z17790805689@outlook.com"
-      subject = "瑞途网站 - 详细咨询表单提交"
-      template = "您收到了一条来自网站联系页面的详细咨询：\n\n姓名: {{name}}\n公司: {{company}}\n电话: {{phone}}\n邮箱: {{email}}\n咨询主题: {{subject}}\n\n咨询内容:\n{{message}}"
+      [forms.contact-page.fields.phone]
+        required = false
+      [forms.contact-page.fields.company]
+        required = false
+      [forms.contact-page.fields.privacy_consent]
+        required = true
 
 # 邮件通知设置
 [[forms.contact-zh.notifications]]
@@ -95,29 +84,33 @@
   from = "noreply@netlify.com"
   to = "z17790805689@outlook.com"
   subject = "瑞途贸易网站 - 新的中文联系表单提交"
-  [forms.contact-zh.notifications.template]
-    format = "html"
+  [forms.contact-zh.notifications.options]
+    includeData = true
+    human_readable_response = true
 
 [[forms.contact-en.notifications]]
   method = "email"
   from = "noreply@netlify.com"
   to = "z17790805689@outlook.com"
   subject = "Ruitu Website - New English Contact Form Submission"
-  [forms.contact-en.notifications.template]
-    format = "html"
+  [forms.contact-en.notifications.options]
+    includeData = true
+    human_readable_response = true
 
 [[forms.contact-kr.notifications]]
   method = "email"
   from = "noreply@netlify.com"
   to = "z17790805689@outlook.com"
   subject = "Ruitu Website - New Korean Contact Form Submission"
-  [forms.contact-kr.notifications.template]
-    format = "html"
+  [forms.contact-kr.notifications.options]
+    includeData = true
+    human_readable_response = true
 
 [[forms.contact-page.notifications]]
   method = "email"
   from = "noreply@netlify.com"
   to = "z17790805689@outlook.com"
-  subject = "Ruitu Website - New Contact Page Form Submission"
-  [forms.contact-page.notifications.template]
-    format = "html" 
+  subject = "Ruitu Website - Contact Page Form Submission"
+  [forms.contact-page.notifications.options]
+    includeData = true
+    human_readable_response = true 

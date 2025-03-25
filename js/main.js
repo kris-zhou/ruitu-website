@@ -563,9 +563,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         
         form.addEventListener('submit', function(e) {
+            e.preventDefault(); // 始终阻止默认提交行为
+            
             if (form.checkValidity()) {
-                e.preventDefault();
-
                 // 显示加载状态
                 const submitBtn = form.querySelector('button[type="submit"]');
                 const originalBtnContent = submitBtn ? submitBtn.innerHTML : '';
@@ -577,15 +577,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 // 创建表单数据对象
                 const formData = new FormData(form);
                 
-                // 添加Netlify所需的表单名称字段
-                formData.append("form-name", form.getAttribute("name"));
+                // 确保表单名称字段正确
+                formData.set("form-name", form.getAttribute("name"));
 
-                // 通过fetch API提交表单
-                // 使用相对于当前站点根目录的提交URL
-                // 如果NetlifyURLs自动重定向可能导致404，改用表单本身的action属性或默认/
-                const formAction = form.getAttribute('action') || '/.netlify/functions/submission-created';
-                
-                fetch(formAction, {
+                // 使用Netlify特殊提交方式
+                fetch("/", {
                     method: 'POST',
                     headers: { 
                         "Content-Type": "application/x-www-form-urlencoded"
@@ -604,9 +600,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     successAlert.className = 'alert alert-success mt-3 mb-0';
                     successAlert.innerHTML = `
                         <i class="fas fa-check-circle me-2"></i>
-                        ${form.getAttribute('name').includes('zh') ? '消息已成功发送！我们将尽快与您联系。' : 
-                          form.getAttribute('name').includes('en') ? 'Message sent successfully! We will contact you soon.' : 
-                          '메시지가 성공적으로 전송되었습니다! 곧 연락 드리겠습니다.'}
+                        ${form.getAttribute('name').includes('zh') ? '消息已成功发送！我们将尽快与您联系。' :
+                          form.getAttribute('name').includes('en') ? 'Message sent successfully! We will contact you soon.' :
+                          '메시지가 성공적으로 전송되었습니다! 곧 연락 드리겠습니다.'} 
                     `;
                     
                     // 插入成功提示
@@ -625,6 +621,9 @@ document.addEventListener('DOMContentLoaded', function() {
                             successAlert.remove();
                         }, 5000);
                     }, 3000);
+                    
+                    // 记录成功信息到控制台
+                    console.log('表单提交成功:', form.getAttribute('name'));
                 })
                 .catch(error => {
                     // 处理错误
@@ -635,9 +634,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     errorAlert.className = 'alert alert-danger mt-3 mb-0';
                     errorAlert.innerHTML = `
                         <i class="fas fa-exclamation-circle me-2"></i>
-                        ${form.getAttribute('name').includes('zh') ? '抱歉，提交失败。请稍后再试或直接联系我们。' : 
-                          form.getAttribute('name').includes('en') ? 'Sorry, submission failed. Please try again later or contact us directly.' : 
-                          '죄송합니다. 제출에 실패했습니다. 나중에 다시 시도하거나 직접 문의해 주세요.'}
+                        ${form.getAttribute('name').includes('zh') ? '抱歉，提交失败。请稍后再试或直接联系我们。' :
+                          form.getAttribute('name').includes('en') ? 'Sorry, submission failed. Please try again later or contact us directly.' :
+                          '죄송합니다, 제출에 실패했습니다. 나중에 다시 시도하거나 직접 문의하세요.'}
                     `;
                     
                     // 插入错误提示
@@ -654,6 +653,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         errorAlert.remove();
                     }, 5000);
                 });
+            } else {
+                // 表单验证失败，触发浏览器的默认验证提示
+                form.reportValidity();
             }
         });
     });
