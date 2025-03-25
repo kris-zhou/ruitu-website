@@ -577,9 +577,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 // 创建表单数据对象
                 const formData = new FormData(form);
                 
-                // 确保表单名称字段正确
-                formData.set("form-name", form.getAttribute("name"));
-
+                // 确保表单名称字段正确 - 双重保证
+                const formName = form.getAttribute("name");
+                formData.set("form-name", formName);
+                
+                // 添加标识字段以帮助调试
+                formData.set("submission_source", "website_form");
+                formData.set("submission_time", new Date().toISOString());
+                
+                // 添加确保通知触发的字段
+                formData.set("notification_required", "true");
+                
+                // 记录表单数据 - 调试用
+                console.log('准备提交表单:', formName);
+                console.log('表单字段:');
+                for (let pair of formData.entries()) {
+                    console.log(pair[0] + ': ' + pair[1]);
+                }
+                
                 // 使用Netlify特殊提交方式
                 fetch("/", {
                     method: 'POST',
@@ -589,6 +604,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     body: new URLSearchParams(formData).toString()
                 })
                 .then(response => {
+                    console.log('表单提交HTTP状态:', response.status);
                     if (!response.ok) {
                         throw new Error(`HTTP error! status: ${response.status}`);
                     }
@@ -600,8 +616,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     successAlert.className = 'alert alert-success mt-3 mb-0';
                     successAlert.innerHTML = `
                         <i class="fas fa-check-circle me-2"></i>
-                        ${form.getAttribute('name').includes('zh') ? '消息已成功发送！我们将尽快与您联系。' :
-                          form.getAttribute('name').includes('en') ? 'Message sent successfully! We will contact you soon.' :
+                        ${formName.includes('zh') ? '消息已成功发送！我们将尽快与您联系。' :
+                          formName.includes('en') ? 'Message sent successfully! We will contact you soon.' :
                           '메시지가 성공적으로 전송되었습니다! 곧 연락 드리겠습니다.'} 
                     `;
                     
@@ -623,7 +639,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     }, 3000);
                     
                     // 记录成功信息到控制台
-                    console.log('表单提交成功:', form.getAttribute('name'));
+                    console.log('表单提交成功:', formName);
+                    alert('表单提交成功！\n请注意查收邮件通知，有时邮件可能会进入垃圾邮件文件夹。\n您也可以在Netlify后台查看表单提交记录。');
                 })
                 .catch(error => {
                     // 处理错误
@@ -634,9 +651,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     errorAlert.className = 'alert alert-danger mt-3 mb-0';
                     errorAlert.innerHTML = `
                         <i class="fas fa-exclamation-circle me-2"></i>
-                        ${form.getAttribute('name').includes('zh') ? '抱歉，提交失败。请稍后再试或直接联系我们。' :
-                          form.getAttribute('name').includes('en') ? 'Sorry, submission failed. Please try again later or contact us directly.' :
+                        ${formName.includes('zh') ? '抱歉，提交失败。请稍后再试或直接联系我们。' :
+                          formName.includes('en') ? 'Sorry, submission failed. Please try again later or contact us directly.' :
                           '죄송합니다, 제출에 실패했습니다. 나중에 다시 시도하거나 직접 문의하세요.'}
+                        <br><small class="text-muted">错误详情: ${error.message}</small>
                     `;
                     
                     // 插入错误提示

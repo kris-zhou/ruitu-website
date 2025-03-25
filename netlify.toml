@@ -87,6 +87,8 @@
   [forms.contact-zh.notifications.options]
     includeData = true
     human_readable_response = true
+    spam_level = "low"
+    importance = "high"
 
 [[forms.contact-en.notifications]]
   method = "email"
@@ -96,6 +98,8 @@
   [forms.contact-en.notifications.options]
     includeData = true
     human_readable_response = true
+    spam_level = "low"
+    importance = "high"
 
 [[forms.contact-kr.notifications]]
   method = "email"
@@ -105,6 +109,8 @@
   [forms.contact-kr.notifications.options]
     includeData = true
     human_readable_response = true
+    spam_level = "low"
+    importance = "high"
 
 [[forms.contact-page.notifications]]
   method = "email"
@@ -113,4 +119,6 @@
   subject = "Ruitu Website - Contact Page Form Submission"
   [forms.contact-page.notifications.options]
     includeData = true
-    human_readable_response = true 
+    human_readable_response = true
+    spam_level = "low"
+    importance = "high" 
