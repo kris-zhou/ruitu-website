@@ -1,0 +1,500 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>鐟為€旓紙棣欐腐锛夎锤鏄撴湁闄愬叕鍙?- 涓撲笟缇庡浜у搧渚涘簲鍟?/title>
+    <meta name="description" content="鐟為€旓紙棣欐腐锛夎锤鏄撴湁闄愬叕鍙告槸涓€瀹朵笟鐣岄鍏堢殑缇庡浜у搧渚涘簲鍟嗭紝鑷村姏浜庝负鍏ㄧ悆瀹㈡埛鎻愪緵鍗撹秺鐨勮法澧冪編濡嗘壒鍙戞湇鍔°€?>
+    <meta name="keywords" content="缇庡浜у搧,鎵瑰彂,棣欐腐,闊╁浗,鍏嶇◣搴?鍖栧鍝?璺ㄥ璐告槗">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- 鑷畾涔塁SS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome 鍥炬爣 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <!-- 瀵艰埅鏍?-->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#top">
+                <img src="images/logo.png" alt="鐟為€旓紙棣欐腐锛夎锤鏄撴湁闄愬叕鍙? height="60">
+            </a>
+            <button class="navbar-toggler" type="button" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#top">棣栭〉</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">鍏充簬鎴戜滑</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">鑱旂郴鎴戜滑</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    <li class="nav-item d-flex align-items-center">
+                        <a href="index.html" class="nav-link px-2" data-lang="zh"><img src="images/flags/cn.png" alt="涓枃" width="24" title="涓枃"></a>
+                        <a href="en/index.html" class="nav-link px-2" data-lang="en"><img src="images/flags/en.png" alt="English" width="24" title="English"></a>
+                        <a href="kr/index.html" class="nav-link px-2" data-lang="kr"><img src="images/flags/kr.png" alt="頃滉淡鞏? width="24" title="頃滉淡鞏?></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 杞挱鍥?-->
+    <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#mainCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="3500">
+                <img src="images/slider1.jpg" class="d-block" alt="缇庡浜у搧灞曠ず">
+                <div class="carousel-caption">
+                    <h2>涓撲笟缇庡浜у搧渚涘簲鍟?/h2>
+                    <p>涓哄叏鐞冨鎴锋彁渚涘崜瓒婄殑璺ㄥ缇庡鎵瑰彂鏈嶅姟</p>
+                </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="3500">
+                <img src="images/slider2.jpg" class="d-block" alt="鍥介檯鍝佺墝鍚堜綔">
+                <div class="carousel-caption">
+                    <h2>鍥介檯鐭ュ悕鍝佺墝鍚堜綔</h2>
+                    <p>娑电洊NARS銆乀om Ford銆丩a Prairie绛変紬澶氬浗闄呯煡鍚嶇編濡嗗搧鐗?/p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 鍏徃绠€浠?-->
+    <section class="company-intro">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="section-title">鐟為€旓紙棣欐腐锛夎锤鏄撴湁闄愬叕鍙?/h2>
+                    <p class="lead">浣滀负涓€瀹朵笟鐣岄鍏堢殑缇庡浜у搧渚涘簲鍟嗭紝鑷村姏浜庝负鍏ㄧ悆瀹㈡埛鎻愪緵鍗撹秺鐨勮法澧冪編濡嗘壒鍙戞湇鍔°€?/p>
+                    <p>鎴戜滑鍏徃鎷ユ湁涓€鎵嬬殑闊╁厤缇庡璐ф簮渚涘簲閾撅紝娑电洊浜嗕紬澶氬浗闄呯煡鍚嶇編濡嗗搧鐗岋紝濡傜撼鏂紙NARS锛夈€佹堡濮喡风鐗癸紙Tom Ford锛夈€佽幈鐝€濡紙La Prairie锛夈€侀泤璇楀叞榛涳紙Est茅e Lauder锛夈€侀Ε钑捐瘲锛團resh锛夌瓑锛岀‘淇濅簡鎴戜滑鐨勪骇鍝佺嚎濮嬬粓璧板湪鏃跺皻涓庡搧璐ㄧ殑鍓嶆部銆?/p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 瑙嗚鍒嗛殧绗?-->
+    <div class="section-divider"></div>
+
+    <!-- 鍏充簬鎴戜滑 - 鏂扮増鏈?-->
+    <section id="about" class="about-section">
+        <div class="container-fluid p-0">
+            <div class="row about-wrapper g-0">
+                <div class="col-md-6 about-image-col">
+                    <div class="about-image">
+                        <img src="images/about-company.png" alt="鍏充簬鎴戜滑" class="img-fluid about-main-image">
+                    </div>
+                </div>
+                <div class="col-md-6 about-content-col">
+                    <div class="about-content">
+                        <div class="about-text-wrapper">
+                            <div class="about-text">
+                                <p class="about-intro">RuiTu & COSMETICS鏄疊2B鎵瑰彂鍜岃锤鏄撳叕鍙哥殑 ITALIAN LUXURY缇庡閮ㄩ棬锛屼笓闂ㄥ湪鏃跺皻鍜屽ア渚堝搧棰嗗煙鎻愪緵澶氱绫诲埆鐨勪骇鍝併€?/p>
+                                
+                                <p>AP ITALIAN LUXURY鐢盇lessandra Perrani鍜孲tefano Brasini浜?011骞村垱绔嬨€傚叕鍙稿凡鎵╁睍鍒板叏鐞冧紬澶氬浗瀹讹紝涓虹綉涓婂拰鎵瑰彂鍟嗕笟鐨勫鎴烽儴闂ㄦ彁渚涙湇鍔°€?/p>
+                                
+                                <p>AP BEAUTY & COSMETICS 鍝佺墝浜?016骞存垚绔嬶紝鏃ㄥ湪涓昏涓轰簹娲茬殑B2B瀹㈡埛鎻愪緵浼樿川鍝佺墝鍖栧鍝併€佽嵂鎴垮寲濡嗗搧銆侀姘村拰瀹跺涵棣欐按浜у搧銆?/p>
+                                
+                                <p>璇ュ叕鍙镐粠鍚勫鎴峰師娓呮磥鐨勬繁鍏ュ垎鏋愬紑濮嬶紝鍒板叾鍚庡嫟浠撳簱鏀堕泦璁㈠崟銆傜劧鍚庨€氳繃鍐呴儴浜哄憳鏀寔瀵?00%鐨勪骇鍝佽繘琛岃川閲忔鏌ャ€?/p>
+                                
+                                <p>姣忎竴鎵硅揣鐗╅兘缁忚繃瀛樼粏鍖呰鍜屼繚鎶わ紝浠ュ厤鍦ㄨ繍杈撹繃绋嬩腑鎹熷潖銆傛媿鎽勬瘡浠跺晢鍝佺殑鐓х墖鍜岃棰戜互鍙戠幇涓嶅悎鏍间箣澶勶紝骞跺皢鍏朵笌鍑嗙‘鐨勮川閲忔姤鍛婁竴璧锋彁渚涚粰瀹㈡埛銆?/p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 鍚堜綔鍝佺墝灞曠ず -->
+    <section class="partner-brands py-5">
+        <div class="container">
+            <div class="title-box">
+                <div class="col-lg-8 mx-auto text-center">
+                    <h2 class="section-title">鍚堜綔鍝佺墝</h2>
+                    <p class="lead">涓庝紬澶氬浗闄呯煡鍚嶅搧鐗屽缓绔嬮暱鏈熺ǔ瀹氱殑鍚堜綔鍏崇郴</p>
+                </div>
+            </div>
+            <div class="brand-wall">
+                <img src="images/brands/brand1.png" alt="鍝佺墝1" class="brand-logo">
+                <img src="images/brands/brand2.png" alt="鍝佺墝2" class="brand-logo">
+                <img src="images/brands/brand3.png" alt="鍝佺墝3" class="brand-logo">
+                <img src="images/brands/brand4.png" alt="鍝佺墝4" class="brand-logo">
+                <img src="images/brands/brand5.png" alt="鍝佺墝5" class="brand-logo">
+                <img src="images/brands/brand6.png" alt="鍝佺墝6" class="brand-logo">
+                <img src="images/brands/brand7.png" alt="鍝佺墝7" class="brand-logo">
+                <img src="images/brands/brand8.png" alt="鍝佺墝8" class="brand-logo">
+                <img src="images/brands/brand9.png" alt="鍝佺墝9" class="brand-logo">
+                <img src="images/brands/brand10.png" alt="鍝佺墝10" class="brand-logo">
+                <img src="images/brands/brand11.png" alt="鍝佺墝11" class="brand-logo">
+                <img src="images/brands/brand12.png" alt="鍝佺墝12" class="brand-logo">
+                <img src="images/brands/brand13.png" alt="鍝佺墝13" class="brand-logo">
+                <img src="images/brands/brand14.png" alt="鍝佺墝14" class="brand-logo">
+                <img src="images/brands/brand15.png" alt="鍝佺墝15" class="brand-logo">
+                <img src="images/brands/brand16.png" alt="鍝佺墝16" class="brand-logo">
+                <img src="images/brands/brand17.png" alt="鍝佺墝17" class="brand-logo">
+                <img src="images/brands/brand18.png" alt="鍝佺墝18" class="brand-logo">
+                <img src="images/brands/brand19.png" alt="鍝佺墝19" class="brand-logo">
+                <img src="images/brands/brand20.png" alt="鍝佺墝20" class="brand-logo">
+                <img src="images/brands/brand21.png" alt="鍝佺墝21" class="brand-logo">
+                <img src="images/brands/brand22.png" alt="鍝佺墝22" class="brand-logo">
+                <img src="images/brands/brand23.png" alt="鍝佺墝23" class="brand-logo">
+                <img src="images/brands/brand24.png" alt="鍝佺墝24" class="brand-logo">
+                <img src="images/brands/brand25.png" alt="鍝佺墝25" class="brand-logo">
+                <img src="images/brands/brand26.png" alt="鍝佺墝26" class="brand-logo">
+                <img src="images/brands/brand27.png" alt="鍝佺墝27" class="brand-logo">
+                <img src="images/brands/brand28.png" alt="鍝佺墝28" class="brand-logo">
+                <img src="images/brands/brand29.png" alt="鍝佺墝29" class="brand-logo">
+                <img src="images/brands/brand30.png" alt="鍝佺墝30" class="brand-logo">
+                <img src="images/brands/brand31.png" alt="鍝佺墝31" class="brand-logo">
+                <img src="images/brands/brand32.png" alt="鍝佺墝32" class="brand-logo">
+            </div>
+        </div>
+    </section>
+
+    <!-- 浜у搧灞曠ず -->
+    <section class="products-showcase" id="products">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto text-center mb-5">
+                    <h2 class="section-title">浜у搧灞曠ず</h2>
+                    <p class="lead">RuiTu & COSMETICS鎰忓懗鐫€涓撲笟鍜屽搧璐ㄣ€傚嚟鍊熷涓氬姟鍜屽鎴烽渶姹傜殑娣卞叆浜嗚В锛屽叕鍙稿彲浠ュ湪缇庡璐告槗涓氬姟涓负楂樼鍜屾柊鍏村搧鐗屾彁渚涘箍娉涚殑浜у搧閫夋嫨銆?/p>
+                </div>
+            </div>
+            <div class="prodotti">
+                <div class="uno">
+                    <span>鎶よ偆鍝?/span>
+                    <p>涓板瘜鐨勬姢鑲や骇鍝侊紝婊¤冻鐢峰コ鎶よ偆闇€姹傘€傞潰閮ㄦ姢鐞嗕粠娓呮磥銆佺埥鑲ゅ埌涔虫恫闈㈤湝锛屽悇鏈夊姛鏁堛€傝韩浣撴姢鐞嗘湁婊嬫鼎韬綋涔炽€?                        娣卞眰鎶よ偆闈犻潰鑶滅剷娲伙紝鎶楄“鑰佷骇鍝佹贰鍖栫粏绾广€佺揣鑷磋倢鑲ゃ€傞槻鏅掍骇鍝佹姷寰＄传澶栫嚎銆傚潎鏉ヨ嚜鍥介檯鐭ュ悕鍝佺墝锛屼负涓嶅悓鑲よ川銆佸勾榫勭殑娑堣垂鑰呭懙鎶よ倢鑲ゃ€?/p>
+                </div>
+                <div class="uno">
+                    <img src="images/products/skincare.jpg" alt="鎶よ偆鍜屽寲濡嗗搧">
+                </div>
+                <div class="uno">
+                    <span>鍖栧鍝?/span>
+                    <p>澶氭牱缇庡浜у搧锛岄€傞厤鐢峰コ濡嗗銆傚簳濡嗗惈绮夊簳娑层€佺矇楗笺€侀伄鐟曡啅锛屾晥鏋滃嚭鑹层€傚僵濡嗙被鐪煎奖鑹插僵涓板瘜锛岀溂绾跨瑪銆佺潾姣涜啅銆佺湁閮ㄤ骇鍝佸強鑵孩锛屾墦閫犵簿鑷翠簲瀹樸€傚彛绾㈤鑹插鏍凤紝淇閲嶅杞粨锛屽畾濡嗗柗闆剧淮鎸佸瀹广€傜敱鍏ㄧ悆椤跺皷鍝佺墝鍑哄搧锛屽姪鍔涘睍鐜扮嫭鐗归瓍鍔涖€?/p>
+                </div>
+                <div class="uno">
+                    <img src="images/products/pharma.jpg" alt="鑽埧鍖栧鍝?>
+                </div>
+                <div class="uno">
+                    <span>棣欐按鍝?/span>
+                    <p>鏈€濂界殑椤剁骇鍝佺墝鍜屽埄鍩洪姘翠负濂虫€э紝鐢锋€у拰鐢峰コ閫氱敤鐨勯珮绾ч姘寸殑骞挎硾鍒嗗竷銆?/p>
+                </div>
+                <div class="uno">
+                    <img src="images/products/perfume.jpg" alt="棣欐按鍝?>
+                </div>
+                <div class="uno">
+                    <span>褰╁鍝?/span>
+                    <p>绮夊簳锛岀溂褰卞拰鐪肩嚎绗旓紝鐫瘺鑶忥紝鑵孩锛岄伄鐟曡啅锛屽彛绾紝鎸囩敳娌广€傝琛屼笟涓墍鏈夋渶鏈夎叮鐨勬柊浜у搧锛屽叾涓寘鎷潵鑷渶钁楀悕鍜屾渶鍙楁杩庣殑鍝佺墝鐨勬渶浼樿川鍖栧鐢ㄥ搧銆?/p>
+                </div>
+                <div class="uno">
+                    <img src="images/products/makeup.jpg" alt="褰╁鍝?>
+                </div>
+                <div class="uno">
+                    <span>鐜棣欑簿</span>
+                    <p>绮鹃€夊拰绮捐嚧鐨勭幆澧冮姘达紝澶╃劧棣欑簿锛屽閲岀敤鍜屾苯杞﹂噷鐢ㄩ钖板灚銆傛渶浣崇殑棣欐皵鎵╂暎鍣紝灏嗚璁′笌鎰熷畼涓栫晫缁撳悎鍦ㄤ竴璧枫€?/p>
+                </div>
+                <div class="uno">
+                    <img src="images/products/fragrance.jpg" alt="鐜棣欑簿">
+                </div>
+                <div class="uno">
+                    <span>棣欒柊铚＄儧鍝?/span>
+                    <p>鐮旂┒鍜岄€夋嫨鏈€閫傚悎瀹剁敤鍜屾埛澶栫幆澧冪殑棣欒柊铚＄儧銆傜嫭鐗圭殑鎵嬪伐鍒朵綔鍜岃璁＄墿鍝侊紝钀ラ€犲嚭娓╅Θ鑸掗€傜殑姘涘洿銆?/p>
+                </div>
+                <div class="uno">
+                    <img src="images/products/candles.jpg" alt="棣欒柊铚＄儧鍝?>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 涓氬姟浼樺娍 -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center section-title mb-5">鎴戜滑鐨勪笟鍔′紭鍔?/h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <i class="fas fa-check-circle fa-3x mb-3 text-primary"></i>
+                            <h3 class="card-title">姝ｅ搧淇濊瘉</h3>
+                            <p class="card-text">鎴戜滑鐨勪笟鍔℃ā寮忎互绋冲畾鎬т笌鍙潬鎬т负鏍稿績锛屾壙璇哄彧鎻愪緵姝ｅ搧缇庡浜у搧锛屽苟纭繚鏁翠釜渚涘簲閾剧殑閫忔槑涓庡畬鏁存€с€?/p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <i class="fas fa-shipping-fast fa-3x mb-3 text-primary"></i>
+                            <h3 class="card-title">澶氬湴浜よ揣</h3>
+                            <p class="card-text">涓轰簡鎻愬崌鏈嶅姟鏁堢巼锛屾垜浠疄鐜颁簡澶氬湴浜よ揣鐨勭伒娲绘€э紝鏀寔鍦ㄩ娓€侀煩鍥戒互鍙婁繚绋庝粨绛夊涓湴鐐硅繘琛岃揣鐗╀氦浠樸€?/p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 text-center">
+                        <div class="card-body">
+                            <i class="fas fa-handshake fa-3x mb-3 text-primary"></i>
+                            <h3 class="card-title">涓撲笟鏈嶅姟</h3>
+                            <p class="card-text">鎴戜滑涓哄悇澶х數鍟嗗钩鍙般€侀娓湰鍦板疄浣撳簵閾轰互鍙婂叾浠栦緵搴旈摼浼佷笟鎻愪緵楂樻晥銆佷笓涓氱殑鏈嶅姟锛屾弧瓒冲楂樿川閲忕編濡嗕骇鍝佺殑闇€姹傘€?/p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 闊╁浗鍏嶇◣搴椾紭鍔?-->
+    <section class="korea-advantages">
+        <div class="container">
+            <div class="korea-advantages-title">
+                <h2>闊╁浗鍏嶇◣搴椾紭鍔?/h2>
+                <p class="subtitle">浣滀负闊╁浗椤剁骇鍏嶇◣搴楃殑鍚堜綔浼欎即锛屾垜浠负鎮ㄥ甫鏉ユ鍝佷繚闅滃拰浼樿川鏈嶅姟</p>
+            </div>
+            
+            <div class="advantage-cards">
+                <div class="advantage-card">
+                    <div class="card-image">
+                        <img src="images/suppliers/supplier1.jpg" alt="鏂扮綏鍏嶇◣搴?>
+                        <span class="card-tag">鎴樼暐鍚堜綔</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">鏂扮綏鍏嶇◣搴?/h3>
+                        <p class="card-description">鏂扮綏鍏嶇◣搴楁槸闊╁浗鏈€澶х殑鍏嶇◣璐墿鍦烘墍涔嬩竴锛屼綅浜庨灏斿競涓績锛屾垜浠笌鍏跺缓绔嬮暱鏈熺ǔ瀹氱殑鍚堜綔鍏崇郴銆?/p>
+                        <ul class="card-features">
+                            <li>鏈€鏂颁骇鍝侀鍙戜紭鍏堟潈</li>
+                            <li>闄愰噺鐗堝晢鍝佸畾鍚戜緵搴?/li>
+                            <li>鍏ㄥ搧绫讳骇鍝佷竴绔欏紡閲囪喘</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="advantage-card">
+                    <div class="card-image">
+                        <img src="images/suppliers/supplier2.jpg" alt="涔愬ぉ鍏嶇◣搴?>
+                        <span class="card-tag">鏍稿績浼欎即</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">涔愬ぉ鍏嶇◣搴?/h3>
+                        <p class="card-description">浣滀负涔愬ぉ鍏嶇◣搴楃殑浼樿川鍚堜綔鍟嗭紝鎴戜滑鑳藉浠ユ洿鍏风珵浜夊姏鐨勪环鏍硷紝涓哄鎴锋彁渚涗箰澶╃嫭瀹跺搧鐗岀殑缇庡浜у搧銆?/p>
+                        <ul class="card-features">
+                            <li>瀛ｅ害澶т績浼樺厛閲囪喘鏉?/li>
+                            <li>鍝佺墝鐙鎶樻墸娓犻亾</li>
+                            <li>闊╁浗鏈湡鍝佺墝璧勬簮</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="advantage-card">
+                    <div class="card-image">
+                        <img src="images/suppliers/supplier3.jpg" alt="鐜颁唬鍏嶇◣搴?>
+                        <span class="card-tag">鐩存帴閲囪喘</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">鐜颁唬鍏嶇◣搴?/h3>
+                        <p class="card-description">鐜颁唬鍏嶇◣搴楁槸闊╁浗椤剁骇鍏嶇◣杩愯惀鍟嗕箣涓€锛屾垜浠笌鐜颁唬寤虹珛浜嗘繁搴﹀悎浣滃叧绯伙紝鑾峰彇涓板瘜鐨勪紭璐ㄤ骇鍝佹笭閬撱€?/p>
+                        <ul class="card-features">
+                            <li>楂樼鍝佺墝鐗逛緵娓犻亾</li>
+                            <li>鐙鍟嗗搧浼樺厛渚涘簲</li>
+                            <li>绋冲畾鍙潬鐨勮揣婧愪繚闅?/li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="advantage-card">
+                    <div class="card-image">
+                        <img src="images/suppliers/supplier4.jpg" alt="鏂颁笘鐣屽厤绋庡簵">
+                        <span class="card-tag">涓撳睘閫氶亾</span>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">鏂颁笘鐣屽厤绋庡簵</h3>
+                        <p class="card-description">鏂颁笘鐣屽厤绋庡簵浠ュ叾绮鹃€夌殑鍥介檯鍝佺墝闂诲悕锛屾垜浠笌鏂颁笘鐣岀殑鍚堜綔涓哄鎴峰甫鏉ュ鍏冨寲鐨勯珮鍝佽川缇庡浜у搧銆?/p>
+                        <ul class="card-features">
+                            <li>鍥介檯椤剁骇鍝佺墝鐩翠緵</li>
+                            <li>涓撳睘浜у搧浼樺厛閲囪喘</li>
+                            <li>鏂板搧涓婂競蹇€熷搷搴?/li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 娲诲姩灞曚細 -->
+    <section class="exhibitions-section py-5" id="exhibitions">
+        <div class="container">
+            <h2 class="text-center section-title mb-4">娲诲姩灞曚細</h2>
+            <p class="text-center lead mb-5">鍙備笌鍏ㄧ悆缇庡灞曚細锛屽彂鐜拌涓氭渶鏂拌秼鍔夸笌浼樿川浜у搧</p>
+            
+            <div class="timeline-controls mb-4">
+                <button class="btn btn-outline-primary btn-sm active" data-filter="all">鍏ㄩ儴灞曚細</button>
+                <button class="btn btn-outline-primary btn-sm" data-filter="upcoming">鍗冲皢涓捐</button>
+                <button class="btn btn-outline-primary btn-sm" data-filter="past">宸茬粨鏉?/button>
+                <div class="timeline-nav">
+                    <button class="btn btn-link prev-btn" aria-label="涓婁竴涓?><i class="fas fa-chevron-left"></i></button>
+                    <button class="btn btn-link next-btn" aria-label="涓嬩竴涓?><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+            
+            <div class="exhibition-timeline">
+                <div class="timeline-container">
+                    <!-- 鏈潵灞曚細 -->
+                    <div class="exhibition-card upcoming" data-date="2023-11-15">
+                        <div class="card shadow-sm h-100">
+                            <div class="status-badge upcoming">鍗冲皢涓捐</div>
+                            <img src="images/exhibitions/cosmoprof-asia.jpg" class="card-img-top" alt="Cosmoprof浜氭床鍗氳浼?>
+                            <div class="card-body">
+                                <div class="exhibition-date">
+                                    <span class="month">11鏈?/span>
+                                    <span class="day">15</span>
+                                    <span class="year">2023</span>
+                                </div>
+                                <h4 class="card-title">Cosmoprof浜氭床鍗氳浼?/h4>
+                                <p class="card-location"><i class="fas fa-map-marker-alt"></i> 棣欐腐浼氳灞曡涓績</p>
+                                <p class="card-text">浜氬お鍦板尯鏈€澶х殑鍥介檯缇庡缇庡灞曚細锛屽睍绀烘渶鏂扮殑缇庡浜у搧鍜岃秼鍔裤€?/p>
+                                <div class="card-actions">
+                                    <a href="#" class="btn btn-primary btn-sm">浜嗚В璇︽儏</a>
+                                    <a href="#" class="btn btn-outline-primary btn-sm">棰勭害浼氶潰</a>
+                                </div>
+                            </div>
+                            <div class="card-footer text-muted">
+                                <span class="badge bg-info">灞曚綅: A1-C24</span>
+                                <span class="badge bg-secondary">鍓╀綑: 15澶?/span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="exhibition-card upcoming" data-date="2023-12-05">
+                        <div class="card shadow-sm h-100">
+                            <div class="status-badge upcoming">鍗冲皢涓捐</div>
+                            <img src="images/exhibitions/beauty-expo.jpg" class="card-img-top" alt="鍥介檯缇庡灞?>
+                            <div class="card-body">
+                                <div class="exhibition-date">
+                                    <span class="month">12鏈?/span>
+                                    <span class="day">05</span>
+                                    <span class="year">2023</span>
+                                </div>
+                                <h4 class="card-title">棣栧皵鍥介檯缇庡灞?/h4>
+                                <p class="card-location"><i class="fas fa-map-marker-alt"></i> 闊╁浗棣栧皵COEX灞曡涓績</p>
+                                <p class="card-text">闊╁浗鏈€鍏峰奖鍝嶅姏鐨勭編瀹瑰睍浼氾紝姹囬泦鍏ㄧ悆缇庡鍝佺墝鍜屾渶鏂伴煩濡嗘疆娴併€?/p>
+                                <div class="card-actions">
+                                    <a href="#" class="btn btn-primary btn-sm">浜嗚В璇︽儏</a>
+                                    <a href="#" class="btn btn-outline-primary btn-sm">棰勭害浼氶潰</a>
+                                </div>
+                            </div>
+                            <div class="card-footer text-muted">
+                                <span class="badge bg-info">灞曚綅: B2-D15</span>
+                                <span class="badge bg-secondary">鍓╀綑: 35澶?/span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 杩囧幓灞曚細 -->
+                    <div class="exhibition-card past" data-date="2023-06-20">
+                        <div class="card shadow-sm h-100">
+                            <div class="status-badge past">宸茬粨鏉?/div>
+                            <img src="images/exhibitions/china-beauty-expo.jpg" class="card-img-top" alt="涓浗缇庡鍗氳浼?>
+                            <div class="card-body">
+                                <div class="exhibition-date past-date">
+                                    <span class="month">06鏈?/span>
+                                    <span class="day">20</span>
+                                    <span class="year">2023</span>
+                                </div>
+                                <h4 class="card-title">涓浗缇庡鍗氳浼?/h4>
+                                <p class="card-location"><i class="fas fa-map-marker-alt"></i> 涓婃捣鏂板浗闄呭崥瑙堜腑蹇?/p>
+                                <p class="card-text">浜氭床瑙勬ā鏈€澶х殑缇庡琛屼笟涓撲笟灞曚細锛屾眹鑱氬叏鐞冮《绾х編濡嗗搧鐗屽拰鏈€鏂扮鎶€銆?/p>
+                                <div class="card-actions">
+                                    <a href="#" class="btn btn-secondary btn-sm">鏌ョ湅鍥為【</a>
+                                    <a href="#" class="btn btn-outline-secondary btn-sm">绮惧僵鐬棿</a>
+                                </div>
+                            </div>
+                            <div class="card-footer text-muted">
+                                <span class="badge bg-secondary">灞曚綅: E3-F18</span>
+                                <span class="badge bg-success">鍦嗘弧缁撴潫</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="exhibition-card past" data-date="2023-03-10">
+                        <div class="card shadow-sm h-100">
+                            <div class="status-badge past">宸茬粨鏉?/div>
+                            <img src="images/exhibitions/canton-fair.jpg" class="card-img-top" alt="骞夸氦浼?>
+                            <div class="card-body">
+                                <div class="exhibition-date past-date">
+                                    <span class="month">03鏈?/span>
+                                    <span class="day">10</span>
+                                    <span class="year">2023</span>
+                                </div>
+                                <h4 class="card-title">绗?33灞婂箍浜や細</h4>
+                                <p class="card-location"><i class="fas fa-map-marker-alt"></i> 骞垮窞鐞舵床灞曢</p>
+                                <p class="card-text">涓浗鏈€澶х殑璐告槗灞曚細锛屾垜浠睍绀轰簡鏈€鏂扮殑缇庡浜у搧鍜岃法澧冭锤鏄撹В鍐虫柟妗堛€?/p>
+                                <div class="card-actions">
+                                    <a href="#" class="btn btn-secondary btn-sm">鏌ョ湅鍥為【</a>
+                                    <a href="#" class="btn btn-outline-secondary btn-sm">绮惧僵鐬棿</a>
+                                </div>
+                            </div>
+                            <div class="card-footer text-muted">
+                                <span class="badge bg-secondary">灞曚綅: 3.2D15</span>
+                                <span class="badge bg-success">鍦嗘弧缁撴潫</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 姝ｅ搧淇濊瘉 -->
+    <section class="py-5 bg-light authenticity-section">
+        <div class="container">
+            <h2 class="text-center section-title mb-4">姝ｅ搧淇濊瘉</h2>
+            <p class="text-center lead mb-5">鎴戜滑鎻愪緵瀹屾暣鐨勬鍝佸嚟璇佸強璐拱璇佹槑锛岀‘淇濇瘡涓€浠朵骇鍝佺殑姝ｅ搧璐ㄩ噺</p>
+            <div class="authenticity-gallery">
+                <div class="authenticity-item">
+                    <div class="authenticity-img-container">
+                        <img src="images/authenticity/receipt1.jpg" alt="闊╁厤璐墿灏忕エ" class="img-fluid">
+                    </div>
+                    <div class="authenticity-details">
+                        <h4 class="authenticity-title">闊╁厤璐墿灏忕エ</h4>
+                        <p class="authenticity-id">鍗曞彿: KR22041501</p>
+                        <p class="authenticity-date">閲囪喘鏃ユ湡: 2022-04-15</p>
+                        <div class="authenticity-verify">
+                            <span class="authenticity-status">宸查獙璇?/span>
+                            <a class="authenticity-view">鏌ョ湅璇︽儏</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="authenticity-item">
+                    <div class="authenticity-img-container">
+                        <img src="images/authenticity/customs1.jpg" alt="鎶ュ叧鍗? class="img-fluid">
+                    </div>
+                    <div class="authenticity-details">
+                        <h4 class="authenticity-title">娴峰叧鎶ュ叧鍗?/h4>
+                        <p class="authenticity-id">鍗曞彿: CD22041602</p>
+                        <p class="authenticity-date">閫氬叧鏃ユ湡: 2022-04-16</p>
+                        <div class="authenticity-verify">
+                            <span class="authenticity-status">宸查獙璇?/span>
+                            <a class="authenticity-view">鏌ョ湅璇︽儏</a>
+                        </div>

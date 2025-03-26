@@ -550,144 +550,109 @@ document.addEventListener('DOMContentLoaded', function() {
         document.head.appendChild(style);
     }
 
-    // 处理联系表单提交
-    // 注释掉Netlify表单处理代码
-    /*
-    const contactForms = document.querySelectorAll('form[data-netlify="true"]');
-    contactForms.forEach(form => {
-        // 确保表单包含隐藏的表单名称字段
-        if (!form.querySelector('input[name="form-name"]')) {
-            const hiddenInput = document.createElement('input');
-            hiddenInput.type = 'hidden';
-            hiddenInput.name = 'form-name';
-            hiddenInput.value = form.getAttribute('name');
-            form.appendChild(hiddenInput);
-        }
-        
+    // 表单提交处理
+    // 获取所有FormSubmit表单
+    const forms = document.querySelectorAll('form[action^="https://formsubmit.co"]');
+    
+    forms.forEach(form => {
         form.addEventListener('submit', function(e) {
-            e.preventDefault(); // 始终阻止默认提交行为
+            // 阻止表单默认提交行为
+            e.preventDefault();
             
-            if (form.checkValidity()) {
-                // 显示加载状态
-                const submitBtn = form.querySelector('button[type="submit"]');
-                const originalBtnContent = submitBtn ? submitBtn.innerHTML : '';
-                if (submitBtn) {
-                    submitBtn.disabled = true;
-                    submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> 提交中...';
+            // 显示加载状态
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalBtnText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 提交中...';
+            
+            // 创建FormData对象
+            const formData = new FormData(form);
+            
+            // 添加额外的参数，确保FormSubmit处理正确
+            formData.append('_captcha', 'false');
+            
+            // 移除_next参数，阻止页面跳转
+            for (let pair of formData.entries()) {
+                if (pair[0] === '_next') {
+                    formData.delete('_next');
                 }
-                
-                // 创建表单数据对象
-                const formData = new FormData(form);
-                
-                // 确保表单名称字段正确 - 双重保证
-                const formName = form.getAttribute("name");
-                formData.set("form-name", formName);
-                
-                // 添加标识字段以帮助调试
-                formData.set("submission_source", "website_form");
-                formData.set("submission_time", new Date().toISOString());
-                
-                // 添加确保通知触发的字段
-                formData.set("notification_required", "true");
-                
-                // 记录表单数据 - 调试用
-                console.log('准备提交表单:', formName);
-                console.log('表单字段:');
-                for (let pair of formData.entries()) {
-                    console.log(pair[0] + ': ' + pair[1]);
-                }
-                
-                // 使用Netlify特殊提交方式
-                fetch("/", {
-                    method: 'POST',
-                    headers: { 
-                        "Content-Type": "application/x-www-form-urlencoded"
-                    },
-                    body: new URLSearchParams(formData).toString()
-                })
-                .then(response => {
-                    console.log('表单提交HTTP状态:', response.status);
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    return response;
-                })
-                .then(() => {
-                    // 创建成功提示
-                    const successAlert = document.createElement('div');
-                    successAlert.className = 'alert alert-success mt-3 mb-0 animate__animated animate__fadeIn';
-                    successAlert.style.backgroundColor = '#d4edda';
-                    successAlert.style.color = '#155724';
-                    successAlert.style.border = '1px solid #c3e6cb';
-                    successAlert.style.borderRadius = '5px';
-                    successAlert.style.padding = '15px';
-                    successAlert.style.marginTop = '20px';
-                    successAlert.innerHTML = `
-                        <i class="fas fa-check-circle me-2"></i>
-                        ${formName.includes('zh') ? '消息已成功发送！我们将尽快与您联系。' :
-                          formName.includes('en') ? 'Message sent successfully! We will contact you soon.' :
-                          '메시지가 성공적으로 전송되었습니다! 곧 연락 드리겠습니다.'} 
-                    `;
-                    
-                    // 插入成功提示
-                    form.reset(); // 清空表单
-                    form.appendChild(successAlert);
-                    
-                    // 滚动到成功消息
-                    successAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                    
-                    // 3秒后恢复按钮状态
-                    setTimeout(() => {
-                        if (submitBtn) {
-                            submitBtn.disabled = false;
-                            submitBtn.innerHTML = originalBtnContent;
-                        }
-                        
-                        // 5秒后移除成功提示
-                        setTimeout(() => {
-                            successAlert.remove();
-                        }, 5000);
-                    }, 3000);
-                    
-                    // 记录成功信息到控制台
-                    console.log('表单提交成功:', formName);
-                })
-                .catch(error => {
-                    // 处理错误
-                    console.error('表单提交错误:', error);
-                    
-                    // 创建错误提示
-                    const errorAlert = document.createElement('div');
-                    errorAlert.className = 'alert alert-danger mt-3 mb-0';
-                    errorAlert.innerHTML = `
-                        <i class="fas fa-exclamation-circle me-2"></i>
-                        ${formName.includes('zh') ? '抱歉，提交失败。请稍后再试或直接联系我们。' :
-                          formName.includes('en') ? 'Sorry, submission failed. Please try again later or contact us directly.' :
-                          '죄송합니다, 제출에 실패했습니다. 나중에 다시 시도하거나 직접 문의하세요.'}
-                        <br><small class="text-muted">错误详情: ${error.message}</small>
-                    `;
-                    
-                    // 插入错误提示
-                    form.appendChild(errorAlert);
-                    
-                    // 恢复按钮状态
-                    if (submitBtn) {
-                        submitBtn.disabled = false;
-                        submitBtn.innerHTML = originalBtnContent;
-                    }
-                    
-                    // 5秒后移除错误提示
-                    setTimeout(() => {
-                        errorAlert.remove();
-                    }, 5000);
-                });
-            } else {
-                // 表单验证失败，触发浏览器的默认验证提示
-                form.reportValidity();
             }
+            
+            // 发送AJAX请求
+            fetch('https://formsubmit.co/ajax/' + form.getAttribute('action').split('/').pop(), {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('网络错误，请稍后再试');
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('表单提交成功:', data);
+                
+                // 清空表单
+                form.reset();
+                
+                // 创建成功消息容器
+                const successDiv = document.createElement('div');
+                successDiv.className = 'alert alert-success mt-3 text-center';
+                successDiv.style.padding = '15px';
+                successDiv.innerHTML = `
+                    <i class="fas fa-check-circle me-2"></i>
+                    <strong>谢谢！</strong> 您的表单已成功提交。我们会尽快与您联系。
+                `;
+                
+                // 将成功消息插入表单后
+                form.appendChild(successDiv);
+                
+                // 恢复按钮状态
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+                
+                // 5秒后移除成功消息
+                setTimeout(() => {
+                    successDiv.style.transition = 'opacity 0.5s';
+                    successDiv.style.opacity = '0';
+                    setTimeout(() => {
+                        successDiv.remove();
+                    }, 500);
+                }, 5000);
+            })
+            .catch(error => {
+                console.error('表单提交错误:', error);
+                
+                // 创建错误消息容器
+                const errorDiv = document.createElement('div');
+                errorDiv.className = 'alert alert-danger mt-3 text-center';
+                errorDiv.style.padding = '15px';
+                errorDiv.innerHTML = `
+                    <i class="fas fa-exclamation-circle me-2"></i>
+                    <strong>提交失败</strong> ${error.message}
+                `;
+                
+                // 将错误消息插入表单后
+                form.appendChild(errorDiv);
+                
+                // 恢复按钮状态
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnText;
+                
+                // 5秒后移除错误消息
+                setTimeout(() => {
+                    errorDiv.style.transition = 'opacity 0.5s';
+                    errorDiv.style.opacity = '0';
+                    setTimeout(() => {
+                        errorDiv.remove();
+                    }, 500);
+                }, 5000);
+            });
         });
     });
-    */
 
     // 处理展会时间轴
     const timelineContainer = document.querySelector('.timeline-container');

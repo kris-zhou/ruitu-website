@@ -347,118 +347,95 @@
     <section class="exhibitions-section py-5" id="exhibitions">
         <div class="container">
             <h2 class="text-center section-title mb-4">活动展会</h2>
-            <p class="text-center lead mb-5">参与全球美妆展会，发现行业最新趋势与优质产品</p>
-            
-            <div class="timeline-controls mb-4">
-                <button class="btn btn-outline-primary btn-sm active" data-filter="all">全部展会</button>
-                <button class="btn btn-outline-primary btn-sm" data-filter="upcoming">即将举行</button>
-                <button class="btn btn-outline-primary btn-sm" data-filter="past">已结束</button>
-                <div class="timeline-nav">
-                    <button class="btn btn-link prev-btn" aria-label="上一个"><i class="fas fa-chevron-left"></i></button>
-                    <button class="btn btn-link next-btn" aria-label="下一个"><i class="fas fa-chevron-right"></i></button>
-                </div>
-            </div>
-            
-            <div class="exhibition-timeline">
-                <div class="timeline-container">
-                    <!-- 未来展会 -->
-                    <div class="exhibition-card upcoming" data-date="2023-11-15">
-                        <div class="card shadow-sm h-100">
-                            <div class="status-badge upcoming">即将举行</div>
-                            <img src="images/exhibitions/cosmoprof-asia.jpg" class="card-img-top" alt="Cosmoprof亚洲博览会">
-                            <div class="card-body">
-                                <div class="exhibition-date">
-                                    <span class="month">11月</span>
-                                    <span class="day">15</span>
-                                    <span class="year">2023</span>
-                                </div>
-                                <h4 class="card-title">Cosmoprof亚洲博览会</h4>
-                                <p class="card-location"><i class="fas fa-map-marker-alt"></i> 香港会议展览中心</p>
-                                <p class="card-text">亚太地区最大的国际美容美妆展会，展示最新的美妆产品和趋势。</p>
-                                <div class="card-actions">
-                                    <a href="#" class="btn btn-primary btn-sm">了解详情</a>
-                                    <a href="#" class="btn btn-outline-primary btn-sm">预约会面</a>
+            <p class="text-center lead mb-5">参与全球美容展会，发现行业最新趋势与优质产品</p>
+
+            <!-- 杂志风格布局 -->
+            <div class="magazine-layout">
+                <div class="row g-4">
+                    <!-- 主展会特色区域 -->
+                    <div class="col-lg-7">
+                        <div class="main-exhibition">
+                            <div class="main-image-container position-relative">
+                                <div class="status-badge featured">特色展会</div>
+                                <img src="images/exhibitions/vietnam-expo.jpg" class="img-fluid shadow" alt="越南国际美容展">
+                                <div class="overlay-info">
+                                    <div class="exhibition-date">
+                                        <span class="month">09月</span>
+                                        <span class="day">18</span>
+                                        <span class="year">2023</span>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="card-footer text-muted">
-                                <span class="badge bg-info">展位: A1-C24</span>
-                                <span class="badge bg-secondary">剩余: 15天</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="exhibition-card upcoming" data-date="2023-12-05">
-                        <div class="card shadow-sm h-100">
-                            <div class="status-badge upcoming">即将举行</div>
-                            <img src="images/exhibitions/beauty-expo.jpg" class="card-img-top" alt="国际美容展">
-                            <div class="card-body">
-                                <div class="exhibition-date">
-                                    <span class="month">12月</span>
-                                    <span class="day">05</span>
-                                    <span class="year">2023</span>
+                            <div class="main-content mt-4">
+                                <h3 class="exhibition-title">越南国际美容展</h3>
+                                <p class="location"><i class="fas fa-map-marker-alt"></i> 胡志明市西贡会展中心</p>
+                                <div class="row mt-3">
+                                    <div class="col-md-6">
+                                        <div class="exhibition-highlights">
+                                            <h5><i class="fas fa-star"></i> 展会亮点</h5>
+                                            <ul class="list-unstyled">
+                                                <li><i class="fas fa-check"></i> 东南亚地区最具影响力美容展</li>
+                                                <li><i class="fas fa-check"></i> 300+国际知名品牌参展</li>
+                                                <li><i class="fas fa-check"></i> 专业买家现场洽谈机会</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="exhibition-stats">
+                                            <h5><i class="fas fa-chart-line"></i> 参展成果</h5>
+                                            <div class="stat-item">
+                                                <span class="stat-number">120+</span>
+                                                <span class="stat-label">专业客户洽谈</span>
+                                            </div>
+                                            <div class="stat-item">
+                                                <span class="stat-number">25+</span>
+                                                <span class="stat-label">合作意向</span>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <h4 class="card-title">首尔国际美容展</h4>
-                                <p class="card-location"><i class="fas fa-map-marker-alt"></i> 韩国首尔COEX展览中心</p>
-                                <p class="card-text">韩国最具影响力的美容展会，汇集全球美妆品牌和最新韩妆潮流。</p>
-                                <div class="card-actions">
-                                    <a href="#" class="btn btn-primary btn-sm">了解详情</a>
-                                    <a href="#" class="btn btn-outline-primary btn-sm">预约会面</a>
+                                <div class="exhibition-description mt-3">
+                                    <p>我们很荣幸参加了2023年越南国际美容展，这是东南亚地区最具影响力的专业美容展会之一。通过此次展会，我们展示了最新的韩国和日本化妆品系列，吸引了众多当地分销商和专业买家。现场洽谈环节中，我们与多家越南本地美容连锁店建立了初步合作意向，为开拓东南亚市场奠定了坚实基础。</p>
                                 </div>
-                            </div>
-                            <div class="card-footer text-muted">
-                                <span class="badge bg-info">展位: B2-D15</span>
-                                <span class="badge bg-secondary">剩余: 35天</span>
                             </div>
                         </div>
                     </div>
-                    
-                    <!-- 过去展会 -->
-                    <div class="exhibition-card past" data-date="2023-06-20">
-                        <div class="card shadow-sm h-100">
-                            <div class="status-badge past">已结束</div>
-                            <img src="images/exhibitions/china-beauty-expo.jpg" class="card-img-top" alt="中国美容博览会">
-                            <div class="card-body">
-                                <div class="exhibition-date past-date">
-                                    <span class="month">06月</span>
-                                    <span class="day">20</span>
-                                    <span class="year">2023</span>
-                                </div>
-                                <h4 class="card-title">中国美容博览会</h4>
-                                <p class="card-location"><i class="fas fa-map-marker-alt"></i> 上海新国际博览中心</p>
-                                <p class="card-text">亚洲规模最大的美容行业专业展会，汇聚全球顶级美妆品牌和最新科技。</p>
-                                <div class="card-actions">
-                                    <a href="#" class="btn btn-secondary btn-sm">查看回顾</a>
-                                    <a href="#" class="btn btn-outline-secondary btn-sm">精彩瞬间</a>
+
+                    <!-- 右侧展会信息区域 -->
+                    <div class="col-lg-5">
+                        <div class="side-content">
+                            <!-- 展会回顾卡片 -->
+                            <div class="exhibition-review card shadow-sm mb-4">
+                                <div class="card-body">
+                                    <h4 class="review-title"><i class="fas fa-file-alt"></i> 展会回顾</h4>
+                                    <div class="review-content mt-3">
+                                        <p>越南展会是我们开拓东南亚市场的重要一步。在为期3天的展会中，我们团队与120多位潜在客户进行了深入交流，介绍了我们的产品线和供应链优势。</p>
+                                        <p>特别值得一提的是，我们的韩国有机护肤系列和日本彩妆产品受到了越南买家的高度关注，许多专业买家对我们的正品保证和全球直采服务表示赞赏。</p>
+                                    </div>
+                                    <blockquote class="review-quote">
+                                        <p>"参加越南美容展让我们看到了东南亚市场的巨大潜力，当地消费者对高品质亚洲美妆产品的需求正在快速增长。"</p>
+                                        <footer>— 市场部经理 李明</footer>
+                                    </blockquote>
                                 </div>
                             </div>
-                            <div class="card-footer text-muted">
-                                <span class="badge bg-secondary">展位: E3-F18</span>
-                                <span class="badge bg-success">圆满结束</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="exhibition-card past" data-date="2023-03-10">
-                        <div class="card shadow-sm h-100">
-                            <div class="status-badge past">已结束</div>
-                            <img src="images/exhibitions/canton-fair.jpg" class="card-img-top" alt="广交会">
-                            <div class="card-body">
-                                <div class="exhibition-date past-date">
-                                    <span class="month">03月</span>
-                                    <span class="day">10</span>
-                                    <span class="year">2023</span>
+
+                            <!-- 展会图片集 -->
+                            <div class="exhibition-gallery">
+                                <h4 class="gallery-title"><i class="fas fa-images"></i> 展会花絮</h4>
+                                <div class="row g-2 mt-3">
+                                    <div class="col-6">
+                                        <img src="images/exhibitions/vietnam-expo-1.jpg" class="img-fluid gallery-img" alt="展位展示">
+                                    </div>
+                                    <div class="col-6">
+                                        <img src="images/exhibitions/vietnam-expo-2.jpg" class="img-fluid gallery-img" alt="产品展示">
+                                    </div>
+                                    <div class="col-6">
+                                        <img src="images/exhibitions/vietnam-expo-3.jpg" class="img-fluid gallery-img" alt="客户交流">
+                                    </div>
+                                    <div class="col-6">
+                                        <img src="images/exhibitions/vietnam-expo-4.jpg" class="img-fluid gallery-img" alt="团队合影">
+                                    </div>
                                 </div>
-                                <h4 class="card-title">第133届广交会</h4>
-                                <p class="card-location"><i class="fas fa-map-marker-alt"></i> 广州琶洲展馆</p>
-                                <p class="card-text">中国最大的贸易展会，我们展示了最新的美妆产品和跨境贸易解决方案。</p>
-                                <div class="card-actions">
-                                    <a href="#" class="btn btn-secondary btn-sm">查看回顾</a>
-                                    <a href="#" class="btn btn-outline-secondary btn-sm">精彩瞬间</a>
-                                </div>
-                            </div>
-                            <div class="card-footer text-muted">
-                                <span class="badge bg-secondary">展位: 3.2D15</span>
-                                <span class="badge bg-success">圆满结束</span>
                             </div>
                         </div>
                     </div>
@@ -781,9 +758,8 @@
                         <p class="text-muted text-center mb-4">请填写以下表单，我们将尽快回复您的咨询</p>
                         
                         <form class="contact-form" action="https://formsubmit.co/z17790805689@outlook.com" method="POST">
-                            <input type="hidden" name="_subject" value="瑞图网站表单提交">
+                            <input type="hidden" name="_subject" value="睿途网站表单提交（中文）">
                             <input type="hidden" name="_captcha" value="false">
-                            <input type="hidden" name="_next" value="https://scintillating-puppy-d569de.pages.dev/thank-you.html">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3">
