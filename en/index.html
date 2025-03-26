@@ -516,44 +516,42 @@
                             <div class="form-group">
                                 <div class="row g-3">
                                     <div class="col-md-6">
-                                        <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
-                                        <input type="text" name="name" id="name" class="form-control" placeholder="Your name" required>
+                                        <div class="form-group mb-3">
+                                            <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
+                                            <input type="text" name="name" id="name" class="form-control" placeholder="Your name" required>
+                                        </div>
                                     </div>
                                     <div class="col-md-6">
-                                        <div class="form-floating mb-3">
-                                            <input type="tel" class="form-control" id="phoneInput" name="phone" placeholder="Enter your phone number">
-                                            <label for="phoneInput">Phone Number</label>
+                                        <div class="form-group mb-3">
+                                            <label for="phone" class="form-label">Phone (Optional)</label>
+                                            <input type="tel" class="form-control" id="phone" name="phone" placeholder="Your phone number">
                                         </div>
                                     </div>
                                 </div>
-                                
-                                <div class="form-floating mb-3">
-                                    <input type="email" class="form-control" id="emailInput" name="email" placeholder="Enter your email" required>
-                                    <label for="emailInput">Email Address</label>
-                                </div>
-                                
-                                <div class="form-floating mb-3">
-                                    <select class="form-select" id="subjectSelect" name="topic">
-                                        <option selected disabled value="">Select a topic</option>
-                                        <option value="product">Product Inquiry</option>
-                                        <option value="price">Price Inquiry</option>
-                                        <option value="logistics">Logistics Inquiry</option>
-                                        <option value="cooperation">Business Cooperation</option>
-                                        <option value="other">Other</option>
-                                    </select>
-                                    <label for="subjectSelect">Topic</label>
-                                </div>
-                                
-                                <div class="form-floating mb-3">
-                                    <textarea class="form-control" id="messageInput" name="message" placeholder="Enter your message" style="height: 120px" required></textarea>
-                                    <label for="messageInput">Your Message</label>
-                                </div>
-                                
-                                <div class="text-center mt-4">
-                                    <button type="submit" class="btn btn-primary btn-lg px-4 py-2">
-                                        <i class="fas fa-paper-plane me-2"></i>Send Message
-                                    </button>
-                                </div>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="email" class="form-label">Email Address <span class="text-danger">*</span></label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Your email address" required>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="topic" class="form-label">Topic</label>
+                                <select class="form-select" id="topic" name="topic">
+                                    <option selected disabled value="">Select a topic</option>
+                                    <option value="product">Product Inquiry</option>
+                                    <option value="price">Price Inquiry</option>
+                                    <option value="logistics">Logistics Inquiry</option>
+                                    <option value="cooperation">Business Cooperation</option>
+                                    <option value="other">Other Inquiry</option>
+                                </select>
+                            </div>
+                            <div class="form-group mb-3">
+                                <label for="message" class="form-label">Message <span class="text-danger">*</span></label>
+                                <textarea class="form-control" id="message" name="message" placeholder="Your message" style="height: 120px" required></textarea>
+                            </div>
+                            <div class="text-center mt-4">
+                                <button type="submit" class="btn btn-primary btn-lg px-4 py-2">
+                                    <i class="fas fa-paper-plane me-2"></i>Send Message
+                                </button>
                             </div>
                         </form>
                     </div>

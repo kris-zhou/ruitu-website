@@ -519,20 +519,21 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-floating mb-3">
-                                        <input type="tel" class="form-control" id="phoneInput" name="phone" placeholder="전화번호를 입력하세요">
-                                        <label for="phoneInput">전화번호 (선택사항)</label>
+                                    <div class="form-group mb-3">
+                                        <label for="phone" class="form-label">전화번호 (선택사항)</label>
+                                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="전화번호를 입력하세요">
                                     </div>
                                 </div>
                             </div>
                             
-                            <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="emailInput" name="email" placeholder="이메일을 입력하세요" required>
-                                <label for="emailInput">이메일 주소</label>
+                            <div class="form-group mb-3">
+                                <label for="email" class="form-label">이메일 주소 <span class="text-danger">*</span></label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="이메일을 입력하세요" required>
                             </div>
                             
-                            <div class="form-floating mb-3">
-                                <select class="form-select" id="subjectSelect" name="topic">
+                            <div class="form-group mb-3">
+                                <label for="topic" class="form-label">주제</label>
+                                <select class="form-select" id="topic" name="topic">
                                     <option selected disabled value="">주제를 선택해주세요</option>
                                     <option value="product">제품 문의</option>
                                     <option value="price">가격 문의</option>
@@ -540,12 +541,11 @@
                                     <option value="cooperation">업무 협력</option>
                                     <option value="other">기타 문의</option>
                                 </select>
-                                <label for="subjectSelect">주제</label>
                             </div>
                             
-                            <div class="form-floating mb-3">
-                                <textarea class="form-control" id="messageInput" name="message" placeholder="메시지를 입력하세요" style="height: 120px" required></textarea>
-                                <label for="messageInput">메시지 내용</label>
+                            <div class="form-group mb-3">
+                                <label for="message" class="form-label">메시지 내용 <span class="text-danger">*</span></label>
+                                <textarea class="form-control" id="message" name="message" placeholder="메시지를 입력하세요" style="height: 120px" required></textarea>
                             </div>
                             
                             <div class="text-center mt-4">

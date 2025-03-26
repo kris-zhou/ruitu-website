@@ -768,30 +768,35 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-floating mb-3">
-                                        <input type="tel" class="form-control" id="phoneInput" name="phone" placeholder="请输入您的电话">
-                                        <label for="phoneInput">电话号码（选填）</label>
+                                    <div class="form-group mb-3">
+                                        <label for="phone" class="form-label">电话（选填）</label>
+                                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="您的联系电话">
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="emailInput" name="email" placeholder="请输入邮箱地址" required>
-                                <label for="emailInput">电子邮箱</label>
+                            
+                            <div class="form-group mb-3">
+                                <label for="email" class="form-label">邮箱地址 <span class="text-danger">*</span></label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="您的邮箱地址" required>
                             </div>
-                            <div class="form-floating mb-3">
-                                <select class="form-select" id="subjectSelect" name="subject">
+                            
+                            <div class="form-group mb-3">
+                                <label for="topic" class="form-label">咨询主题</label>
+                                <select class="form-select" id="topic" name="topic">
                                     <option selected disabled value="">请选择咨询主题</option>
                                     <option value="product">产品咨询</option>
-                                    <option value="cooperation">商务合作</option>
                                     <option value="price">价格咨询</option>
-                                    <option value="others">其他问题</option>
+                                    <option value="logistics">物流咨询</option>
+                                    <option value="cooperation">商务合作</option>
+                                    <option value="other">其他咨询</option>
                                 </select>
-                                <label for="subjectSelect">咨询主题</label>
                             </div>
-                            <div class="form-floating mb-3">
-                                <textarea class="form-control" id="messageInput" name="message" placeholder="请输入您的留言" style="height: 120px" required></textarea>
-                                <label for="messageInput">您的留言</label>
+                            
+                            <div class="form-group mb-3">
+                                <label for="message" class="form-label">留言内容 <span class="text-danger">*</span></label>
+                                <textarea class="form-control" id="message" name="message" placeholder="请输入您的留言内容" style="height: 120px" required></textarea>
                             </div>
+                            
                             <div class="text-center mt-4">
                                 <button type="submit" class="btn btn-primary btn-lg px-4 py-2">
                                     <i class="fas fa-paper-plane me-2"></i>发送留言
