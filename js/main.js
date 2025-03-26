@@ -611,24 +611,28 @@ document.addEventListener('DOMContentLoaded', function() {
                     return response;
                 })
                 .then(() => {
-                    // 显示成功消息
-                    const successMessage = document.createElement('div');
-                    successMessage.className = 'form-message success';
-                    successMessage.style.cssText = `
-                        background-color: #e8f5e9;
-                        color: #2e7d32;
-                        padding: 15px;
-                        border-radius: 4px;
-                        margin-bottom: 20px;
-                        border: 1px solid #a5d6a7;
-                        font-size: 14px;
-                        line-height: 1.5;
+                    // 创建成功提示
+                    const successAlert = document.createElement('div');
+                    successAlert.className = 'alert alert-success mt-3 mb-0 animate__animated animate__fadeIn';
+                    successAlert.style.backgroundColor = '#d4edda';
+                    successAlert.style.color = '#155724';
+                    successAlert.style.border = '1px solid #c3e6cb';
+                    successAlert.style.borderRadius = '5px';
+                    successAlert.style.padding = '15px';
+                    successAlert.style.marginTop = '20px';
+                    successAlert.innerHTML = `
+                        <i class="fas fa-check-circle me-2"></i>
+                        ${formName.includes('zh') ? '消息已成功发送！我们将尽快与您联系。' :
+                          formName.includes('en') ? 'Message sent successfully! We will contact you soon.' :
+                          '메시지가 성공적으로 전송되었습니다! 곧 연락 드리겠습니다.'} 
                     `;
-                    successMessage.textContent = '提交成功！我们会尽快与您联系。';
-                    form.insertBefore(successMessage, form.firstChild);
-
-                    // 清空表单
-                    form.reset();
+                    
+                    // 插入成功提示
+                    form.reset(); // 清空表单
+                    form.appendChild(successAlert);
+                    
+                    // 滚动到成功消息
+                    successAlert.scrollIntoView({ behavior: 'smooth', block: 'center' });
                     
                     // 3秒后恢复按钮状态
                     setTimeout(() => {
@@ -639,13 +643,12 @@ document.addEventListener('DOMContentLoaded', function() {
                         
                         // 5秒后移除成功提示
                         setTimeout(() => {
-                            successMessage.remove();
+                            successAlert.remove();
                         }, 5000);
                     }, 3000);
                     
                     // 记录成功信息到控制台
                     console.log('表单提交成功:', formName);
-                    alert('表单提交成功！\n请注意查收邮件通知，有时邮件可能会进入垃圾邮件文件夹。\n您也可以在Netlify后台查看表单提交记录。');
                 })
                 .catch(error => {
                     // 处理错误
