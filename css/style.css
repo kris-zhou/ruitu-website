@@ -3442,3 +3442,257 @@ html, body {
     font-size: 20px;
   }
 }
+
+/* 活动展会样式 */
+.exhibitions-section {
+    position: relative;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+.timeline-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.timeline-controls .btn {
+    margin-right: 10px;
+    border-radius: 20px;
+    padding: 0.375rem 1rem;
+    transition: all 0.3s ease;
+}
+
+.timeline-controls .btn.active {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.timeline-nav {
+    display: flex;
+    align-items: center;
+}
+
+.timeline-nav .btn-link {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    padding: 0.375rem 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.timeline-nav .btn-link:hover {
+    color: var(--secondary-color);
+    transform: scale(1.2);
+}
+
+.exhibition-timeline {
+    position: relative;
+    overflow: hidden;
+    padding: 10px 0;
+}
+
+.timeline-container {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 10px 0 30px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) transparent;
+    -webkit-overflow-scrolling: touch;
+}
+
+.timeline-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.timeline-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.timeline-container::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 4px;
+}
+
+.timeline-container::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
+
+.exhibition-card {
+    flex: 0 0 350px;
+    position: relative;
+    transition: all 0.4s ease;
+}
+
+.exhibition-card:hover {
+    transform: translateY(-5px);
+}
+
+.exhibition-card .card {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.exhibition-card .card:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.status-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 5px 12px;
+    border-radius: 20px;
+    z-index: 2;
+}
+
+.status-badge.upcoming {
+    background-color: #28a745;
+}
+
+.status-badge.past {
+    background-color: #6c757d;
+}
+
+.exhibition-card .card-img-top {
+    height: 180px;
+    object-fit: cover;
+    object-position: center;
+    transition: all 0.5s ease;
+}
+
+.exhibition-card:hover .card-img-top {
+    transform: scale(1.05);
+}
+
+.exhibition-date {
+    position: absolute;
+    top: -20px;
+    left: 20px;
+    background-color: var(--primary-color);
+    color: white;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.exhibition-card:hover .exhibition-date {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+}
+
+.exhibition-date .month {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    margin-bottom: -5px;
+}
+
+.exhibition-date .day {
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.exhibition-date .year {
+    font-size: 0.7rem;
+    opacity: 0.9;
+}
+
+.past-date {
+    background-color: #6c757d;
+}
+
+.exhibition-card .card-body {
+    padding-top: 30px;
+}
+
+.exhibition-card .card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+}
+
+.exhibition-card .card-location {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+}
+
+.exhibition-card .card-location i {
+    margin-right: 5px;
+    color: var(--primary-color);
+}
+
+.exhibition-card .card-text {
+    margin-bottom: 1.5rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.exhibition-card .card-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.exhibition-card .card-footer {
+    background-color: rgba(0, 0, 0, 0.02);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.exhibition-card .badge {
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+/* 过滤效果 */
+.exhibition-card.filtered {
+    display: none;
+}
+
+/* 响应式调整 */
+@media (max-width: 767.98px) {
+    .timeline-controls {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .timeline-nav {
+        align-self: center;
+    }
+    
+    .exhibition-card {
+        flex: 0 0 300px;
+    }
+    
+    .exhibition-date {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .exhibition-date .day {
+        font-size: 1.25rem;
+    }
+}
