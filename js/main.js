@@ -568,18 +568,42 @@ document.addEventListener('DOMContentLoaded', function() {
             // 创建FormData对象
             const formData = new FormData(form);
             
-            // 添加额外的参数，确保FormSubmit处理正确
-            formData.append('_captcha', 'false');
+            // 移除可能导致问题的字段
+            formData.delete('_next');
             
-            // 移除_next参数，阻止页面跳转
-            for (let pair of formData.entries()) {
-                if (pair[0] === '_next') {
-                    formData.delete('_next');
+            // 确保关闭验证码
+            formData.set('_captcha', 'false');
+            
+            // 添加额外的参数，优化邮件格式
+            formData.set('_template', 'table'); // 使用表格模板
+            formData.set('_autoresponse', '感谢您的留言，我们已收到您的表单提交，将尽快与您联系。'); // 设置自动回复
+            
+            // 处理表单数据，确保格式正确，避免导致邮件刷新的内容
+            const formEntries = Array.from(formData.entries());
+            const formObject = {};
+            
+            formEntries.forEach(entry => {
+                // 跳过FormSubmit特殊字段
+                if (!entry[0].startsWith('_')) {
+                    // 净化内容，避免HTML和JS内容
+                    let value = entry[1];
+                    if (typeof value === 'string') {
+                        // 转义HTML标签
+                        value = value.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+                    }
+                    formObject[entry[0]] = value;
                 }
-            }
+            });
             
-            // 发送AJAX请求
-            fetch('https://formsubmit.co/ajax/' + form.getAttribute('action').split('/').pop(), {
+            // 添加时间戳，避免缓存问题
+            formObject.timestamp = new Date().toISOString();
+            
+            // 转换为URL编码格式
+            const jsonData = JSON.stringify(formObject);
+            formData.set('_data', jsonData);
+            
+            // 使用FormSubmit的AJAX API直接提交
+            fetch(form.action.replace('https://formsubmit.co/', 'https://formsubmit.co/ajax/'), {
                 method: 'POST',
                 body: formData,
                 headers: {
