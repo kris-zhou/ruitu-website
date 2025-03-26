@@ -551,6 +551,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // 处理联系表单提交
+    // 注释掉Netlify表单处理代码
+    /*
     const contactForms = document.querySelectorAll('form[data-netlify="true"]');
     contactForms.forEach(form => {
         // 确保表单包含隐藏的表单名称字段
@@ -684,6 +686,104 @@ document.addEventListener('DOMContentLoaded', function() {
                 form.reportValidity();
             }
         });
+    });
+    */
+
+    // 处理展会时间轴
+    const timelineContainer = document.querySelector('.timeline-container');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    const filterBtns = document.querySelectorAll('.timeline-controls button[data-filter]');
+    const exhibitionCards = document.querySelectorAll('.exhibition-card');
+    
+    if (!timelineContainer || !prevBtn || !nextBtn) return;
+    
+    // 初始化滚动位置
+    let scrollPosition = 0;
+    const cardWidth = 370; // 卡片宽度 + 间距
+    
+    // 滚动到下一个卡片
+    nextBtn.addEventListener('click', function() {
+        scrollPosition = Math.min(scrollPosition + cardWidth, timelineContainer.scrollWidth - timelineContainer.clientWidth);
+        timelineContainer.scrollTo({
+            left: scrollPosition,
+            behavior: 'smooth'
+        });
+    });
+    
+    // 滚动到上一个卡片
+    prevBtn.addEventListener('click', function() {
+        scrollPosition = Math.max(scrollPosition - cardWidth, 0);
+        timelineContainer.scrollTo({
+            left: scrollPosition,
+            behavior: 'smooth'
+        });
+    });
+    
+    // 监听滚动事件，更新滚动位置
+    timelineContainer.addEventListener('scroll', function() {
+        scrollPosition = timelineContainer.scrollLeft;
+        
+        // 更新按钮状态
+        prevBtn.disabled = scrollPosition <= 0;
+        nextBtn.disabled = scrollPosition >= timelineContainer.scrollWidth - timelineContainer.clientWidth;
+    });
+    
+    // 初始化按钮状态
+    prevBtn.disabled = true;
+    nextBtn.disabled = timelineContainer.scrollWidth <= timelineContainer.clientWidth;
+    
+    // 处理筛选功能
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // 移除所有按钮的激活状态
+            filterBtns.forEach(b => b.classList.remove('active'));
+            
+            // 添加当前按钮的激活状态
+            this.classList.add('active');
+            
+            // 获取筛选类型
+            const filter = this.getAttribute('data-filter');
+            
+            // 应用筛选
+            exhibitionCards.forEach(card => {
+                if (filter === 'all') {
+                    card.classList.remove('filtered');
+                } else {
+                    if (card.classList.contains(filter)) {
+                        card.classList.remove('filtered');
+                    } else {
+                        card.classList.add('filtered');
+                    }
+                }
+            });
+            
+            // 重置滚动位置
+            scrollPosition = 0;
+            timelineContainer.scrollTo({
+                left: 0,
+                behavior: 'smooth'
+            });
+        });
+    });
+    
+    // 计算剩余天数
+    exhibitionCards.forEach(card => {
+        if (card.classList.contains('upcoming')) {
+            const dateStr = card.getAttribute('data-date');
+            const eventDate = new Date(dateStr);
+            const today = new Date();
+            
+            // 计算剩余天数
+            const diffTime = eventDate.getTime() - today.getTime();
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            
+            // 更新剩余天数显示
+            const daysLeft = card.querySelector('.badge.bg-secondary');
+            if (daysLeft) {
+                daysLeft.textContent = `剩余: ${diffDays}天`;
+            }
+        }
     });
 });
 

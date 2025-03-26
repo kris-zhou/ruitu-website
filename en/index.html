@@ -233,7 +233,125 @@
         </div>
     </section>
 
-    <!-- Business Advantages -->
+    <!-- Exhibition Section -->
+    <section class="exhibitions-section section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title text-center">
+                        <h2>Event Exhibitions</h2>
+                        <p>We regularly participate in international beauty exhibitions to showcase our products and meet with clients from around the world.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-lg-12">
+                    <div class="timeline-controls text-center mb-4">
+                        <button class="btn btn-outline-primary active" data-filter="all">All Exhibitions</button>
+                        <button class="btn btn-outline-primary" data-filter="upcoming">Upcoming</button>
+                        <button class="btn btn-outline-primary" data-filter="past">Past</button>
+                    </div>
+                    
+                    <div class="timeline-nav">
+                        <button class="prev-btn">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <div class="timeline-container">
+                            <!-- Upcoming Exhibition 1 -->
+                            <div class="exhibition-card upcoming" data-date="2023-11-14">
+                                <div class="status-badge upcoming">Upcoming</div>
+                                <div class="card-image">
+                                    <img src="../images/exhibitions/cosmoprof_asia.jpg" alt="Cosmoprof Asia 2023">
+                                </div>
+                                <div class="card-content">
+                                    <h4>Cosmoprof Asia 2023</h4>
+                                    <p class="location"><i class="fas fa-map-marker-alt"></i> Singapore</p>
+                                    <p class="description">Asia's premier beauty trade show featuring innovative cosmetic products and packaging solutions.</p>
+                                    <div class="card-actions">
+                                        <a href="#" class="btn btn-primary btn-sm">More Details</a>
+                                        <a href="#" class="btn btn-outline-primary btn-sm">Schedule Meeting</a>
+                                    </div>
+                                    <div class="card-footer">
+                                        <span class="badge bg-info">Booth: A-2315</span>
+                                        <span class="badge bg-secondary">Days Left: Calculating...</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Upcoming Exhibition 2 -->
+                            <div class="exhibition-card upcoming" data-date="2023-10-20">
+                                <div class="status-badge upcoming">Upcoming</div>
+                                <div class="card-image">
+                                    <img src="../images/exhibitions/seoul_expo.jpg" alt="Seoul International Beauty Expo">
+                                </div>
+                                <div class="card-content">
+                                    <h4>Seoul International Beauty Expo</h4>
+                                    <p class="location"><i class="fas fa-map-marker-alt"></i> Seoul, South Korea</p>
+                                    <p class="description">Leading K-Beauty exhibition showcasing the latest trends and innovations in Korean cosmetics.</p>
+                                    <div class="card-actions">
+                                        <a href="#" class="btn btn-primary btn-sm">More Details</a>
+                                        <a href="#" class="btn btn-outline-primary btn-sm">Schedule Meeting</a>
+                                    </div>
+                                    <div class="card-footer">
+                                        <span class="badge bg-info">Booth: K-123</span>
+                                        <span class="badge bg-secondary">Days Left: Calculating...</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Past Exhibition 1 -->
+                            <div class="exhibition-card past">
+                                <div class="status-badge past">Past</div>
+                                <div class="card-image">
+                                    <img src="../images/exhibitions/china_beauty.jpg" alt="China Beauty Expo 2023">
+                                </div>
+                                <div class="card-content">
+                                    <h4>China Beauty Expo 2023</h4>
+                                    <p class="location"><i class="fas fa-map-marker-alt"></i> Shanghai, China</p>
+                                    <p class="description">China's largest beauty trade event connecting international brands with the Chinese market.</p>
+                                    <div class="card-actions">
+                                        <a href="#" class="btn btn-primary btn-sm">View Gallery</a>
+                                        <a href="#" class="btn btn-outline-primary btn-sm">Review Highlights</a>
+                                    </div>
+                                    <div class="card-footer">
+                                        <span class="badge bg-info">Booth: C-5678</span>
+                                        <span class="badge bg-secondary">May 18-20, 2023</span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Past Exhibition 2 -->
+                            <div class="exhibition-card past">
+                                <div class="status-badge past">Past</div>
+                                <div class="card-image">
+                                    <img src="../images/exhibitions/canton_fair.jpg" alt="Canton Fair 2023">
+                                </div>
+                                <div class="card-content">
+                                    <h4>Canton Fair 2023</h4>
+                                    <p class="location"><i class="fas fa-map-marker-alt"></i> Guangzhou, China</p>
+                                    <p class="description">China's oldest and largest trade fair featuring a dedicated beauty and cosmetics section.</p>
+                                    <div class="card-actions">
+                                        <a href="#" class="btn btn-primary btn-sm">View Gallery</a>
+                                        <a href="#" class="btn btn-outline-primary btn-sm">Review Highlights</a>
+                                    </div>
+                                    <div class="card-footer">
+                                        <span class="badge bg-info">Booth: D-890</span>
+                                        <span class="badge bg-secondary">April 15-19, 2023</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="next-btn">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Genuine Product Guarantee Section -->
     <section class="py-5">
         <div class="container">
             <h2 class="text-center section-title mb-5">Our Business Advantages</h2>
@@ -409,52 +527,53 @@
                         <h3 class="mb-4 border-bottom pb-2 text-center">Send us a Message</h3>
                         <p class="text-muted text-center mb-4">Please fill out the form below and we will get back to you as soon as possible</p>
                         
-                        <form class="contact-form" data-netlify="true" name="contact-en" method="POST" netlify-honeypot="bot-field">
-                            <input type="hidden" name="form-name" value="contact-en" />
-                            <input type="hidden" name="bot-field" />
-                            <input type="hidden" name="subject" value="Website Contact Form Submission" />
-                            
-                            <div class="row g-3">
-                                <div class="col-md-6">
-                                    <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" id="nameInput" name="name" placeholder="Enter your name" required>
-                                        <label for="nameInput">Your Name</label>
+                        <form class="contact-form" action="https://formsubmit.co/z17790805689@outlook.com" method="POST">
+                            <input type="hidden" name="_subject" value="Ruitu Website Form Submission (English)">
+                            <input type="hidden" name="_captcha" value="false">
+                            <input type="hidden" name="_next" value="https://scintillating-puppy-d569de.pages.dev/en/thank-you.html">
+                            <div class="form-group">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <div class="form-floating mb-3">
+                                            <input type="text" class="form-control" id="nameInput" name="name" placeholder="Enter your name" required>
+                                            <label for="nameInput">Your Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-floating mb-3">
+                                            <input type="tel" class="form-control" id="phoneInput" name="phone" placeholder="Enter your phone number">
+                                            <label for="phoneInput">Phone Number</label>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-floating mb-3">
-                                        <input type="tel" class="form-control" id="phoneInput" name="phone" placeholder="Enter your phone number">
-                                        <label for="phoneInput">Phone Number</label>
-                                    </div>
+                                
+                                <div class="form-floating mb-3">
+                                    <input type="email" class="form-control" id="emailInput" name="email" placeholder="Enter your email" required>
+                                    <label for="emailInput">Email Address</label>
                                 </div>
-                            </div>
-                            
-                            <div class="form-floating mb-3">
-                                <input type="email" class="form-control" id="emailInput" name="email" placeholder="Enter your email" required>
-                                <label for="emailInput">Email Address</label>
-                            </div>
-                            
-                            <div class="form-floating mb-3">
-                                <select class="form-select" id="subjectSelect" name="topic">
-                                    <option selected disabled value="">Select a topic</option>
-                                    <option value="product">Product Inquiry</option>
-                                    <option value="price">Price Inquiry</option>
-                                    <option value="logistics">Logistics Inquiry</option>
-                                    <option value="cooperation">Business Cooperation</option>
-                                    <option value="other">Other</option>
-                                </select>
-                                <label for="subjectSelect">Topic</label>
-                            </div>
-                            
-                            <div class="form-floating mb-3">
-                                <textarea class="form-control" id="messageInput" name="message" placeholder="Enter your message" style="height: 120px" required></textarea>
-                                <label for="messageInput">Your Message</label>
-                            </div>
-                            
-                            <div class="text-center mt-4">
-                                <button type="submit" class="btn btn-primary btn-lg px-4 py-2">
-                                    <i class="fas fa-paper-plane me-2"></i>Send Message
-                                </button>
+                                
+                                <div class="form-floating mb-3">
+                                    <select class="form-select" id="subjectSelect" name="topic">
+                                        <option selected disabled value="">Select a topic</option>
+                                        <option value="product">Product Inquiry</option>
+                                        <option value="price">Price Inquiry</option>
+                                        <option value="logistics">Logistics Inquiry</option>
+                                        <option value="cooperation">Business Cooperation</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                    <label for="subjectSelect">Topic</label>
+                                </div>
+                                
+                                <div class="form-floating mb-3">
+                                    <textarea class="form-control" id="messageInput" name="message" placeholder="Enter your message" style="height: 120px" required></textarea>
+                                    <label for="messageInput">Your Message</label>
+                                </div>
+                                
+                                <div class="text-center mt-4">
+                                    <button type="submit" class="btn btn-primary btn-lg px-4 py-2">
+                                        <i class="fas fa-paper-plane me-2"></i>Send Message
+                                    </button>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -473,12 +592,6 @@
                         <h5 class="mb-0">Ruitu Trading Co., Ltd.</h5>
                     </div>
                     <p class="footer-about">Professional beauty products supplier dedicated to providing excellent cross-border beauty wholesale services.</p>
-                    <div class="footer-social">
-                        <a href="#"><i class="fab fa-weixin"></i></a>
-                        <a href="#"><i class="fab fa-weibo"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                    </div>
                 </div>
                 <div class="col-md-4 mb-3">
                     <h5>Contact Us</h5>
@@ -517,7 +630,6 @@
                     <div class="col-md-6">
                         <div class="footer-links">
                             <a href="../pages/privacy.html">Privacy Policy</a>
-                            <a href="../pages/terms.html">Terms of Service</a>
                             <a href="../pages/disclaimer.html">Disclaimer</a>
                         </div>
                     </div>
