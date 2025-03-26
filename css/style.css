@@ -1,4 +1,13 @@
 /* 浏览器兼容性和CSS规范化 */
+/* CSS重置和规范化 - 解决跨浏览器一致性问题 */
+html {
+    line-height: 1.15;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    font-size: 16px;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -7,41 +16,57 @@
     -moz-box-sizing: border-box;
 }
 
+body {
+    min-height: 100vh;
+    scroll-behavior: smooth;
+    text-rendering: optimizeSpeed;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* 修复各浏览器默认样式差异 */
+article, aside, footer, header, nav, section, main, figcaption, figure {
+    display: block;
+}
+
+h1, h2, h3, h4, h5, h6, p, ul, ol {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    background-color: transparent;
+}
+
+button, input, optgroup, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0;
+}
+
+button, select {
+    text-transform: none;
+}
+
+button, [type="button"], [type="reset"], [type="submit"] {
+    -webkit-appearance: button;
+}
+
 /* 修复IE和Edge中的img边距问题 */
 img {
     max-width: 100%;
     height: auto;
     border-style: none;
     vertical-align: middle;
+    -ms-interpolation-mode: bicubic; /* 修复IE的图像质量 */
 }
 
-/* 浏览器兼容性前缀 */
-.navbar {
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-}
-
-/* 添加动画和过渡的浏览器前缀支持 */
-.transition-all {
-    -webkit-transition: all 0.3s ease;
-    -moz-transition: all 0.3s ease;
-    -o-transition: all 0.3s ease;
-    transition: all 0.3s ease;
-}
-
-.transform-scale {
-    -webkit-transform: scale(1.05);
-    -ms-transform: scale(1.05);
-    transform: scale(1.05);
-}
-
-.transform-translate {
-    -webkit-transform: translateY(-5px);
-    -ms-transform: translateY(-5px);
-    transform: translateY(-5px);
-}
-
-/* 针对Firefox的特殊处理 */
+/* 解决Firefox与其他浏览器的不一致问题 */
 @-moz-document url-prefix() {
     .navbar {
         background-color: rgba(255, 255, 255, 0.98);
@@ -50,18 +75,38 @@ img {
     .section-title::after {
         bottom: -1px;
     }
+
+    /* 修复Firefox中的表单元素样式 */
+    button, 
+    input[type="button"], 
+    input[type="reset"], 
+    input[type="submit"] {
+        text-rendering: auto;
+    }
+
+    select {
+        text-indent: 0.01px;
+        text-overflow: '';
+    }
 }
 
-/* 修复Safari中的flex问题 */
-.flex-container, 
-.d-flex, 
-.display-flex,
-[class*="d-flex"],
-[class*="display-flex"] {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
+/* Safari和iOS设备特定修复 */
+@media not all and (min-resolution:.001dpcm) { 
+    @supports (-webkit-appearance:none) and (stroke-color:transparent) {
+        .navbar {
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+        }
+        
+        .form-control, .form-select {
+            -webkit-appearance: none;
+            border-radius: 4px;
+        }
+        
+        /* 修复iOS点击延迟 */
+        a, button, input, select {
+            -webkit-tap-highlight-color: rgba(0,0,0,0);
+        }
+    }
 }
 
 /* 针对Safari和iOS设备的高度计算修复 */
@@ -73,6 +118,62 @@ img {
     .company-intro {
         min-height: 35vh !important;
     }
+    
+    /* 修复iOS滚动问题 */
+    body, html {
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* 修复iOS输入元素问题 */
+    input[type="text"], 
+    input[type="email"], 
+    input[type="tel"], 
+    textarea {
+        -webkit-appearance: none;
+        border-radius: 0;
+    }
+}
+
+/* 修复FlexBox布局在各浏览器中的一致性 */
+.flex-container, 
+.d-flex, 
+.display-flex,
+[class*="d-flex"],
+[class*="display-flex"] {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+.flex-column {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.flex-row {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+
+.justify-content-center {
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.align-items-center {
+    -webkit-box-align: center;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
 }
 
 /* 修复IE11中的flexbox问题 */
@@ -104,9 +205,27 @@ img {
     .col-md-3, .col-lg-3 {
         width: 25% !important;
     }
+    
+    /* 修复IE11中的Bootstrap网格 */
+    .container {
+        width: 100% !important;
+        max-width: 1140px !important;
+        margin-right: auto !important;
+        margin-left: auto !important;
+    }
+    
+    /* 修复IE11中的图像 */
+    img {
+        width: 100%;
+    }
+    
+    /* 修复IE11中的SVG */
+    svg {
+        overflow: hidden;
+    }
 }
 
-/* 修复动画播放问题 */
+/* 修复动画播放问题及浏览器前缀 */
 @-webkit-keyframes zoomIn {
     from {
         opacity: 0;
@@ -129,6 +248,58 @@ img {
     }
 }
 
+/* 强制所有浏览器一致的按钮和表单元素外观 */
+.btn,
+.form-control,
+.form-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 4px;
+}
+
+/* 浏览器兼容的过渡和动画 */
+.transition-all {
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.transform-scale {
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
+}
+
+.transform-translate {
+    -webkit-transform: translateY(-5px);
+    -ms-transform: translateY(-5px);
+    transform: translateY(-5px);
+}
+
+/* Bootstrap覆盖和修复 */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .card-img-top {
+        width: 100%;
+        height: auto;
+    }
+    .navbar-brand img {
+        width: auto;
+    }
+}
+
+/* Edge和IE特定修复 */
+@supports (-ms-ime-align:auto) {
+    .navbar {
+        background-color: rgba(255, 255, 255, 0.95);
+    }
+    .form-control {
+        padding-top: 0.375rem;
+        padding-bottom: 0.375rem;
+    }
+}
+
 /* 全局样式 */
 :root {
     --primary-color: #7d7d7d;      /* 中灰色 */
@@ -142,8 +313,6 @@ img {
     --text-secondary: #6e6e6e;     /* 中灰色文字 */
     --dark-accent: #3e3e3e;        /* 深灰点缀 */
     --warm-accent: #b8a999;        /* 暖灰棕点缀 */
-    --section-spacing: 5rem;       /* 新增：统一节间距 */
-    --content-spacing: 2.5rem;     /* 新增：内容间距 */
 }
 
 body {
@@ -151,7 +320,6 @@ body {
     line-height: 1.6;
     color: var(--text-primary);
     background-color: var(--background-light);
-    overflow-x: hidden; /* 防止水平滚动条 */
 }
 
 .section-title {
@@ -190,7 +358,7 @@ body {
     -moz-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
     transition: all 0.3s ease;
-    height: 80px; /* 增加导航栏高度 */
+    height: 76px; /* 明确设置导航栏高度 */
 }
 
 .navbar.navbar-scrolled {
@@ -257,17 +425,19 @@ body {
 
 /* 轮播图样式 */
 .carousel {
-    margin-top: 80px; /* 与导航栏高度匹配，确保内容不被导航栏遮挡 */
+    margin-top: 76px; /* 导航栏高度 */
     position: relative;
-    overflow: hidden;
-    margin-bottom: var(--content-spacing); /* 增加与下方内容的间距 */
+    z-index: 1;
+    height: auto;
+    margin-bottom: 0; /* 确保轮播图底部没有间距 */
 }
 
 .carousel-item {
-    height: 70vh; /* 增加高度，使用视口高度单位 */
-    min-height: 450px; /* 设置最小高度确保在小屏幕上也有足够空间 */
+    height: 65vh; /* 默认高度 */
+    background-position: center;
+    background-size: cover;
     position: relative;
-    background-color: #000;
+    overflow: hidden;
 }
 
 .carousel-inner {
@@ -283,35 +453,30 @@ body {
 
 .carousel-caption {
     position: absolute;
-    right: 15%;
-    bottom: 20%;
-    left: 15%;
-    z-index: 10;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    color: #fff;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(0,0,0,0.7));
+    padding: 80px 20px 40px;
     text-align: center;
-    max-width: 1000px; /* 限制最大宽度，提高可读性 */
-    margin: 0 auto;
 }
 
 .carousel-caption h2 {
-    font-size: 2.8rem; /* 增大标题字体 */
-    font-weight: 700;
+    font-family: 'Microsoft YaHei', sans-serif;
+    font-size: 2.8rem;
+    font-weight: 300;
+    letter-spacing: 2px;
     margin-bottom: 1.5rem;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-    animation: fadeInUp 0.5s ease-out forwards;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
 .carousel-caption p {
-    font-size: 1.4rem; /* 增大描述文字字体 */
-    margin-bottom: 2rem;
-    text-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
-    animation: fadeInUp 0.5s ease-out 0.3s forwards;
-    opacity: 0;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    font-family: 'Microsoft YaHei', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin-bottom: 0;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
 }
 
 .carousel-indicators {

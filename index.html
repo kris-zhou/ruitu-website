@@ -2,28 +2,60 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="renderer" content="webkit">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta http-equiv="cleartype" content="on">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta name="theme-color" content="#ffffff">
     <title>瑞途（香港）贸易有限公司 - 专业美妆产品供应商</title>
     <meta name="description" content="瑞途（香港）贸易有限公司是一家业界领先的美妆产品供应商，致力于为全球客户提供卓越的跨境美妆批发服务。">
     <meta name="keywords" content="美妆产品,批发,香港,韩国,免税店,化妆品,跨境贸易">
+    <!-- DNS预获取 -->
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
     <!-- 自定义CSS -->
     <link rel="stylesheet" href="css/style.css">
     <!-- Font Awesome 图标 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" crossorigin="anonymous">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <!-- 浏览器兼容性检测 -->
+    <script>
+        // 检测浏览器是否支持现代CSS特性
+        var supportsFlexbox = 'flexBasis' in document.documentElement.style || 
+                          'WebkitFlexBasis' in document.documentElement.style || 
+                          'MozFlexBasis' in document.documentElement.style || 
+                          'msFlexBasis' in document.documentElement.style;
+        
+        // 如果不支持现代特性，添加旧浏览器标识类
+        if (!supportsFlexbox) {
+            document.documentElement.className += ' old-browser';
+        }
+        
+        // 检测IE浏览器版本
+        var isIE = /*@cc_on!@*/false || !!document.documentMode;
+        var isEdge = !isIE && !!window.StyleMedia;
+        
+        if (isIE || isEdge) {
+            document.documentElement.className += ' ms-browser';
+        }
+    </script>
     <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <!-- 导航栏 -->
@@ -66,35 +98,27 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active" data-bs-interval="3500">
-                <img src="images/slider1.jpg" class="d-block w-100 h-100 object-fit-cover" alt="美妆产品展示">
+                <img src="images/slider1.jpg" class="d-block" alt="美妆产品展示">
                 <div class="carousel-caption">
                     <h2>专业美妆产品供应商</h2>
                     <p>为全球客户提供卓越的跨境美妆批发服务</p>
                 </div>
             </div>
             <div class="carousel-item" data-bs-interval="3500">
-                <img src="images/slider2.jpg" class="d-block w-100 h-100 object-fit-cover" alt="国际品牌合作">
+                <img src="images/slider2.jpg" class="d-block" alt="国际品牌合作">
                 <div class="carousel-caption">
                     <h2>国际知名品牌合作</h2>
                     <p>涵盖NARS、Tom Ford、La Prairie等众多国际知名美妆品牌</p>
                 </div>
             </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
     </div>
 
     <!-- 公司简介 -->
     <section class="company-intro">
         <div class="container">
             <div class="row">
-                <div class="col-lg-10 col-xl-8 mx-auto text-center">
+                <div class="col-lg-8 mx-auto text-center">
                     <h2 class="section-title">瑞途（香港）贸易有限公司</h2>
                     <p class="lead">作为一家业界领先的美妆产品供应商，致力于为全球客户提供卓越的跨境美妆批发服务。</p>
                     <p>我们公司拥有一手的韩免美妆货源供应链，涵盖了众多国际知名美妆品牌，如纳斯（NARS）、汤姆·福特（Tom Ford）、莱珀妮（La Prairie）、雅诗兰黛（Estée Lauder）、馥蕾诗（Fresh）等，确保了我们的产品线始终走在时尚与品质的前沿。</p>
@@ -776,35 +800,30 @@
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group mb-3">
-                                        <label for="phone" class="form-label">电话（选填）</label>
-                                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="您的联系电话">
+                                    <div class="form-floating mb-3">
+                                        <input type="tel" class="form-control" id="phoneInput" name="phone" placeholder="请输入您的电话">
+                                        <label for="phoneInput">电话号码（选填）</label>
                                     </div>
                                 </div>
                             </div>
-                            
-                            <div class="form-group mb-3">
-                                <label for="email" class="form-label">邮箱地址 <span class="text-danger">*</span></label>
-                                <input type="email" class="form-control" id="email" name="email" placeholder="您的邮箱地址" required>
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="emailInput" name="email" placeholder="请输入邮箱地址" required>
+                                <label for="emailInput">电子邮箱</label>
                             </div>
-                            
-                            <div class="form-group mb-3">
-                                <label for="topic" class="form-label">咨询主题</label>
-                                <select class="form-select" id="topic" name="topic">
+                            <div class="form-floating mb-3">
+                                <select class="form-select" id="subjectSelect" name="subject">
                                     <option selected disabled value="">请选择咨询主题</option>
                                     <option value="product">产品咨询</option>
-                                    <option value="price">价格咨询</option>
-                                    <option value="logistics">物流咨询</option>
                                     <option value="cooperation">商务合作</option>
-                                    <option value="other">其他咨询</option>
+                                    <option value="price">价格咨询</option>
+                                    <option value="others">其他问题</option>
                                 </select>
+                                <label for="subjectSelect">咨询主题</label>
                             </div>
-                            
-                            <div class="form-group mb-3">
-                                <label for="message" class="form-label">留言内容 <span class="text-danger">*</span></label>
-                                <textarea class="form-control" id="message" name="message" placeholder="请输入您的留言内容" style="height: 120px" required></textarea>
+                            <div class="form-floating mb-3">
+                                <textarea class="form-control" id="messageInput" name="message" placeholder="请输入您的留言" style="height: 120px" required></textarea>
+                                <label for="messageInput">您的留言</label>
                             </div>
-                            
                             <div class="text-center mt-4">
                                 <button type="submit" class="btn btn-primary btn-lg px-4 py-2">
                                     <i class="fas fa-paper-plane me-2"></i>发送留言

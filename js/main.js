@@ -28,6 +28,41 @@
         NodeList.prototype.forEach = Array.prototype.forEach;
     }
     
+    // Element.matches polyfill
+    if (!Element.prototype.matches) {
+        Element.prototype.matches = 
+            Element.prototype.msMatchesSelector || 
+            Element.prototype.webkitMatchesSelector;
+    }
+    
+    // Element.closest polyfill
+    if (!Element.prototype.closest) {
+        Element.prototype.closest = function(s) {
+            var el = this;
+            do {
+                if (Element.prototype.matches.call(el, s)) return el;
+                el = el.parentElement || el.parentNode;
+            } while (el !== null && el.nodeType === 1);
+            return null;
+        };
+    }
+    
+    // requestAnimationFrame polyfill
+    if (!window.requestAnimationFrame) {
+        window.requestAnimationFrame = function(callback) {
+            return setTimeout(function() {
+                callback(Date.now());
+            }, 1000 / 60);
+        };
+    }
+    
+    // cancelAnimationFrame polyfill
+    if (!window.cancelAnimationFrame) {
+        window.cancelAnimationFrame = function(id) {
+            clearTimeout(id);
+        };
+    }
+    
     // 检测浏览器和设备
     var isIE = !!document.documentMode;
     var isEdge = !isIE && !!window.StyleMedia;
@@ -36,6 +71,7 @@
     var isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
     var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
     var isAndroid = /(android)/i.test(navigator.userAgent);
+    var isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
     
     // 为特定浏览器添加CSS类
     document.addEventListener('DOMContentLoaded', function() {
@@ -48,17 +84,299 @@
         if (isSafari) htmlElement.classList.add('is-safari');
         if (isIOS) htmlElement.classList.add('is-ios');
         if (isAndroid) htmlElement.classList.add('is-android');
+        if (isMobile) htmlElement.classList.add('is-mobile');
         
-        // 针对Safari的特殊修复
+        // 设置CSS变量以修复iOS中的视口高度问题
+        function updateViewportHeight() {
+            var vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', vh + 'px');
+        }
+        
+        // 初始设置
+        updateViewportHeight();
+        
+        // 在窗口调整大小或设备方向更改时更新
+        window.addEventListener('resize', updateViewportHeight);
+        window.addEventListener('orientationchange', updateViewportHeight);
+        
+        // 针对Safari和iOS的特殊修复
         if (isSafari || isIOS) {
             var styleElement = document.createElement('style');
             styleElement.textContent = `
                 .navbar { background-color: rgba(255, 255, 255, 0.98) !important; }
                 .carousel-caption { background-color: rgba(0, 0, 0, 0.7) !important; }
+                
+                /* 修复iOS表单元素的问题 */
+                input, textarea, select, button {
+                    -webkit-appearance: none;
+                    border-radius: 0;
+                }
+                
+                /* 修复iOS中的悬停效果 */
+                a:hover, button:hover {
+                    opacity: 1 !important;
+                }
+                
+                /* 修复iOS中的滚动问题 */
+                .timeline-container, .scrollable-content {
+                    -webkit-overflow-scrolling: touch;
+                }
             `;
             document.head.appendChild(styleElement);
         }
+        
+        // 针对IE的特殊修复
+        if (isIE) {
+            var ieStyleElement = document.createElement('style');
+            ieStyleElement.textContent = `
+                /* 修复IE中的Flexbox问题 */
+                .d-flex, .flex-container {
+                    display: block;
+                }
+                
+                .d-flex > *, .flex-container > * {
+                    float: left;
+                }
+                
+                /* 修复IE中的栅格问题 */
+                .col-md-6 {
+                    width: 50%;
+                    float: left;
+                }
+                
+                .col-md-4 {
+                    width: 33.333%;
+                    float: left;
+                }
+                
+                .col-md-3 {
+                    width: 25%;
+                    float: left;
+                }
+                
+                /* 清除浮动 */
+                .row::after {
+                    content: "";
+                    display: table;
+                    clear: both;
+                }
+                
+                /* 修复IE中的图像问题 */
+                img {
+                    width: auto;
+                    height: auto;
+                }
+            `;
+            document.head.appendChild(ieStyleElement);
+            
+            // 针对IE的JS修复
+            var flexElements = document.querySelectorAll('.d-flex, .flex-container');
+            flexElements.forEach(function(elem) {
+                var children = elem.children;
+                for (var i = 0; i < children.length; i++) {
+                    if (getComputedStyle(children[i]).flex === '1') {
+                        children[i].style.width = (100 / children.length) + '%';
+                    }
+                }
+            });
+        }
+        
+        // 针对移动设备的特殊修复
+        if (isMobile) {
+            // 禁用某些悬停效果，替换为轻触事件
+            document.querySelectorAll('.hover-effect').forEach(function(elem) {
+                elem.addEventListener('touchstart', function() {
+                    this.classList.add('touch-hover');
+                });
+                
+                elem.addEventListener('touchend', function() {
+                    var element = this;
+                    setTimeout(function() {
+                        element.classList.remove('touch-hover');
+                    }, 300);
+                });
+            });
+            
+            // 修复移动设备上的点击延迟
+            // FastClick.attach(document.body);
+            document.addEventListener('touchstart', function(){}, {passive: true});
+        }
     });
+})();
+
+// 响应式增强功能
+(function() {
+    // 节流函数 - 限制高频率事件执行
+    function throttle(func, limit) {
+        var lastFunc, lastRan;
+        return function() {
+            var context = this;
+            var args = arguments;
+            if (!lastRan) {
+                func.apply(context, args);
+                lastRan = Date.now();
+            } else {
+                clearTimeout(lastFunc);
+                lastFunc = setTimeout(function() {
+                    if ((Date.now() - lastRan) >= limit) {
+                        func.apply(context, args);
+                        lastRan = Date.now();
+                    }
+                }, limit - (Date.now() - lastRan));
+            }
+        };
+    }
+    
+    // 防抖函数 - 合并多次触发为一次
+    function debounce(func, wait) {
+        var timeout;
+        return function() {
+            var context = this, args = arguments;
+            clearTimeout(timeout);
+            timeout = setTimeout(function() {
+                func.apply(context, args);
+            }, wait);
+        };
+    }
+    
+    document.addEventListener('DOMContentLoaded', function() {
+        // 响应式表格处理
+        document.querySelectorAll('table:not(.table-responsive)').forEach(function(table) {
+            if (!table.closest('.table-responsive')) {
+                var wrapper = document.createElement('div');
+                wrapper.className = 'table-responsive';
+                table.parentNode.insertBefore(wrapper, table);
+                wrapper.appendChild(table);
+            }
+        });
+        
+        // 响应式视频处理
+        document.querySelectorAll('iframe[src*="youtube"], iframe[src*="vimeo"]').forEach(function(iframe) {
+            if (!iframe.closest('.responsive-video')) {
+                var wrapper = document.createElement('div');
+                wrapper.className = 'responsive-video';
+                iframe.parentNode.insertBefore(wrapper, iframe);
+                wrapper.appendChild(iframe);
+            }
+        });
+        
+        // 图片加载错误处理
+        document.querySelectorAll('img').forEach(function(img) {
+            img.addEventListener('error', function() {
+                this.src = 'images/placeholder.png';
+                this.classList.add('img-error');
+            });
+        });
+        
+        // 使用IntersectionObserver进行图片懒加载
+        if ('IntersectionObserver' in window) {
+            var lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        var lazyImage = entry.target;
+                        var src = lazyImage.dataset.src;
+                        
+                        if (src) {
+                            lazyImage.src = src;
+                            lazyImage.classList.add('loaded');
+                            lazyImage.classList.remove('lazy');
+                            lazyImageObserver.unobserve(lazyImage);
+                        }
+                    }
+                });
+            });
+            
+            document.querySelectorAll('img.lazy').forEach(function(lazyImage) {
+                lazyImageObserver.observe(lazyImage);
+            });
+        } else {
+            // 回退到简单的滚动监听
+            function lazyLoad() {
+                var lazyImages = document.querySelectorAll('img.lazy');
+                var scrollTop = window.pageYOffset;
+                
+                lazyImages.forEach(function(img) {
+                    if (img.offsetTop < window.innerHeight + scrollTop) {
+                        var src = img.dataset.src;
+                        
+                        if (src) {
+                            img.src = src;
+                            img.classList.add('loaded');
+                            img.classList.remove('lazy');
+                        }
+                    }
+                });
+                
+                if (lazyImages.length === 0) {
+                    document.removeEventListener('scroll', lazyLoadThrottled);
+                    window.removeEventListener('resize', lazyLoadThrottled);
+                    window.removeEventListener('orientationchange', lazyLoadThrottled);
+                }
+            }
+            
+            var lazyLoadThrottled = throttle(lazyLoad, 200);
+            
+            document.addEventListener('scroll', lazyLoadThrottled);
+            window.addEventListener('resize', lazyLoadThrottled);
+            window.addEventListener('orientationchange', lazyLoadThrottled);
+            
+            // 初始加载
+            lazyLoad();
+        }
+        
+        // 平滑滚动增强
+        if ('scrollBehavior' in document.documentElement.style) {
+            // 浏览器原生支持平滑滚动
+            document.documentElement.style.scrollBehavior = 'smooth';
+        } else {
+            // 添加平滑滚动的polyfill
+            document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    var targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    var targetElement = document.querySelector(targetId);
+                    if (!targetElement) return;
+                    
+                    var targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                    var startPosition = window.pageYOffset;
+                    var distance = targetPosition - startPosition - 80; // 考虑导航栏的高度
+                    var startTime = null;
+                    var duration = 500; // 滚动持续时间，毫秒
+                    
+                    function animation(currentTime) {
+                        if (startTime === null) startTime = currentTime;
+                        var timeElapsed = currentTime - startTime;
+                        var progress = Math.min(timeElapsed / duration, 1);
+                        var ease = function(t) { return t<.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1 }; // 缓动函数
+                        window.scrollTo(0, startPosition + distance * ease(progress));
+                        
+                        if (timeElapsed < duration) {
+                            requestAnimationFrame(animation);
+                        }
+                    }
+                    
+                    requestAnimationFrame(animation);
+                });
+            });
+        }
+    });
+    
+    // 响应式处理函数
+    function handleResponsive() {
+        // 动态调整基于视口高度的元素
+        var vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+        
+        // 响应式调整功能可以在这里添加
+    }
+    
+    // 页面加载和调整大小时应用响应式处理
+    window.addEventListener('load', handleResponsive);
+    window.addEventListener('resize', throttle(handleResponsive, 100));
+    window.addEventListener('orientationchange', handleResponsive);
 })();
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -771,54 +1089,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const daysLeft = card.querySelector('.badge.bg-secondary');
             if (daysLeft) {
                 daysLeft.textContent = `剩余: ${diffDays}天`;
-            }
-        }
-    });
-
-    // 当页面加载完成后执行
-    function adjustCarouselHeight() {
-        const carousel = document.querySelector('#mainCarousel');
-        const navbar = document.querySelector('.navbar');
-        const windowHeight = window.innerHeight;
-        
-        if (carousel && navbar) {
-            const navbarHeight = navbar.offsetHeight;
-            const idealHeight = windowHeight * 0.7; // 屏幕高度的70%
-            const minHeight = 450; // 最小高度
-            
-            // 设置轮播图容器高度
-            carousel.style.marginTop = navbarHeight + 'px';
-            
-            // 设置轮播图项目高度
-            const carouselItems = carousel.querySelectorAll('.carousel-item');
-            carouselItems.forEach(item => {
-                item.style.height = Math.max(idealHeight, minHeight) + 'px';
-            });
-            
-            // 增强轮播图标题动画效果
-            const captions = carousel.querySelectorAll('.carousel-caption');
-            captions.forEach(caption => {
-                caption.classList.add('animated');
-            });
-        }
-    }
-    
-    // 首次加载时调整
-    adjustCarouselHeight();
-    
-    // 当窗口大小改变时调整
-    window.addEventListener('resize', function() {
-        adjustCarouselHeight();
-    });
-    
-    // 当导航栏状态改变时（如从透明变为不透明）
-    window.addEventListener('scroll', function() {
-        const navbar = document.querySelector('.navbar');
-        if (navbar) {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
             }
         }
     });
