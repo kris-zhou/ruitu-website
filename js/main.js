@@ -611,19 +611,24 @@ document.addEventListener('DOMContentLoaded', function() {
                     return response;
                 })
                 .then(() => {
-                    // 创建成功提示
-                    const successAlert = document.createElement('div');
-                    successAlert.className = 'alert alert-success mt-3 mb-0';
-                    successAlert.innerHTML = `
-                        <i class="fas fa-check-circle me-2"></i>
-                        ${formName.includes('zh') ? '消息已成功发送！我们将尽快与您联系。' :
-                          formName.includes('en') ? 'Message sent successfully! We will contact you soon.' :
-                          '메시지가 성공적으로 전송되었습니다! 곧 연락 드리겠습니다.'} 
+                    // 显示成功消息
+                    const successMessage = document.createElement('div');
+                    successMessage.className = 'form-message success';
+                    successMessage.style.cssText = `
+                        background-color: #e8f5e9;
+                        color: #2e7d32;
+                        padding: 15px;
+                        border-radius: 4px;
+                        margin-bottom: 20px;
+                        border: 1px solid #a5d6a7;
+                        font-size: 14px;
+                        line-height: 1.5;
                     `;
-                    
-                    // 插入成功提示
+                    successMessage.textContent = '提交成功！我们会尽快与您联系。';
+                    form.insertBefore(successMessage, form.firstChild);
+
+                    // 清空表单
                     form.reset();
-                    form.appendChild(successAlert);
                     
                     // 3秒后恢复按钮状态
                     setTimeout(() => {
@@ -634,7 +639,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         
                         // 5秒后移除成功提示
                         setTimeout(() => {
-                            successAlert.remove();
+                            successMessage.remove();
                         }, 5000);
                     }, 3000);
                     
