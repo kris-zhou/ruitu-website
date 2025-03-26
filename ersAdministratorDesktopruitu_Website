@@ -1,0 +1,18 @@
+3ee2d0c - 优化表单提交功能和邮件通知配置
+M	js/main.js
+M	netlify.toml
+
+c531742 - 修复表单提交问题，优化代码结构
+M	en/index.html
+M	index.html
+M	js/main.js
+M	kr/index.html
+M	pages/contact.html
+
+f68de3d - 将表单提交方式改为FormSubmit，并添加感谢页面
+M	en/index.html
+A	en/thanks.html
+M	index.html
+M	kr/index.html
+A	kr/thanks.html
+A	thanks.html
