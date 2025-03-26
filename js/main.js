@@ -774,6 +774,54 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     });
+
+    // 当页面加载完成后执行
+    function adjustCarouselHeight() {
+        const carousel = document.querySelector('#mainCarousel');
+        const navbar = document.querySelector('.navbar');
+        const windowHeight = window.innerHeight;
+        
+        if (carousel && navbar) {
+            const navbarHeight = navbar.offsetHeight;
+            const idealHeight = windowHeight * 0.7; // 屏幕高度的70%
+            const minHeight = 450; // 最小高度
+            
+            // 设置轮播图容器高度
+            carousel.style.marginTop = navbarHeight + 'px';
+            
+            // 设置轮播图项目高度
+            const carouselItems = carousel.querySelectorAll('.carousel-item');
+            carouselItems.forEach(item => {
+                item.style.height = Math.max(idealHeight, minHeight) + 'px';
+            });
+            
+            // 增强轮播图标题动画效果
+            const captions = carousel.querySelectorAll('.carousel-caption');
+            captions.forEach(caption => {
+                caption.classList.add('animated');
+            });
+        }
+    }
+    
+    // 首次加载时调整
+    adjustCarouselHeight();
+    
+    // 当窗口大小改变时调整
+    window.addEventListener('resize', function() {
+        adjustCarouselHeight();
+    });
+    
+    // 当导航栏状态改变时（如从透明变为不透明）
+    window.addEventListener('scroll', function() {
+        const navbar = document.querySelector('.navbar');
+        if (navbar) {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        }
+    });
 });
 
 // 最近更新: 优化表单提交和邮件通知 - 2023年3月25日
