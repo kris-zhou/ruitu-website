@@ -545,28 +545,25 @@
                         <form class="contact-form" action="https://formsubmit.co/z17790805689@outlook.com" method="POST">
                             <input type="hidden" name="_subject" value="Ruitu Website Form Submission (English)">
                             <input type="hidden" name="_captcha" value="false">
-                            <div class="form-group">
-                                <div class="row g-3">
-                                    <div class="col-md-6">
-                                        <div class="form-group mb-3">
-                                            <label for="name" class="form-label">Name <span class="text-danger">*</span></label>
-                                            <input type="text" name="name" id="name" class="form-control" placeholder="Your name" required>
-                                        </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required>
+                                        <label for="name">Name <span class="text-danger">*</span></label>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group mb-3">
-                                            <label for="phone" class="form-label">Phone (Optional)</label>
-                                            <input type="tel" class="form-control" id="phone" name="phone" placeholder="Your phone number">
-                                        </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating mb-3">
+                                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="Your Phone Number">
+                                        <label for="phone">Phone (Optional)</label>
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group mb-3">
-                                <label for="email" class="form-label">Email Address <span class="text-danger">*</span></label>
-                                <input type="email" class="form-control" id="email" name="email" placeholder="Your email address" required>
+                            <div class="form-floating mb-3">
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Your Email Address" required>
+                                <label for="email">Email Address <span class="text-danger">*</span></label>
                             </div>
-                            <div class="form-group mb-3">
-                                <label for="topic" class="form-label">Topic</label>
+                            <div class="form-floating mb-3">
                                 <select class="form-select" id="topic" name="topic">
                                     <option selected disabled value="">Select a topic</option>
                                     <option value="product">Product Inquiry</option>
@@ -575,10 +572,11 @@
                                     <option value="cooperation">Business Cooperation</option>
                                     <option value="other">Other Inquiry</option>
                                 </select>
+                                <label for="topic">Topic</label>
                             </div>
-                            <div class="form-group mb-3">
-                                <label for="message" class="form-label">Message <span class="text-danger">*</span></label>
-                                <textarea class="form-control" id="message" name="message" placeholder="Your message" style="height: 120px" required></textarea>
+                            <div class="form-floating mb-3">
+                                <textarea class="form-control" id="message" name="message" placeholder="Your Message" style="height: 120px" required></textarea>
+                                <label for="message">Message <span class="text-danger">*</span></label>
                             </div>
                             <div class="text-center mt-4">
                                 <button type="submit" class="btn btn-primary btn-lg px-4 py-2">

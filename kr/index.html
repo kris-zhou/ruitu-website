@@ -550,26 +550,23 @@
                             <input type="hidden" name="_captcha" value="false">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="form-group mb-3">
-                                        <label for="name" class="form-label">이름 <span class="text-danger">*</span></label>
-                                        <input type="text" name="name" id="name" class="form-control" placeholder="귀하의 이름" required>
+                                    <div class="form-floating mb-3">
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="귀하의 이름" required>
+                                        <label for="name">이름 <span class="text-danger">*</span></label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-group mb-3">
-                                        <label for="phone" class="form-label">전화번호 (선택사항)</label>
+                                    <div class="form-floating mb-3">
                                         <input type="tel" class="form-control" id="phone" name="phone" placeholder="전화번호를 입력하세요">
+                                        <label for="phone">전화번호 (선택사항)</label>
                                     </div>
                                 </div>
                             </div>
-                            
-                            <div class="form-group mb-3">
-                                <label for="email" class="form-label">이메일 주소 <span class="text-danger">*</span></label>
+                            <div class="form-floating mb-3">
                                 <input type="email" class="form-control" id="email" name="email" placeholder="이메일을 입력하세요" required>
+                                <label for="email">이메일 주소 <span class="text-danger">*</span></label>
                             </div>
-                            
-                            <div class="form-group mb-3">
-                                <label for="topic" class="form-label">주제</label>
+                            <div class="form-floating mb-3">
                                 <select class="form-select" id="topic" name="topic">
                                     <option selected disabled value="">주제를 선택해주세요</option>
                                     <option value="product">제품 문의</option>
@@ -578,13 +575,12 @@
                                     <option value="cooperation">업무 협력</option>
                                     <option value="other">기타 문의</option>
                                 </select>
+                                <label for="topic">주제</label>
                             </div>
-                            
-                            <div class="form-group mb-3">
-                                <label for="message" class="form-label">메시지 내용 <span class="text-danger">*</span></label>
+                            <div class="form-floating mb-3">
                                 <textarea class="form-control" id="message" name="message" placeholder="메시지를 입력하세요" style="height: 120px" required></textarea>
+                                <label for="message">메시지 내용 <span class="text-danger">*</span></label>
                             </div>
-                            
                             <div class="text-center mt-4">
                                 <button type="submit" class="btn btn-primary btn-lg px-4 py-2">
                                     <i class="fas fa-paper-plane me-2"></i>메시지 보내기
