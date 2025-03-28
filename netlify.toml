@@ -7,6 +7,18 @@
   to = "/index.html"
   status = 200 
 
+[[redirects]]
+  from = "/en"
+  to = "/en/english.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/kr"
+  to = "/kr/korean.html"
+  status = 301
+  force = true
+
 [forms]
   # 中文版表单
   [forms.contact-zh]

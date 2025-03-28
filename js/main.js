@@ -762,11 +762,11 @@ document.addEventListener('DOMContentLoaded', function() {
             // 根据选择的语言确定目标URL
             let targetUrl;
             if (lang === 'zh') {
-                // 中文版本 - 回到主目录
                 targetUrl = baseUrl + 'index.html';
-            } else {
-                // 英文或韩文版本 - 进入对应语言子目录
-                targetUrl = baseUrl + lang + '/index.html';
+            } else if (lang === 'en') {
+                targetUrl = baseUrl + 'en/english.html';
+            } else if (lang === 'kr') {
+                targetUrl = baseUrl + 'kr/korean.html';
             }
             
             // 跳转到目标URL
