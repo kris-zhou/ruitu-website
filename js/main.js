@@ -206,8 +206,8 @@
 
 // 响应式增强功能
 (function() {
-    // 节流函数 - 限制高频率事件执行
-    function throttle(func, limit) {
+    // 节流/防抖函数现在来自 js/utils.js（通过 <script> 标签加载）
+    var throttle = (typeof window !== 'undefined' && window.throttle) || function(func, limit) {
         var lastFunc, lastRan;
         return function() {
             var context = this;
@@ -225,10 +225,9 @@
                 }, limit - (Date.now() - lastRan));
             }
         };
-    }
+    };
     
-    // 防抖函数 - 合并多次触发为一次
-    function debounce(func, wait) {
+    var debounce = (typeof window !== 'undefined' && window.debounce) || function(func, wait) {
         var timeout;
         return function() {
             var context = this, args = arguments;
@@ -237,7 +236,7 @@
                 func.apply(context, args);
             }, wait);
         };
-    }
+    };
     
     document.addEventListener('DOMContentLoaded', function() {
         // 响应式表格处理
