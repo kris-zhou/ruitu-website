@@ -698,7 +698,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 
                 modal.style.display = 'flex';
                 modalImg.src = image.src;
-                modalCaption.innerHTML = `<strong>${title}</strong><br>${id}<br>${date}`;
+                modalCaption.textContent = '';
+                var strong = document.createElement('strong');
+                strong.textContent = title;
+                modalCaption.appendChild(strong);
+                modalCaption.appendChild(document.createElement('br'));
+                modalCaption.appendChild(document.createTextNode(id));
+                modalCaption.appendChild(document.createElement('br'));
+                modalCaption.appendChild(document.createTextNode(date));
                 
                 // 确保DOM更新后再添加show类
                 setTimeout(() => {
@@ -935,7 +942,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 return response.json();
             })
             .then(data => {
-                console.log('表单提交成功:', data);
+
                 
                 // 清空表单
                 form.reset();
@@ -966,16 +973,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 }, 5000);
             })
             .catch(error => {
-                console.error('表单提交错误:', error);
+
                 
                 // 创建错误消息容器
                 const errorDiv = document.createElement('div');
                 errorDiv.className = 'alert alert-danger mt-3 text-center';
                 errorDiv.style.padding = '15px';
-                errorDiv.innerHTML = `
-                    <i class="fas fa-exclamation-circle me-2"></i>
-                    <strong>提交失败</strong> ${error.message}
-                `;
+                var errorIcon = document.createElement('i');
+                errorIcon.className = 'fas fa-exclamation-circle me-2';
+                var errorStrong = document.createElement('strong');
+                errorStrong.textContent = '提交失败';
+                errorDiv.appendChild(errorIcon);
+                errorDiv.appendChild(errorStrong);
+                errorDiv.appendChild(document.createTextNode(' ' + error.message));
                 
                 // 将错误消息插入表单后
                 form.appendChild(errorDiv);
