@@ -502,15 +502,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // 添加点击事件，点击图片时在模态框中显示原始大小
             const image = item.querySelector('img');
             item.addEventListener('click', function() {
-                const modal = document.getElementById('imageModal');
-                const modalImg = modal.querySelector('.image-modal-img');
-                modal.style.display = 'flex';
-                modalImg.src = image.src;
-                
-                // 确保DOM更新后再添加show类
-                setTimeout(() => {
-                    modal.classList.add('show');
-                }, 10);
+                SiteComponents.openImageModal(image.src);
             });
         });
         
@@ -560,87 +552,19 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
         
-        // 确保模态框存在
-        if (!document.getElementById('imageModal')) {
-            const modal = document.createElement('div');
-            modal.id = 'imageModal';
-            modal.className = 'image-modal';
-            modal.innerHTML = `
-                <div class="image-modal-content">
-                    <span class="image-modal-close">&times;</span>
-                    <img class="image-modal-img">
-                </div>
-            `;
-            document.body.appendChild(modal);
-            
-            // 关闭模态框
-            modal.querySelector('.image-modal-close').addEventListener('click', function() {
-                modal.classList.remove('show');
-                setTimeout(() => {
-                    modal.style.display = 'none';
-                }, 300);
-            });
-            
-            // 点击模态框外部关闭
-            modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    modal.classList.remove('show');
-                    setTimeout(() => {
-                        modal.style.display = 'none';
-                    }, 300);
-                }
-            });
-        }
+        SiteComponents.ensureImageModal();
     }
     
     // 产品图片点击放大功能
     const productImages = document.querySelectorAll('.uno img');
     if (productImages.length > 0) {
-        // 创建模态框容器
-        if (!document.getElementById('imageModal')) {
-            const modal = document.createElement('div');
-            modal.id = 'imageModal';
-            modal.className = 'image-modal';
-            modal.innerHTML = `
-                <div class="image-modal-content">
-                    <span class="image-modal-close">&times;</span>
-                    <img class="image-modal-img">
-                </div>
-            `;
-            document.body.appendChild(modal);
-            
-            // 关闭模态框
-            modal.querySelector('.image-modal-close').addEventListener('click', function() {
-                modal.classList.remove('show');
-                setTimeout(() => {
-                    modal.style.display = 'none';
-                }, 300);
-            });
-            
-            // 点击模态框外部关闭
-            modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    modal.classList.remove('show');
-                    setTimeout(() => {
-                        modal.style.display = 'none';
-                    }, 300);
-                }
-            });
-        }
+        SiteComponents.ensureImageModal();
         
         // 为每个产品图片添加点击事件
         productImages.forEach(img => {
             img.style.cursor = 'zoom-in';
             img.addEventListener('click', function() {
-                const modal = document.getElementById('imageModal');
-                const modalImg = modal.querySelector('.image-modal-img');
-                modal.style.display = 'flex';
-                modalImg.src = this.src;
-                
-                // 确保DOM更新后再添加show类
-                setTimeout(() => {
-                    modal.classList.add('show');
-                }, 10);
+                SiteComponents.openImageModal(this.src);
             });
         });
     }
@@ -650,38 +574,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const authenticityImages = document.querySelectorAll('.authenticity-img-container img');
     
     if (authenticityViewButtons.length > 0) {
-        // 确保模态框存在
-        if (!document.getElementById('imageModal')) {
-            const modal = document.createElement('div');
-            modal.id = 'imageModal';
-            modal.className = 'image-modal';
-            modal.innerHTML = `
-                <div class="image-modal-content">
-                    <span class="image-modal-close">&times;</span>
-                    <img class="image-modal-img">
-                    <div class="image-modal-caption"></div>
-                </div>
-            `;
-            document.body.appendChild(modal);
-            
-            // 关闭模态框
-            modal.querySelector('.image-modal-close').addEventListener('click', function() {
-                modal.classList.remove('show');
-                setTimeout(() => {
-                    modal.style.display = 'none';
-                }, 300);
-            });
-            
-            // 点击模态框外部关闭
-            modal.addEventListener('click', function(e) {
-                if (e.target === modal) {
-                    modal.classList.remove('show');
-                    setTimeout(() => {
-                        modal.style.display = 'none';
-                    }, 300);
-                }
-            });
-        }
+        SiteComponents.ensureImageModal();
         
         // 为查看按钮添加点击事件
         authenticityViewButtons.forEach(button => {
@@ -692,18 +585,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 const id = item.querySelector('.authenticity-id').textContent;
                 const date = item.querySelector('.authenticity-date').textContent;
                 
-                const modal = document.getElementById('imageModal');
-                const modalImg = modal.querySelector('.image-modal-img');
-                const modalCaption = modal.querySelector('.image-modal-caption');
-                
-                modal.style.display = 'flex';
-                modalImg.src = image.src;
-                modalCaption.innerHTML = `<strong>${title}</strong><br>${id}<br>${date}`;
-                
-                // 确保DOM更新后再添加show类
-                setTimeout(() => {
-                    modal.classList.add('show');
-                }, 10);
+                SiteComponents.openImageModal(
+                    image.src,
+                    '<strong>' + title + '</strong><br>' + id + '<br>' + date
+                );
             });
         });
         
@@ -940,58 +825,20 @@ document.addEventListener('DOMContentLoaded', function() {
                 // 清空表单
                 form.reset();
                 
-                // 创建成功消息容器
-                const successDiv = document.createElement('div');
-                successDiv.className = 'alert alert-success mt-3 text-center';
-                successDiv.style.padding = '15px';
-                successDiv.innerHTML = `
-                    <i class="fas fa-check-circle me-2"></i>
-                    <strong>谢谢！</strong> 您的表单已成功提交。我们会尽快与您联系。
-                `;
+                SiteComponents.showFormAlert(form, 'success',
+                    '<strong>谢谢！</strong> 您的表单已成功提交。我们会尽快与您联系。');
                 
-                // 将成功消息插入表单后
-                form.appendChild(successDiv);
-                
-                // 恢复按钮状态
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = originalBtnText;
-                
-                // 5秒后移除成功消息
-                setTimeout(() => {
-                    successDiv.style.transition = 'opacity 0.5s';
-                    successDiv.style.opacity = '0';
-                    setTimeout(() => {
-                        successDiv.remove();
-                    }, 500);
-                }, 5000);
             })
             .catch(error => {
                 console.error('表单提交错误:', error);
                 
-                // 创建错误消息容器
-                const errorDiv = document.createElement('div');
-                errorDiv.className = 'alert alert-danger mt-3 text-center';
-                errorDiv.style.padding = '15px';
-                errorDiv.innerHTML = `
-                    <i class="fas fa-exclamation-circle me-2"></i>
-                    <strong>提交失败</strong> ${error.message}
-                `;
+                SiteComponents.showFormAlert(form, 'error',
+                    '<strong>提交失败</strong> ' + error.message);
                 
-                // 将错误消息插入表单后
-                form.appendChild(errorDiv);
-                
-                // 恢复按钮状态
                 submitBtn.disabled = false;
                 submitBtn.innerHTML = originalBtnText;
-                
-                // 5秒后移除错误消息
-                setTimeout(() => {
-                    errorDiv.style.transition = 'opacity 0.5s';
-                    errorDiv.style.opacity = '0';
-                    setTimeout(() => {
-                        errorDiv.remove();
-                    }, 500);
-                }, 5000);
             });
         });
     });

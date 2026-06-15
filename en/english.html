@@ -2,96 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="renderer" content="webkit">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="msapplication-tap-highlight" content="no">
-    <meta name="HandheldFriendly" content="true">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta http-equiv="cleartype" content="on">
-    <meta http-equiv="expires" content="0">
-    <meta http-equiv="pragma" content="no-cache">
-    <meta http-equiv="cache-control" content="no-cache">
-    <meta name="theme-color" content="#ffffff">
     <title>RuiTu (Hong Kong) Trading Co., Ltd. - Professional Beauty Products Supplier</title>
     <meta name="description" content="RuiTu (Hong Kong) Trading Co., Ltd. is a leading beauty products supplier dedicated to providing excellent cross-border beauty wholesale services to global customers.">
     <meta name="keywords" content="beauty products,wholesale,Hong Kong,Korea,duty-free shops,cosmetics,cross-border trade">
-    <!-- DNS Prefetch -->
-    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
-    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="../css/style.css">
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" crossorigin="anonymous">
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <!-- Browser Compatibility Detection -->
+    <script src="../js/components.js"></script>
     <script>
-        // Check if browser supports modern CSS features
-        var supportsFlexbox = 'flexBasis' in document.documentElement.style || 
-                          'WebkitFlexBasis' in document.documentElement.style || 
-                          'MozFlexBasis' in document.documentElement.style || 
-                          'msFlexBasis' in document.documentElement.style;
-        
-        // Add old browser identifier class if necessary
-        if (!supportsFlexbox) {
-            document.documentElement.className += ' old-browser';
-        }
-        
-        // Detect IE browser version
-        var isIE = /*@cc_on!@*/false || !!document.documentMode;
-        var isEdge = !isIE && !!window.StyleMedia;
-        
-        if (isIE || isEdge) {
-            document.documentElement.className += ' ms-browser';
-        }
+        SiteComponents.injectHeadMeta();
+        SiteComponents.injectDependencies('..');
+        SiteComponents.detectBrowserCompat();
     </script>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#top">
-                <img src="../images/logo.png" alt="Ruitu (Hong Kong) Trading Co., Ltd." height="60">
-            </a>
-            <button class="navbar-toggler" type="button" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#top">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#products">Products</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav">
-                    <li class="nav-item d-flex align-items-center">
-                        <a href="../index.html" class="nav-link px-2" data-lang="zh"><img src="../images/flags/cn.png" alt="中文" width="24" title="中文"></a>
-                        <a href="english.html" class="nav-link px-2" data-lang="en"><img src="../images/flags/en.png" alt="English" width="24" title="English"></a>
-                        <a href="../kr/korean.html" class="nav-link px-2" data-lang="kr"><img src="../images/flags/kr.png" alt="한국어" width="24" title="한국어"></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <div id="navbar-container"></div>
+    <script>SiteComponents.renderNavbar({ lang: 'en', basePath: '..' });</script>
 
     <!-- Carousel -->
     <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -172,40 +98,8 @@
                     <p class="lead">Establishing long-term stable partnerships with numerous internationally renowned brands</p>
                 </div>
             </div>
-            <div class="brand-wall">
-                <img src="../images/brands/brand1.png" alt="Brand 1" class="brand-logo">
-                <img src="../images/brands/brand2.png" alt="Brand 2" class="brand-logo">
-                <img src="../images/brands/brand3.png" alt="Brand 3" class="brand-logo">
-                <img src="../images/brands/brand4.png" alt="Brand 4" class="brand-logo">
-                <img src="../images/brands/brand5.png" alt="Brand 5" class="brand-logo">
-                <img src="../images/brands/brand6.png" alt="Brand 6" class="brand-logo">
-                <img src="../images/brands/brand7.png" alt="Brand 7" class="brand-logo">
-                <img src="../images/brands/brand8.png" alt="Brand 8" class="brand-logo">
-                <img src="../images/brands/brand9.png" alt="Brand 9" class="brand-logo">
-                <img src="../images/brands/brand10.png" alt="Brand 10" class="brand-logo">
-                <img src="../images/brands/brand11.png" alt="Brand 11" class="brand-logo">
-                <img src="../images/brands/brand12.png" alt="Brand 12" class="brand-logo">
-                <img src="../images/brands/brand13.png" alt="Brand 13" class="brand-logo">
-                <img src="../images/brands/brand14.png" alt="Brand 14" class="brand-logo">
-                <img src="../images/brands/brand15.png" alt="Brand 15" class="brand-logo">
-                <img src="../images/brands/brand16.png" alt="Brand 16" class="brand-logo">
-                <img src="../images/brands/brand17.png" alt="Brand 17" class="brand-logo">
-                <img src="../images/brands/brand18.png" alt="Brand 18" class="brand-logo">
-                <img src="../images/brands/brand19.png" alt="Brand 19" class="brand-logo">
-                <img src="../images/brands/brand20.png" alt="Brand 20" class="brand-logo">
-                <img src="../images/brands/brand21.png" alt="Brand 21" class="brand-logo">
-                <img src="../images/brands/brand22.png" alt="Brand 22" class="brand-logo">
-                <img src="../images/brands/brand23.png" alt="Brand 23" class="brand-logo">
-                <img src="../images/brands/brand24.png" alt="Brand 24" class="brand-logo">
-                <img src="../images/brands/brand25.png" alt="Brand 25" class="brand-logo">
-                <img src="../images/brands/brand26.png" alt="Brand 26" class="brand-logo">
-                <img src="../images/brands/brand27.png" alt="Brand 27" class="brand-logo">
-                <img src="../images/brands/brand28.png" alt="Brand 28" class="brand-logo">
-                <img src="../images/brands/brand29.png" alt="Brand 29" class="brand-logo">
-                <img src="../images/brands/brand30.png" alt="Brand 30" class="brand-logo">
-                <img src="../images/brands/brand31.png" alt="Brand 31" class="brand-logo">
-                <img src="../images/brands/brand32.png" alt="Brand 32" class="brand-logo">
-            </div>
+            <div id="brand-wall-container"></div>
+            <script>SiteComponents.renderBrandWall({ lang: 'en', basePath: '..' });</script>
         </div>
     </section>
 
@@ -591,60 +485,8 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-3">
-                    <div class="d-flex align-items-center mb-2">
-                        <img src="../images/logo.png" alt="Ruitu (Hong Kong) Trading Co., Ltd." class="footer-logo me-2">
-                        <h5 class="mb-0">Ruitu Trading Co., Ltd.</h5>
-                    </div>
-                    <p class="footer-about">Professional beauty products supplier dedicated to providing excellent cross-border beauty wholesale services.</p>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <h5>Contact Us</h5>
-                    <ul class="list-unstyled footer-contact">
-                        <li><i class="fas fa-map-marker-alt"></i> Unit 08, 14/F, Block A, Tak Lee Industrial Centre, 8 Tsing Yeung Street, Tuen Mun, New Territories, Hong Kong</li>
-                        <li><i class="fas fa-phone"></i> +86 1538744 6201</li>
-                        <li><i class="fas fa-envelope"></i> jeremyx3245@sina.com</li>
-                        <li><i class="fab fa-weixin"></i> WeChat: nuligongzuo32</li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h5>Quick Links</h5>
-                    <div class="row">
-                        <div class="col-6">
-                            <ul class="list-unstyled">
-                                <li><a href="#top">Home</a></li>
-                                <li><a href="#about">About Us</a></li>
-                                <li><a href="#products">Products & Services</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-6">
-                            <ul class="list-unstyled">
-                                <li><a href="#business">Business Process</a></li>
-                                <li><a href="#logistics">Logistics</a></li>
-                                <li><a href="#contact">Contact Us</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <div class="row align-items-center">
-                    <div class="col-md-6 text-center text-md-start">
-                        <p class="mb-0">&copy; 2023 Ruitu (Hong Kong) Trading Co., Ltd. All rights reserved.</p>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="footer-links">
-                            <a href="../pages/privacy.html">Privacy Policy</a>
-                            <a href="../pages/disclaimer.html">Disclaimer</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <div id="footer-container"></div>
+    <script>SiteComponents.renderFooter({ lang: 'en', basePath: '..' });</script>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

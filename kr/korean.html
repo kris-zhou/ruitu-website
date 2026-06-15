@@ -2,96 +2,22 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="renderer" content="webkit">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="msapplication-tap-highlight" content="no">
-    <meta name="HandheldFriendly" content="true">
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta http-equiv="cleartype" content="on">
-    <meta http-equiv="expires" content="0">
-    <meta http-equiv="pragma" content="no-cache">
-    <meta http-equiv="cache-control" content="no-cache">
-    <meta name="theme-color" content="#ffffff">
     <title>루이투(홍콩) 무역 유한회사 - 전문 미용제품 공급 업체</title>
     <meta name="description" content="루이투(홍콩) 무역 유한회사는 글로벌 고객에게 뛰어난 국경 간 미용 도매 서비스를 제공하기 위해 최선을 다하는 업계 선도적인 미용 제품 공급 업체입니다.">
     <meta name="keywords" content="미용제품,도매,홍콩,한국,면세점,화장품,국경간무역">
-    <!-- DNS 프리페치 -->
-    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
-    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
-    <!-- 사용자 정의 CSS -->
-    <link rel="stylesheet" href="../css/style.css">
-    <!-- Font Awesome 아이콘 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" crossorigin="anonymous">
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-    <!-- 브라우저 호환성 감지 -->
+    <script src="../js/components.js"></script>
     <script>
-        // 브라우저가 현대적인 CSS 기능을 지원하는지 확인
-        var supportsFlexbox = 'flexBasis' in document.documentElement.style || 
-                          'WebkitFlexBasis' in document.documentElement.style || 
-                          'MozFlexBasis' in document.documentElement.style || 
-                          'msFlexBasis' in document.documentElement.style;
-        
-        // 필요한 경우 이전 브라우저 식별자 클래스 추가
-        if (!supportsFlexbox) {
-            document.documentElement.className += ' old-browser';
-        }
-        
-        // IE 브라우저 버전 감지
-        var isIE = /*@cc_on!@*/false || !!document.documentMode;
-        var isEdge = !isIE && !!window.StyleMedia;
-        
-        if (isIE || isEdge) {
-            document.documentElement.className += ' ms-browser';
-        }
+        SiteComponents.injectHeadMeta();
+        SiteComponents.injectDependencies('..');
+        SiteComponents.detectBrowserCompat();
     </script>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="#top">
-                <img src="../images/logo.png" alt="루이투 (홍콩) 무역 유한공사" height="60">
-            </a>
-            <button class="navbar-toggler" type="button" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#top">홈</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#about">회사 소개</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#products">제품</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#contact">연락처</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav">
-                    <li class="nav-item d-flex align-items-center">
-                        <a href="../index.html" class="nav-link px-2" data-lang="zh"><img src="../images/flags/cn.png" alt="中文" width="24" title="中文"></a>
-                        <a href="../en/english.html" class="nav-link px-2" data-lang="en"><img src="../images/flags/en.png" alt="English" width="24" title="English"></a>
-                        <a href="korean.html" class="nav-link px-2" data-lang="kr"><img src="../images/flags/kr.png" alt="한국어" width="24" title="한국어"></a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <div id="navbar-container"></div>
+    <script>SiteComponents.renderNavbar({ lang: 'kr', basePath: '..' });</script>
 
     <!-- Carousel -->
     <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -175,40 +101,8 @@
                     <p class="lead">다수의 국제 유명 브랜드와 장기적이고 안정적인 협력 관계 구축</p>
                 </div>
             </div>
-            <div class="brand-wall">
-                <img src="../images/brands/brand1.png" alt="브랜드1" class="brand-logo">
-                <img src="../images/brands/brand2.png" alt="브랜드2" class="brand-logo">
-                <img src="../images/brands/brand3.png" alt="브랜드3" class="brand-logo">
-                <img src="../images/brands/brand4.png" alt="브랜드4" class="brand-logo">
-                <img src="../images/brands/brand5.png" alt="브랜드5" class="brand-logo">
-                <img src="../images/brands/brand6.png" alt="브랜드6" class="brand-logo">
-                <img src="../images/brands/brand7.png" alt="브랜드7" class="brand-logo">
-                <img src="../images/brands/brand8.png" alt="브랜드8" class="brand-logo">
-                <img src="../images/brands/brand9.png" alt="브랜드9" class="brand-logo">
-                <img src="../images/brands/brand10.png" alt="브랜드10" class="brand-logo">
-                <img src="../images/brands/brand11.png" alt="브랜드11" class="brand-logo">
-                <img src="../images/brands/brand12.png" alt="브랜드12" class="brand-logo">
-                <img src="../images/brands/brand13.png" alt="브랜드13" class="brand-logo">
-                <img src="../images/brands/brand14.png" alt="브랜드14" class="brand-logo">
-                <img src="../images/brands/brand15.png" alt="브랜드15" class="brand-logo">
-                <img src="../images/brands/brand16.png" alt="브랜드16" class="brand-logo">
-                <img src="../images/brands/brand17.png" alt="브랜드17" class="brand-logo">
-                <img src="../images/brands/brand18.png" alt="브랜드18" class="brand-logo">
-                <img src="../images/brands/brand19.png" alt="브랜드19" class="brand-logo">
-                <img src="../images/brands/brand20.png" alt="브랜드20" class="brand-logo">
-                <img src="../images/brands/brand21.png" alt="브랜드21" class="brand-logo">
-                <img src="../images/brands/brand22.png" alt="브랜드22" class="brand-logo">
-                <img src="../images/brands/brand23.png" alt="브랜드23" class="brand-logo">
-                <img src="../images/brands/brand24.png" alt="브랜드24" class="brand-logo">
-                <img src="../images/brands/brand25.png" alt="브랜드25" class="brand-logo">
-                <img src="../images/brands/brand26.png" alt="브랜드26" class="brand-logo">
-                <img src="../images/brands/brand27.png" alt="브랜드27" class="brand-logo">
-                <img src="../images/brands/brand28.png" alt="브랜드28" class="brand-logo">
-                <img src="../images/brands/brand29.png" alt="브랜드29" class="brand-logo">
-                <img src="../images/brands/brand30.png" alt="브랜드30" class="brand-logo">
-                <img src="../images/brands/brand31.png" alt="브랜드31" class="brand-logo">
-                <img src="../images/brands/brand32.png" alt="브랜드32" class="brand-logo">
-            </div>
+            <div id="brand-wall-container"></div>
+            <script>SiteComponents.renderBrandWall({ lang: 'kr', basePath: '..' });</script>
         </div>
     </section>
 
@@ -594,60 +488,8 @@
     </section>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-3">
-                    <div class="d-flex align-items-center mb-2">
-                        <img src="../images/logo.png" alt="루이투 (홍콩) 무역 유한회사" class="footer-logo me-2">
-                        <h5 class="mb-0">루이투 무역 유한회사</h5>
-                    </div>
-                    <p class="footer-about">글로벌 고객에게 우수한 국경간 뷰티 도매 서비스를 제공하는 전문 뷰티 제품 공급업체입니다.</p>
-                </div>
-                <div class="col-md-4 mb-3">
-                    <h5>문의처</h5>
-                    <ul class="list-unstyled footer-contact">
-                        <li><i class="fas fa-map-marker-alt"></i> Unit 08, 14/F, Block A, Tak Lee Industrial Centre, 8 Tsing Yeung Street, Tuen Mun, New Territories, Hong Kong</li>
-                        <li><i class="fas fa-phone"></i> +86 1538744 6201</li>
-                        <li><i class="fas fa-envelope"></i> jeremyx3245@sina.com</li>
-                        <li><i class="fab fa-weixin"></i> 위챗: nuligongzuo32</li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h5>빠른 링크</h5>
-                    <div class="row">
-                        <div class="col-6">
-                            <ul class="list-unstyled">
-                                <li><a href="#top">홈</a></li>
-                                <li><a href="#about">회사 소개</a></li>
-                                <li><a href="#products">제품 및 서비스</a></li>
-                            </ul>
-                        </div>
-                        <div class="col-6">
-                            <ul class="list-unstyled">
-                                <li><a href="#business">비즈니스 프로세스</a></li>
-                                <li><a href="#logistics">물류 서비스</a></li>
-                                <li><a href="#contact">문의하기</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <div class="row align-items-center">
-                    <div class="col-md-6 text-center text-md-start">
-                        <p class="mb-0">&copy; 2023 루이투 (홍콩) 무역 유한회사. 모든 권리 보유.</p>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="footer-links">
-                            <a href="../pages/privacy.html">개인정보 정책</a>
-                            <a href="../pages/disclaimer.html">면책 조항</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+    <div id="footer-container"></div>
+    <script>SiteComponents.renderFooter({ lang: 'kr', basePath: '..' });</script>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
