@@ -263,6 +263,8 @@
         // 图片加载错误处理
         document.querySelectorAll('img').forEach(function(img) {
             img.addEventListener('error', function() {
+                if (this.dataset.errorHandled) return;
+                this.dataset.errorHandled = 'true';
                 this.src = 'images/placeholder.png';
                 this.classList.add('img-error');
             });
@@ -382,11 +384,13 @@
 document.addEventListener('DOMContentLoaded', function() {
     // 初始化轮播图
     const mainCarousel = document.getElementById('mainCarousel');
-    new bootstrap.Carousel(mainCarousel, {
-        interval: 3500,
-        ride: true,
-        wrap: true
-    });
+    if (mainCarousel) {
+        new bootstrap.Carousel(mainCarousel, {
+            interval: 3500,
+            ride: true,
+            wrap: true
+        });
+    }
 
     // 修复汉堡按钮问题 - 完全重写处理逻辑
     const navbarToggler = document.querySelector('.navbar-toggler');
@@ -417,14 +421,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // 监听滚动事件
-    window.addEventListener('scroll', function() {
-        const navbar = document.querySelector('.navbar');
-        if (window.scrollY > 50) {
-            navbar.classList.add('navbar-scrolled');
-        } else {
-            navbar.classList.remove('navbar-scrolled');
-        }
-    });
+    const navbar = document.querySelector('.navbar');
+    if (navbar) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled');
+            } else {
+                navbar.classList.remove('navbar-scrolled');
+            }
+        });
+    }
 
     // 环境展示部分的滚动动画
     const observerOptions = {
@@ -467,12 +473,18 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                window.scrollTo({
-                    top: target.offsetTop - 80,
-                    behavior: 'smooth'
-                });
+            var href = this.getAttribute('href');
+            if (!href || href === '#') return;
+            try {
+                var target = document.querySelector(href);
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            } catch (err) {
+                // invalid selector in href
             }
         });
     });
@@ -503,7 +515,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const image = item.querySelector('img');
             item.addEventListener('click', function() {
                 const modal = document.getElementById('imageModal');
+                if (!modal || !image) return;
                 const modalImg = modal.querySelector('.image-modal-img');
+                if (!modalImg) return;
                 modal.style.display = 'flex';
                 modalImg.src = image.src;
                 
@@ -633,7 +647,9 @@ document.addEventListener('DOMContentLoaded', function() {
             img.style.cursor = 'zoom-in';
             img.addEventListener('click', function() {
                 const modal = document.getElementById('imageModal');
+                if (!modal) return;
                 const modalImg = modal.querySelector('.image-modal-img');
+                if (!modalImg) return;
                 modal.style.display = 'flex';
                 modalImg.src = this.src;
                 
@@ -687,18 +703,26 @@ document.addEventListener('DOMContentLoaded', function() {
         authenticityViewButtons.forEach(button => {
             button.addEventListener('click', function() {
                 const item = this.closest('.authenticity-item');
+                if (!item) return;
                 const image = item.querySelector('img');
-                const title = item.querySelector('.authenticity-title').textContent;
-                const id = item.querySelector('.authenticity-id').textContent;
-                const date = item.querySelector('.authenticity-date').textContent;
+                const titleEl = item.querySelector('.authenticity-title');
+                const idEl = item.querySelector('.authenticity-id');
+                const dateEl = item.querySelector('.authenticity-date');
+                const title = titleEl ? titleEl.textContent : '';
+                const id = idEl ? idEl.textContent : '';
+                const date = dateEl ? dateEl.textContent : '';
                 
                 const modal = document.getElementById('imageModal');
+                if (!modal) return;
                 const modalImg = modal.querySelector('.image-modal-img');
                 const modalCaption = modal.querySelector('.image-modal-caption');
+                if (!modalImg) return;
                 
                 modal.style.display = 'flex';
-                modalImg.src = image.src;
-                modalCaption.innerHTML = `<strong>${title}</strong><br>${id}<br>${date}`;
+                modalImg.src = image ? image.src : '';
+                if (modalCaption) {
+                    modalCaption.innerHTML = `<strong>${title}</strong><br>${id}<br>${date}`;
+                }
                 
                 // 确保DOM更新后再添加show类
                 setTimeout(() => {
@@ -712,6 +736,7 @@ document.addEventListener('DOMContentLoaded', function() {
             img.style.cursor = 'zoom-in';
             img.addEventListener('click', function() {
                 const item = this.closest('.authenticity-item');
+                if (!item) return;
                 const viewButton = item.querySelector('.authenticity-view');
                 if (viewButton) {
                     viewButton.click();
@@ -808,7 +833,7 @@ document.addEventListener('DOMContentLoaded', function() {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     // 获取当前六边形的步骤编号
-                    const step = parseInt(entry.target.getAttribute('data-step'));
+                    const step = parseInt(entry.target.getAttribute('data-step')) || 1;
                     // 添加延迟动画效果，使六边形按顺序显示
                     setTimeout(() => {
                         entry.target.classList.add('animate');
@@ -879,6 +904,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // 显示加载状态
             const submitBtn = form.querySelector('button[type="submit"]');
+            if (!submitBtn) return;
             const originalBtnText = submitBtn.innerHTML;
             submitBtn.disabled = true;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> 提交中...';
@@ -932,7 +958,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (!response.ok) {
                     throw new Error('网络错误，请稍后再试');
                 }
-                return response.json();
+                return response.json().catch(function() {
+                    return {};
+                });
             })
             .then(data => {
                 console.log('表单提交成功:', data);
